@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo.png';
 
 const scrollTo = (id) => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
 
@@ -32,7 +33,9 @@ export default function Footer() {
             {/* Right part: Yashtex Dark Card */}
             <div className="footer-dark-card-wrap">
               <div className="footer-dark-card">
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '8px' }}>Team - Sync Aura</h3>
+                <div className="footer-logo-chip">
+                  <img src={logo} alt="Sync Aura" />
+                </div>
                 <p style={{ color: '#a3a3a3', fontSize: '0.95rem', marginBottom: '24px' }}>Web Development & Automation Development</p>
                 
                 <div style={{ 

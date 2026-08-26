@@ -1,4 +1,5 @@
 import React from 'react';
+import CountUp from './CountUp';
 
 const ChartSVG = () => (
   <svg viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto', marginTop: 'auto' }}>
@@ -27,9 +28,9 @@ const PillsGroup = () => (
 
 const PageSpeed = () => (
   <div style={{ position: 'relative', width: '90px', height: '90px', borderRadius: '50%', border: '4px solid #10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', fontSize: '1.8rem', fontWeight: 700, marginLeft: 'auto' }}>
-    100
-    <div style={{ position: 'absolute', top: '-10px', right: '-15px', background: 'transparent', border: '1px solid #ccc', borderRadius: '50%', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.55rem', color: '#555' }}>97</div>
-    <div style={{ position: 'absolute', bottom: '-5px', right: '-5px', background: 'transparent', border: '1px solid #ccc', borderRadius: '50%', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.55rem', color: '#555' }}>94</div>
+    <CountUp end={100} duration={1600} />
+    <div style={{ position: 'absolute', top: '-10px', right: '-15px', background: 'transparent', border: '1px solid #ccc', borderRadius: '50%', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.55rem', color: '#555' }}><CountUp end={97} duration={1600} /></div>
+    <div style={{ position: 'absolute', bottom: '-5px', right: '-5px', background: 'transparent', border: '1px solid #ccc', borderRadius: '50%', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.55rem', color: '#555' }}><CountUp end={94} duration={1600} /></div>
   </div>
 );
 

@@ -11,36 +11,40 @@ const tiers = [
     desc: 'High-performance websites, custom landing pages, Next.js dynamic apps, and active site management.', 
     price: 'Starts from ₹15,000', 
     accent: 'emerald', 
-    features: ['Static & Dynamic Web App Development', 'Vercel / AWS Hosting & Domain Setup', 'SEO Optimization & Maintenance', 'Admin Control Panels & Secure Auth', 'Ongoing Site Management'], 
-    color: '#10b981', 
-    badge: 'WEBSITES' 
+    features: ['Static & Dynamic Web App Development', 'Vercel / AWS Hosting & Domain Setup', 'SEO Optimization & Maintenance', 'Admin Control Panels & Secure Auth', 'Ongoing Site Management'],
+    color: '#10b981',
+    badge: 'WEBSITES',
+    waMessage: "Hi Sync Aura team! I need a website for my business. Can we discuss the details?"
   },
   { 
     name: 'Workflow Automation (N8N/Bots)', 
     desc: 'Automate your daily workflows, sync databases, send notifications, and build smart AI agents with n8n.', 
     price: 'Starts from ₹4,500', 
     accent: 'blue', 
-    features: ['n8n Automations & Custom Workflows', 'API Integrations (Telegram, WhatsApp, Slack)', 'Google Sheets & Database Syncing', 'AI Agent / LLM Pre-screening & Tools', 'Automated Business Reporting'], 
-    color: '#2563eb', 
-    badge: 'N8N AUTOMATION' 
+    features: ['n8n Automations & Custom Workflows', 'API Integrations (Telegram, WhatsApp, Slack)', 'Google Sheets & Database Syncing', 'AI Agent / LLM Pre-screening & Tools', 'Automated Business Reporting'],
+    color: '#2563eb',
+    badge: 'AUTOMATION',
+    waMessage: "Hi Sync Aura team! I need a workflow automation set up for my business. Can we discuss the details?"
   },
   { 
     name: 'Mobile App Development', 
     desc: 'Custom cross-platform mobile apps for iOS and Android built using modern frameworks, tailored to your exact business workflow.', 
     price: 'Custom Quote', 
     accent: 'orange', 
-    features: ['Cross-Platform (iOS & Android)', 'App Store & Play Store Publishing', 'Push Notifications Integration', 'Offline Capabilities & Database', 'Secure API Integration', 'Ongoing Maintenance Options'], 
-    color: '#ea580c', 
-    badge: 'MOBILE APP' 
+    features: ['Cross-Platform (iOS & Android)', 'App Store & Play Store Publishing', 'Push Notifications Integration', 'Offline Capabilities & Database', 'Secure API Integration', 'Ongoing Maintenance Options'],
+    color: '#ea580c',
+    badge: 'MOBILE APP',
+    waMessage: "Hi Sync Aura team! I need a mobile app built for my business. Can we discuss the details?"
   },
   { 
     name: 'Poster Designing (Add-on)', 
     desc: 'Professional visual branding and custom digital posters designed to elevate your brand presence.', 
     price: '₹2,500 (Pack of 10)', 
     accent: 'purple', 
-    features: ['10 Custom High-Quality Poster Designs', 'High-Resolution Output Formats', 'Branding & Typography Matching', 'Fast Turnaround & Revision Loops', 'Professional Graphic Design', 'Suitable for Social Media Marketing'], 
-    color: '#7c3aed', 
-    badge: 'CREATIVE ADD-ON' 
+    features: ['10 Custom High-Quality Poster Designs', 'High-Resolution Output Formats', 'Branding & Typography Matching', 'Fast Turnaround & Revision Loops', 'Professional Graphic Design', 'Suitable for Social Media Marketing'],
+    color: '#7c3aed',
+    badge: 'CREATIVE & DESIGN',
+    waMessage: "Hi Sync Aura team! I need custom posters designed for my brand. Can we discuss the details?"
   },
 ];
 
@@ -89,7 +93,7 @@ export default function Pricing() {
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <a href={`https://wa.me/919566697301?text=${encodeURIComponent('Hi Sync Aura team, I\'m interested in the ' + t.name + ' package!')}`} target="_blank" rel="noreferrer" 
+                  <a href={`https://wa.me/919566697301?text=${encodeURIComponent(t.waMessage)}`} target="_blank" rel="noreferrer"
                      style={{ 
                        display: 'flex', justifyContent: 'center', padding: '14px', borderRadius: '14px', 
                        background: t.color, color: 'white', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none', transition: 'transform 0.2s', cursor: 'pointer'

@@ -1,4 +1,5 @@
 import React from 'react';
+import CountUp from './CountUp';
 
 const teamMembers = [
   {
@@ -28,16 +29,15 @@ export default function About() {
   const countWord = countWords[teamMembers.length] || teamMembers.length;
 
   return (
-    <section id="about" className="about-section-new">
+    <section id="about">
       <div className="container">
-        {/* BACKGROUND HEADER */}
-        <div className="about-header-bg reveal">
-          <h2 className="about-title-large">About.</h2>
-          <p className="about-subtitle-muted">The minds behind Sync Aura.</p>
-        </div>
+        <div className="card-elevated reveal">
+          <div className="section-header-row" style={{ borderBottom: '1px solid #e5e5e5', paddingBottom: '24px', marginBottom: '40px', display: 'flex', alignItems: 'baseline', gap: '24px', flexWrap: 'wrap' }}>
+            <h2 className="section-title" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 500, letterSpacing: '-0.04em' }}>About.</h2>
+            <div className="divider" style={{ width: '1px', height: '40px', background: '#e5e5e5' }}></div>
+            <p className="section-subtitle" style={{ fontSize: '0.95rem', color: '#737373' }}>The minds behind Sync Aura.</p>
+          </div>
 
-        {/* OVERLAPPING MAIN CARD */}
-        <div className="about-main-card shadow-ultra reveal">
           <div className="about-grid-layout">
             
             {/* TEAM PROFILES GRID */}
@@ -102,7 +102,7 @@ export default function About() {
           {/* EXTENDED FULL-WIDTH STATS */}
           <div className="about-stats-row">
             <div className="about-stat-item reveal reveal-delay-1">
-              <div className="stat-value">100%</div>
+              <div className="stat-value"><CountUp end={100} suffix="%" /></div>
               <div className="stat-label">Satisfied Clients</div>
             </div>
             <div className="about-stat-item reveal reveal-delay-2">
