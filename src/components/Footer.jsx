@@ -8,9 +8,8 @@ export default function Footer() {
       <div className="container reveal">
         <div className="footer-container-dark">
           {/* Top Split */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', marginBottom: '80px' }}>
-            
-            
+          <div className="footer-top-grid">
+
             <div>
               <div style={{ color: '#10b981', fontSize: '0.95rem', fontWeight: 600, marginBottom: '24px' }}>Get in touch</div>
               <h2 className="footer-heading-shadow" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-0.04em', marginBottom: '24px' }}>Ready for your<br/>project?</h2>
@@ -30,16 +29,10 @@ export default function Footer() {
                 START PROJECT
               </a>
             </div>
-
             {/* Right part: Yashtex Dark Card */}
-            <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'end', width: '100%', maxWidth: '500px' }}>
-              <div style={{ 
-                background: '#171717', border: '1px solid rgba(255,255,255,0.05)', 
-                borderRadius: '24px', padding: '60px 40px', width: '100%',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)'
-              }}>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '8px' }}> Team - Sync Aura</h3>
+            <div className="footer-dark-card-wrap">
+              <div className="footer-dark-card">
+                <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '8px' }}>Team - Sync Aura</h3>
                 <p style={{ color: '#a3a3a3', fontSize: '0.95rem', marginBottom: '24px' }}>Web Development & Automation Development</p>
                 
                 <div style={{ 

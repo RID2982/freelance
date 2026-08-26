@@ -1,18 +1,20 @@
 import React from 'react';
 
 const teamMembers = [
-  { 
-    name: 'Vinodhan V A', 
-    role: 'Founder & Lead Developer', 
-    email: 'vinovb21@gmail.com', 
-    photo: '/member-vinodhan.png', 
-    badge: 'Founder & Lead Developer' 
+  {
+    name: 'Vinodhan V A',
+    role: 'Founder & Lead Developer',
+    email: 'vinovb21@gmail.com',
+    photo: '/member-vinodhan.jpg',
+    focus: '50% 38%',
+    badge: 'Founder & Lead Developer'
   },
-  { 
-    name: 'Hari Dev M V', 
-    role: 'Director & Senior Web Developer', 
+  {
+    name: 'Hari Dev M V',
+    role: 'Director & Senior Web Developer',
     email: 'haridevvinothkumar@outlook.com',
-    photo: 'https://api.dicebear.com/7.x/initials/svg?seed=HariDev', 
+    photo: '/member-haridev.jpg',
+    focus: '50% 26%',
     badge: 'Director & Senior Web Developer'
   },
 ];
@@ -40,7 +42,13 @@ export default function About() {
               {teamMembers.map((m, i) => (
                 <div key={i} className={`reveal team-featured-card reveal-delay-${i+1}`}>
                   <div className="team-photo-container">
-                    <img src={m.photo} alt={m.name} loading="lazy" decoding="async" className="team-photo-img" />
+                    {m.photo ? (
+                      <img src={m.photo} alt={m.name} loading="lazy" decoding="async" className="team-photo-img" style={{ objectPosition: m.focus || '50% 50%' }} />
+                    ) : (
+                      <div className="team-photo-placeholder" role="img" aria-label={`${m.name} — photo coming soon`}>
+                        <img src="/favicon.svg" alt="" loading="lazy" decoding="async" className="team-photo-placeholder-icon" />
+                      </div>
+                    )}
                     <div className="team-photo-label-overlay">
                       <div className="badge-white">
                         <span className="dot-emerald"></span> {m.badge}
@@ -79,11 +87,11 @@ export default function About() {
 
           {/* EXTENDED FULL-WIDTH STATS */}
           <div className="about-stats-row">
-            <div className="about-stat-item">
+            <div className="about-stat-item reveal reveal-delay-1">
               <div className="stat-value">100%</div>
               <div className="stat-label">Satisfied Clients</div>
             </div>
-            <div className="about-stat-item">
+            <div className="about-stat-item reveal reveal-delay-2">
               <div className="stat-value">March 19, 2026</div>
               <div className="stat-label">Agency Founded</div>
             </div>

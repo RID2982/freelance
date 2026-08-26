@@ -47,7 +47,7 @@ export default function ResultsBento() {
           <div className="results-grid-new">
             
             {/* Top Row: Chart (Span 2) + Metrics Text (Span 2) */}
-            <div className="results-cell-span-2" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px 32px 0 32px', display: 'flex', flexDirection: 'column', overflow: 'hidden', border: '1px solid #e5e5e5' }}>
+            <div className="results-cell-span-2 reveal reveal-delay-1" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px 32px 0 32px', display: 'flex', flexDirection: 'column', overflow: 'hidden', border: '1px solid #e5e5e5' }}>
               <div style={{ display: 'flex', gap: '8px', marginBottom: 'auto' }}>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></div>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#6ee7b7' }}></div>
@@ -55,7 +55,7 @@ export default function ResultsBento() {
               <ChartSVG />
             </div>
 
-            <div className="results-cell-span-2" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div className="results-cell-span-2 reveal reveal-delay-2" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <h3 style={{ fontSize: '2rem', fontWeight: 500, lineHeight: 1.2, marginBottom: '32px' }}>Digital tools engineered for real business growth</h3>
               <div className="results-metrics-grid">
                 <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>OnPage SEO</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Ready to rank and drive organic visitors on search engines.</p></div>
@@ -66,15 +66,15 @@ export default function ResultsBento() {
             </div>
 
             {/* Middle Row: Full Service (Span 2) + Lightning Fast (Span 2) */}
-            <div className="results-cell-span-2" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center' }}>
+            <div className="results-cell-span-2 reveal reveal-delay-3" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center' }}>
               <div>
                 <h4 style={{ fontSize: '1.2rem', fontStyle: 'italic', marginBottom: '8px' }}>Full-Stack A to Z</h4>
-                <p style={{ fontSize: '0.85rem', color: '#737373', maxWidth: '200px' }}>From backend database design to slick frontend interfaces and custom mobile application integrations.</p>
+                <p style={{ fontSize: '0.85rem', color: '#737373', maxWidth: '200px' }}>We handle it ourselves end-to-end — backend, database, frontend, and mobile — no outsourcing, no middlemen.</p>
               </div>
               <PillsGroup />
             </div>
 
-            <div className="results-cell-span-2" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center' }}>
+            <div className="results-cell-span-2 reveal reveal-delay-4" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center' }}>
               <div>
                 <h4 style={{ fontSize: '1.2rem', fontStyle: 'italic', marginBottom: '8px' }}>Lightning-Fast Load Times</h4>
                 <p style={{ fontSize: '0.85rem', color: '#737373' }}>Because instant loading drives maximum user retention.</p>
@@ -83,31 +83,28 @@ export default function ResultsBento() {
             </div>
 
             {/* Bottom Row: 4 Single Cells */}
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div className="reveal reveal-delay-5" style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div style={{ marginBottom: '16px', color: '#10b981' }}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
               </div>
               <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Cross-Platform</h5>
             </div>
-            
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+
+            <div className="reveal reveal-delay-6" style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div style={{ marginBottom: '16px', color: '#10b981' }}><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="12" cy="12" r="3"/><path d="M12 8v-1"/><path d="M12 17v-1"/><path d="M8 12h-1"/><path d="M17 12h-1"/></svg></div>
               <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Built to Scale</h5>
             </div>
 
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div className="reveal reveal-delay-7" style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div style={{ marginBottom: '16px', color: '#10b981' }}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
               </div>
               <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Always Available</h5>
             </div>
 
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-              <div style={{ border: '1px solid #e5e5e5', padding: '12px', borderRadius: '12px', marginBottom: '16px', position: 'relative' }}>
-                <div style={{ fontSize: '0.5rem', color: '#ccc', letterSpacing: '2px', marginBottom: '4px' }}>★★★★★★★</div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700 }}>GDPR</div>
-                <div style={{ fontSize: '0.45rem', color: '#a3a3a3' }}>Compliant</div>
-                <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', background: '#10b981', color: 'white', borderRadius: '50%', width: '16px', height: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div className="reveal reveal-delay-8" style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div style={{ marginBottom: '16px', color: '#10b981' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
               </div>
               <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Secure & Compliant</h5>
             </div>

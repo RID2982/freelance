@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import telegramMockup from '../assets/telegram_food_automation.png';
+import telegramMockup from '../assets/telegram_food_automation.jpg';
 import hrAutomation from '../assets/hr_automation.jpg';
 
 const projects = [

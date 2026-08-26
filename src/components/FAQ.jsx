@@ -17,7 +17,7 @@ export default function FAQ() {
       <div className="section-header-row"><h2 className="section-title">FAQ.</h2><div className="divider"></div><p className="section-subtitle">Straight answers to your questions.</p></div>
       <h3 className="faq-subtitle">Good to know</h3>
       {questions.map((item, i) => (
-        <div key={i} className="faq-item">
+        <div key={i} className={`faq-item reveal reveal-delay-${Math.min(i + 1, 8)}`}>
           <button className={`faq-question ${openIndex === i ? 'open' : ''}`} onClick={() => setOpenIndex(openIndex === i ? null : i)}>{item.q}<Chevron /></button>
           <div className={`faq-answer ${openIndex === i ? 'open' : ''}`}><p>{item.a}</p></div>
         </div>

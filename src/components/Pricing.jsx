@@ -56,8 +56,8 @@ export default function Pricing() {
           </div>
           
           <div className="pricing-grid" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '24px', maxWidth: 'none' }}>
-            {tiers.map(t => (
-              <div key={t.name} style={{
+            {tiers.map((t, i) => (
+              <div key={t.name} className={`reveal reveal-delay-${i + 1}`} style={{
                 border: `2px solid ${t.accent === 'emerald' ? '#bbf7d0' : t.accent === 'blue' ? '#bfdbfe' : t.accent === 'purple' ? '#ddd6fe' : '#ffedd5'}`,
                 borderRadius: '24px',
                 padding: '32px',
