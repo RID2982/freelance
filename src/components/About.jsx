@@ -6,7 +6,9 @@ const teamMembers = [
     role: 'Founder & Lead Developer',
     email: 'vinovb21@gmail.com',
     photo: '/member-vinodhan.jpg',
-    focus: '50% 38%',
+    focus: '50% 35%',
+    scale: 1.45,
+    transformOrigin: '50% 35%',
     badge: 'Founder & Lead Developer'
   },
   {
@@ -15,6 +17,7 @@ const teamMembers = [
     email: 'haridevvinothkumar@outlook.com',
     photo: '/member-haridev.jpg',
     focus: '50% 26%',
+    scale: 1,
     badge: 'Director & Senior Web Developer'
   },
 ];
@@ -43,7 +46,18 @@ export default function About() {
                 <div key={i} className={`reveal team-featured-card reveal-delay-${i+1}`}>
                   <div className="team-photo-container">
                     {m.photo ? (
-                      <img src={m.photo} alt={m.name} loading="lazy" decoding="async" className="team-photo-img" style={{ objectPosition: m.focus || '50% 50%' }} />
+                      <img 
+                        src={m.photo} 
+                        alt={m.name} 
+                        loading="lazy" 
+                        decoding="async" 
+                        className="team-photo-img" 
+                        style={{ 
+                          objectPosition: m.focus || '50% 50%',
+                          transform: m.scale ? `scale(${m.scale})` : 'none',
+                          transformOrigin: m.transformOrigin || m.focus || '50% 50%'
+                        }} 
+                      />
                     ) : (
                       <div className="team-photo-placeholder" role="img" aria-label={`${m.name} — photo coming soon`}>
                         <img src="/favicon.svg" alt="" loading="lazy" decoding="async" className="team-photo-placeholder-icon" />
