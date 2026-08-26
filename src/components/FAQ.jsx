@@ -24,7 +24,14 @@ export default function FAQ() {
       ))}
       <div className="faq-info-grid">
         <div className="faq-info-card"><h4><span style={{ color: 'var(--emerald)' }}>◉</span> Global Reach</h4><p>Personal contact is irreplaceable. No anonymous call center — a direct contact person for your project.</p></div>
-        <div className="faq-info-card dark"><h4><span>🔧</span> Custom project?</h4><p>For shops or complex software, we're happy to create a custom quote.</p><a href="https://wa.me/919566697301?text=Hi%2C%20I%20need%20a%20custom%20quote!" target="_blank" rel="noreferrer" className="link" style={{ color: 'white' }}>REQUEST QUOTE →</a></div>
+        <div className="faq-info-card dark">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', verticalAlign: 'middle', color: 'var(--emerald)' }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            Custom project?
+          </h4>
+          <p>For shops or complex software, we're happy to create a custom quote.</p>
+          <a href="https://wa.me/919566697301?text=Hi%2C%20I%20need%20a%20custom%20quote!" target="_blank" rel="noreferrer" className="link" style={{ color: 'white' }}>REQUEST QUOTE →</a>
+        </div>
       </div>
     </div></div></section>
   );

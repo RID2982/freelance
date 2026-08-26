@@ -35,13 +35,13 @@ const PageSpeed = () => (
 
 export default function ResultsBento() {
   return (
-    <section id="results">
+    <section id="capabilities">
       <div className="container">
-        <div className="card-elevated reveal" style={{ padding: '60px' }}>
+        <div className="card-elevated reveal">
           <div className="section-header-row" style={{ borderBottom: '1px solid #e5e5e5', paddingBottom: '24px', marginBottom: '40px', display: 'flex', alignItems: 'baseline', gap: '24px', flexWrap: 'wrap' }}>
-            <h2 className="section-title" style={{ fontSize: '4.5rem', fontWeight: 500, letterSpacing: '-0.04em' }}>Results.</h2>
+            <h2 className="section-title" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', fontWeight: 500, letterSpacing: '-0.04em' }}>Capabilities.</h2>
             <div className="divider" style={{ width: '1px', height: '40px', background: '#e5e5e5' }}></div>
-            <p className="section-subtitle" style={{ fontSize: '0.95rem', color: '#737373' }}>Websites optimized for real results.</p>
+            <p className="section-subtitle" style={{ fontSize: '0.95rem', color: '#737373' }}>High-performance digital products engineered to scale.</p>
           </div>
 
           <div className="results-grid-new">
@@ -56,20 +56,20 @@ export default function ResultsBento() {
             </div>
 
             <div className="results-cell-span-2" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h3 style={{ fontSize: '2rem', fontWeight: 500, lineHeight: 1.2, marginBottom: '32px' }}>Websites built for real business results</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>OnPage SEO</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Ready to be found on Google.</p></div>
-                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>Tracking & Analytics</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Track user statistics, marketing cookies and more.</p></div>
-                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>100% Responsive</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Optimized for desktop, tablet, mobile and everything in between.</p></div>
-                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>ROI-First</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>So you get the most out of your ad budget.</p></div>
+              <h3 style={{ fontSize: '2rem', fontWeight: 500, lineHeight: 1.2, marginBottom: '32px' }}>Digital tools engineered for real business growth</h3>
+              <div className="results-metrics-grid">
+                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>OnPage SEO</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Ready to rank and drive organic visitors on search engines.</p></div>
+                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>Workflow Automation</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Lead capture, bots, CRM syncs, and automated workflows using n8n.</p></div>
+                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>Mobile Applications</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Responsive cross-platform web and mobile UI layouts built for iOS & Android.</p></div>
+                <div><h4 style={{ fontSize: '0.9rem', marginBottom: '4px' }}>Scalable Architecture</h4><p style={{ fontSize: '0.8rem', color: '#737373' }}>Clean deployments on modern secure cloud environments (AWS, Vercel).</p></div>
               </div>
             </div>
 
             {/* Middle Row: Full Service (Span 2) + Lightning Fast (Span 2) */}
             <div className="results-cell-span-2" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center' }}>
               <div>
-                <h4 style={{ fontSize: '1.2rem', fontStyle: 'italic', marginBottom: '8px' }}>Full-Service A to Z</h4>
-                <p style={{ fontSize: '0.85rem', color: '#737373', maxWidth: '200px' }}>Benefit from top-notch service and comfort from start to finish.</p>
+                <h4 style={{ fontSize: '1.2rem', fontStyle: 'italic', marginBottom: '8px' }}>Full-Stack A to Z</h4>
+                <p style={{ fontSize: '0.85rem', color: '#737373', maxWidth: '200px' }}>From backend database design to slick frontend interfaces and custom mobile application integrations.</p>
               </div>
               <PillsGroup />
             </div>
@@ -77,15 +77,17 @@ export default function ResultsBento() {
             <div className="results-cell-span-2" style={{ background: '#f9f9f9', borderRadius: '24px', padding: '32px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center' }}>
               <div>
                 <h4 style={{ fontSize: '1.2rem', fontStyle: 'italic', marginBottom: '8px' }}>Lightning-Fast Load Times</h4>
-                <p style={{ fontSize: '0.85rem', color: '#737373' }}>Because nobody likes waiting.</p>
+                <p style={{ fontSize: '0.85rem', color: '#737373' }}>Because instant loading drives maximum user retention.</p>
               </div>
               <PageSpeed />
             </div>
 
             {/* Bottom Row: 4 Single Cells */}
             <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '16px' }}>💻</div>
-              <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Perfectly Integrated</h5>
+              <div style={{ marginBottom: '16px', color: '#10b981' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Cross-Platform</h5>
             </div>
             
             <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -94,8 +96,10 @@ export default function ResultsBento() {
             </div>
 
             <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-              <div style={{ color: '#10b981', border: '1px solid #bbf7d0', padding: '8px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, marginBottom: '16px' }}>Mon - Fri: 10 -</div>
-              <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Easy to Edit</h5>
+              <div style={{ marginBottom: '16px', color: '#10b981' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+              </div>
+              <h5 style={{ fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 600 }}>Always Available</h5>
             </div>
 
             <div style={{ background: '#ffffff', borderRadius: '24px', padding: '32px 24px', border: '1px solid #e5e5e5', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>

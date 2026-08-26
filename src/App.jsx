@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TechLogos from './components/TechLogos';
+import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Pricing from './components/Pricing';
 import ResultsBento from './components/ResultsBento';
 import FAQ from './components/FAQ';
-import About from './components/About';
 import Footer from './components/Footer';
 import CTABanner from './components/CTABanner';
-import Partners from './components/Partners';
+import logo from './assets/logo.png';
 
 const WaIcon = () => (
   <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -32,21 +32,43 @@ function useScrollReveal() {
   }, []);
 }
 
+const Preloader = () => (
+  <div className="preloader">
+    <div className="preloader-content">
+      <div className="preloader-logo-card">
+        <img src={logo} alt="Sync Aura" className="preloader-logo" />
+      </div>
+      <div className="preloader-line-container">
+        <div className="preloader-line"></div>
+      </div>
+    </div>
+  </div>
+);
+
 export default function App() {
   useScrollReveal();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1400);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
+      {loading && <Preloader />}
       <Navbar />
       <main>
         <Hero />
         <TechLogos />
         <Portfolio />
-        <Partners />
+        <About />
         <Pricing />
         <CTABanner />
         <ResultsBento />
         <FAQ />
-        <About />
       </main>
       <Footer />
       <a href="https://wa.me/919566697301?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" className="wa-float">

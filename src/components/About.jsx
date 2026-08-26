@@ -1,45 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 const teamMembers = [
   { 
-    name: 'V. Vinodhan', 
+    name: 'Vinodhan V A', 
     role: 'Founder & Lead Developer', 
     email: 'vinovb21@gmail.com', 
     photo: '/member-vinodhan.png', 
     badge: 'Founder & Lead Developer' 
   },
   { 
-    name: 'Prasanna Venkat K', 
-    role: 'Co-Founder', 
-    email: '',
-    photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Prasanna', 
-    badge: 'Co-Founder',
-  },
-  { 
     name: 'Hari Dev M V', 
     role: 'Director & Senior Web Developer', 
-    email: '',
+    email: 'haridevvinothkumar@outlook.com',
     photo: 'https://api.dicebear.com/7.x/initials/svg?seed=HariDev', 
     badge: 'Director & Senior Web Developer'
   },
 ];
 
+const countWords = { 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five' };
+
 export default function About() {
-  const teamRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-
-    if (teamRef.current) {
-      teamRef.current.querySelectorAll('.team-card').forEach(card => observer.observe(card));
-    }
-    
-    return () => observer.disconnect();
-  }, []);
+  const countWord = countWords[teamMembers.length] || teamMembers.length;
 
   return (
     <section id="about" className="about-section-new">
@@ -57,9 +38,9 @@ export default function About() {
             {/* TEAM PROFILES GRID */}
             <div className="team-profiles-grid">
               {teamMembers.map((m, i) => (
-                <div key={i} className={`team-featured-card reveal-delay-${i+1}`}>
+                <div key={i} className={`reveal team-featured-card reveal-delay-${i+1}`}>
                   <div className="team-photo-container">
-                    <img src={m.photo} alt={m.name} className="team-photo-img" />
+                    <img src={m.photo} alt={m.name} loading="lazy" decoding="async" className="team-photo-img" />
                     <div className="team-photo-label-overlay">
                       <div className="badge-white">
                         <span className="dot-emerald"></span> {m.badge}
@@ -75,7 +56,7 @@ export default function About() {
 
             {/* TEAM STORY & STATS */}
             <div className="team-story-content">
-              <h3 className="story-heading">Three minds, clear vision.</h3>
+              <h3 className="story-heading">{countWord} minds, clear vision.</h3>
               <p className="story-description">
                 We're the team behind Sync Aura — no big agency, no unnecessary meetings, no wasted hours. 
                 As young developers with innovative thinking, we work efficiently, with quality, and fast.
@@ -86,14 +67,12 @@ export default function About() {
                 We're the best partners you'll find when it comes to excellence.
               </p>
 
-
               <div className="about-tech-tags">
                 <span className="tech-tag-pill">WEB DEVELOPMENT</span>
                 <span className="tech-tag-pill">UI/UX DESIGN</span>
                 <span className="tech-tag-pill">SEO</span>
                 <span className="tech-tag-pill">AUTOMATION</span>
               </div>
-              
             </div>
 
           </div>

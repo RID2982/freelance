@@ -1,12 +1,28 @@
 import React from 'react';
 
 const slugs = [
-  'supabase', 'vercel', 'cloudflare', 'plesk',
-  'nextdotjs', 'framer', 'tailwindcss', 'react', 'nodedotjs', 'docker', 'n8n'
+  'react', 'vite', 'nodedotjs', 'supabase', 'adobephotoshop', 'canva', 'figma', 'adobeillustrator',
+  'tailwindcss', 'amazonaws', 'vercel', 'cloudflare', 'docker',
+  'n8n', 
 ];
 
 export default function TechLogos() {
   const allSlugs = [...slugs, ...slugs, ...slugs];
+
+  const getIconUrl = (slug) => {
+    switch (slug) {
+      case 'adobephotoshop':
+        return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg';
+      case 'adobeillustrator':
+        return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg';
+      case 'canva':
+        return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg';
+      case 'amazonaws':
+        return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg';
+      default:
+        return `https://cdn.simpleicons.org/${slug}/222222`;
+    }
+  };
 
   return (
     <div className="reveal marquee-container" style={{
@@ -20,7 +36,7 @@ export default function TechLogos() {
         {allSlugs.map((slug, idx) => (
           <img 
             key={`${slug}-${idx}`} 
-            src={`https://cdn.simpleicons.org/${slug}/222222`} 
+            src={getIconUrl(slug)} 
             alt={slug} 
             className="marquee-icon"
             style={{ width: 'auto', height: '28px', opacity: 0.5, transition: 'opacity 0.2s', filter: 'grayscale(100%)' }}

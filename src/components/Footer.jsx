@@ -10,21 +10,21 @@ export default function Footer() {
           {/* Top Split */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', marginBottom: '80px' }}>
             
-            {/* Left part: CTA info */}
+            
             <div>
               <div style={{ color: '#10b981', fontSize: '0.95rem', fontWeight: 600, marginBottom: '24px' }}>Get in touch</div>
               <h2 className="footer-heading-shadow" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-0.04em', marginBottom: '24px' }}>Ready for your<br/>project?</h2>
               <p style={{ color: '#a3a3a3', fontSize: '1.1rem', marginBottom: '40px', maxWidth: '400px', lineHeight: 1.6 }}>Let's get started together. Send me a request and receive a response within 12 hours.</p>
               
               <a href="https://wa.me/919566697301?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" 
-                 style={{ 
-                   display: 'inline-flex', padding: '16px 32px', border: '1px solid rgba(255,255,255,0.2)', 
-                   borderRadius: '999px', color: 'white', fontWeight: 600, letterSpacing: '0.05em', 
-                   alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)',
-                   transition: 'all 0.3s'
-                 }}
-                 onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.transform = 'scale(1.02)'; }}
-                 onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1)'; }}
+                style={{ 
+                  display: 'inline-flex', padding: '16px 32px', border: '1px solid rgba(255,255,255,0.2)', 
+                  borderRadius: '999px', color: 'white', fontWeight: 600, letterSpacing: '0.05em', 
+                  alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)',
+                  transition: 'all 0.3s'
+                }}
+                onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.transform = 'scale(1.02)'; }}
+                onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1)'; }}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.912 5.813a2 2 0 001.275 1.275L21 12l-5.813 1.912a2 2 0 00-1.275 1.275L12 21l-1.912-5.813a2 2 0 00-1.275-1.275L3 12l5.813-1.912a2 2 0 001.275-1.275L12 3z"/></svg>
                 START PROJECT
@@ -73,7 +73,6 @@ export default function Footer() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '32px', color: '#d4d4d4', fontSize: '0.95rem' }}>
-              <button onClick={() => scrollTo('services')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>Services</button>
               <button onClick={() => scrollTo('about')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>About</button>
               <button onClick={() => scrollTo('portfolio')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>Portfolio</button>
               <button onClick={() => scrollTo('hero')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>Contact</button>
