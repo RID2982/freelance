@@ -2,27 +2,25 @@ import React, { useEffect, useRef } from 'react';
 
 const teamMembers = [
   { 
-    name: 'Sujan R', 
+    name: 'V. Vinodhan', 
     role: 'Founder & Lead Developer', 
-    phone: 'Salem, Tamil Nadu', 
-    email: 'sujanrofficial@gmail.com',
-    photo: '/member-sujan.png', 
-    badge: 'Founder & Lead Developer',
-  },
-  { 
-    name: 'Gowthamapriyan A R', 
-    role: 'Creative Director', 
-    phone: '+91 93456 47223', 
-    email: 'gowthamapriyan2006@gmail.com',
-    photo: '/member-gowtham.png', 
-    badge: 'Design & Strategy'
-  },
-  { 
-    name: 'Vinodhan V A', 
-    role: 'Full-Stack & AI Engineer', 
     email: 'vinovb21@gmail.com', 
     photo: '/member-vinodhan.png', 
-    badge: 'Full-Stack & AI Engineer' 
+    badge: 'Founder & Lead Developer' 
+  },
+  { 
+    name: 'Prasanna Venkat K', 
+    role: 'Co-Founder', 
+    email: '',
+    photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Prasanna', 
+    badge: 'Co-Founder',
+  },
+  { 
+    name: 'Hari Dev M V', 
+    role: 'Director & Senior Web Developer', 
+    email: '',
+    photo: 'https://api.dicebear.com/7.x/initials/svg?seed=HariDev', 
+    badge: 'Director & Senior Web Developer'
   },
 ];
 
@@ -49,7 +47,7 @@ export default function About() {
         {/* BACKGROUND HEADER */}
         <div className="about-header-bg reveal">
           <h2 className="about-title-large">About.</h2>
-          <p className="about-subtitle-muted">The minds behind Echo Site.</p>
+          <p className="about-subtitle-muted">The minds behind Sync Aura.</p>
         </div>
 
         {/* OVERLAPPING MAIN CARD */}
@@ -59,7 +57,7 @@ export default function About() {
             {/* TEAM PROFILES GRID */}
             <div className="team-profiles-grid">
               {teamMembers.map((m, i) => (
-                <div key={m.name} className={`team-featured-card reveal-delay-${i+1}`}>
+                <div key={i} className={`team-featured-card reveal-delay-${i+1}`}>
                   <div className="team-photo-container">
                     <img src={m.photo} alt={m.name} className="team-photo-img" />
                     <div className="team-photo-label-overlay">
@@ -79,7 +77,7 @@ export default function About() {
             <div className="team-story-content">
               <h3 className="story-heading">Three minds, clear vision.</h3>
               <p className="story-description">
-                We're the team behind Echo Site — no big agency, no unnecessary meetings, no wasted hours. 
+                We're the team behind Sync Aura — no big agency, no unnecessary meetings, no wasted hours. 
                 As young developers with innovative thinking, we work efficiently, with quality, and fast.
               </p>
               <p className="story-description">

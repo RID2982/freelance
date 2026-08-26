@@ -16,7 +16,7 @@ export default function Footer() {
               <h2 className="footer-heading-shadow" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-0.04em', marginBottom: '24px' }}>Ready for your<br/>project?</h2>
               <p style={{ color: '#a3a3a3', fontSize: '1.1rem', marginBottom: '40px', maxWidth: '400px', lineHeight: 1.6 }}>Let's get started together. Send me a request and receive a response within 12 hours.</p>
               
-              <a href="https://wa.me/917339690198?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" 
+              <a href="https://wa.me/919566697301?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" 
                  style={{ 
                    display: 'inline-flex', padding: '16px 32px', border: '1px solid rgba(255,255,255,0.2)', 
                    borderRadius: '999px', color: 'white', fontWeight: 600, letterSpacing: '0.05em', 
@@ -39,7 +39,7 @@ export default function Footer() {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center',
                 boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)'
               }}>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '8px' }}> Team - Echo Site</h3>
+                <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '8px' }}> Team - Sync Aura</h3>
                 <p style={{ color: '#a3a3a3', fontSize: '0.95rem', marginBottom: '24px' }}>Web Development & Automation Development</p>
                 
                 <div style={{ 
@@ -66,7 +66,7 @@ export default function Footer() {
           {/* Footer Bottom Nav */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '32px' }}>
             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '16px', color: '#a3a3a3', fontSize: '0.9rem' }}>
-              <strong style={{ color: 'white', fontSize: '1.2rem', fontFamily: 'sans-serif', fontStyle: 'italic', paddingRight: '12px' }}>Echo Site</strong>
+              <strong style={{ color: 'white', fontSize: '1.2rem', fontFamily: 'sans-serif', fontStyle: 'italic', paddingRight: '12px' }}>Sync Aura</strong>
               <span>© 2026</span>
               <span style={{ opacity: 0.5 }}>•</span>
               <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='#a3a3a3'}>Cookie Settings</span>

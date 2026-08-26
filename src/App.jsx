@@ -9,6 +9,7 @@ import FAQ from './components/FAQ';
 import About from './components/About';
 import Footer from './components/Footer';
 import CTABanner from './components/CTABanner';
+import Partners from './components/Partners';
 
 const WaIcon = () => (
   <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -40,6 +41,7 @@ export default function App() {
         <Hero />
         <TechLogos />
         <Portfolio />
+        <Partners />
         <Pricing />
         <CTABanner />
         <ResultsBento />
@@ -47,7 +49,7 @@ export default function App() {
         <About />
       </main>
       <Footer />
-      <a href="https://wa.me/917339690198?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" className="wa-float">
+      <a href="https://wa.me/919566697301?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" className="wa-float">
         <WaIcon />
       </a>
     </>
