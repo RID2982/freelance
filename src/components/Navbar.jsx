@@ -11,6 +11,7 @@ export default function Navbar() {
   const scrollTo = (id) => { setMenuOpen(false); const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
   return (
     <>
+      <div className="navbar-backdrop" aria-hidden="true"></div>
       <nav className="navbar">
         <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <img src={logo} alt="Sync Aura" />
