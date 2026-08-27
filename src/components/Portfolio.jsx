@@ -142,7 +142,7 @@ export default function Portfolio() {
           </div>
 
           {/* Grid Layout */}
-          <div className="portfolio-grid-new" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '32px' }}>
+          <div className="portfolio-grid-new">
             {filteredProjects.map(p => (
               <div key={p.id} className="portfolio-card-new" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div 
