@@ -19,16 +19,28 @@ const WaIcon = () => (
 
 function useScrollReveal() {
   useEffect(() => {
+    const elements = document.querySelectorAll('.reveal');
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('active');
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
         });
       },
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
+    elements.forEach(el => observer.observe(el));
+
+    // Safety net: if the observer ever fails to fire for an element (embedded
+    // preview windows, unusual viewports, etc.), never leave content stuck invisible.
+    const fallback = setTimeout(() => {
+      elements.forEach(el => el.classList.add('active'));
+    }, 4000);
+
+    return () => { observer.disconnect(); clearTimeout(fallback); };
   }, []);
 }
 

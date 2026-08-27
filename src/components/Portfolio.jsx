@@ -9,6 +9,7 @@ const projects = [
     category: 'FULL WEBSITE DEVELOPMENT', 
     description: 'A full-stack enterprise web application deployed on AWS (S3, Lambda, API Gateway) featuring industrial training, secure admin controls, and custom database integrations.', 
     image: '/forge.png',
+    wide: true,
     tools: ['React', 'Node.js', 'AWS Lambda & S3', 'REST API'],
     type: 'website',
     link: 'https://www.forge.ind.in/login'
@@ -19,6 +20,7 @@ const projects = [
     category: 'STATIC WEB DEVELOPMENT', 
     description: 'A high-performance static website for the Rotaract Club Salem Midtown. Displays community projects, calendars, and outreach logs. Optimized for high speed and mobile responsiveness.', 
     image: '/rotaract.png',
+    wide: true,
     tools: ['React', 'Vite', 'Tailwind CSS', 'Mobile Responsive'],
     type: 'website',
     link: 'https://racsalemmidtown.in'
@@ -148,9 +150,9 @@ export default function Portfolio() {
                 <div 
                   className="portfolio-img-area" 
                   onClick={() => setSelectedProject(p)}
-                  style={{ height: '320px', borderRadius: '16px', border: '1px solid #f0f0f0', marginBottom: '20px', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
+                  style={{ height: '320px', borderRadius: '16px', border: '1px solid #f0f0f0', marginBottom: '20px', overflow: 'hidden', position: 'relative', cursor: 'pointer', background: p.wide ? '#0a0a0a' : 'transparent' }}
                 >
-                  <img src={p.image} alt={p.title} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} className="portfolio-card-img" />
+                  <img src={p.image} alt={p.title} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: p.wide ? 'contain' : 'cover', transition: 'transform 0.3s ease' }} className="portfolio-card-img" />
                   <div className="portfolio-img-hover-overlay" style={{
                     position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.2s ease'
                   }}>

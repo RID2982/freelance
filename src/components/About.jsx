@@ -106,7 +106,7 @@ export default function About() {
               <div className="stat-label">Satisfied Clients</div>
             </div>
             <div className="about-stat-item reveal reveal-delay-2">
-              <div className="stat-value">March 19, 2026</div>
+              <div className="stat-value">July 10, 2026</div>
               <div className="stat-label">Agency Founded</div>
             </div>
           </div>

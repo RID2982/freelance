@@ -202,7 +202,7 @@ section { padding: var(--section-py) 0; position: relative; scroll-margin-top: 1
 @media (max-width: 850px) { .nav-links { display: none; } .nav-cta-desktop { display: none; } .nav-hamburger { display: flex; } .navbar { padding: 10px 16px 10px 24px; } }
 
 /* HERO */
-.hero { min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 0 0; }
+.hero { min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 0 70px; }
 .hero-inner { max-width: 800px; margin: 0 auto; }
 .hero h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 24px; line-height: 1.15; }
 .hero-underline { position: relative; display: inline; }

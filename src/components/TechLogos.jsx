@@ -25,10 +25,14 @@ export default function TechLogos() {
   };
 
   return (
-    <div className="reveal marquee-container" style={{
-      overflow: 'hidden', display: 'flex', width: '100%', maxWidth: '900px', margin: '10px auto 40px', position: 'relative',
-      WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
-    }}>
+    <div className="reveal" style={{ margin: '20px auto 60px', textAlign: 'center' }}>
+      <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#a3a3a3', marginBottom: '20px' }}>
+        Tools &amp; technologies we work with
+      </p>
+      <div className="marquee-container" style={{
+        overflow: 'hidden', display: 'flex', width: '100%', maxWidth: '900px', margin: '0 auto', position: 'relative',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+      }}>
       <div className="marquee-content" style={{
         display: 'flex', alignItems: 'center', gap: '60px',
         animation: 'scroll-left 25s linear infinite', whiteSpace: 'nowrap'
@@ -51,6 +55,7 @@ export default function TechLogos() {
           100% { transform: translateX(calc(-33.33% - 20px)); }
         }
       `}</style>
+      </div>
     </div>
   );
 }
