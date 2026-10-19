@@ -1,84 +1,371 @@
-import React from 'react';
-import logo from '../assets/logo.png';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const scrollTo = (id) => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
+gsap.registerPlugin(ScrollTrigger);
 
-export default function Footer() {
+export default function Footer({ onOpenContact, onNavigate }) {
+  const footerRef = useRef(null);
+  const footerSvgRef = useRef(null);
+  const headingLinesRef = useRef([]);
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    const footerSvg = footerSvgRef.current;
+    if (!footer) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Line-by-Line Heading Entrance with mask reveal
+      const lines = headingLinesRef.current.filter(Boolean);
+      if (lines.length) {
+        gsap.set(lines, { y: '115%', opacity: 0 });
+        gsap.to(lines, {
+          y: '0%',
+          opacity: 1,
+          duration: 0.85,
+          stagger: 0.1,
+          ease: 'back.out(1.6)',
+          scrollTrigger: {
+            trigger: footer,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            invalidateOnRefresh: true,
+          }
+        });
+      }
+
+      // 2. Two26 Wolff Olins Signature 3D Standing / Pop-Up Elastic Stretch & Settle
+      if (footerSvg) {
+        // Starts flat/compressed anchored at bottom with 3D perspective fold
+        gsap.set(footerSvg, {
+          scaleY: 0.15,
+          rotationX: 55,
+          transformOrigin: 'bottom center',
+          transformPerspective: 1000,
+          willChange: 'transform',
+          force3D: true,
+        });
+
+        let hasBounced = false;
+
+        ScrollTrigger.create({
+          trigger: footer,
+          start: 'top bottom', // Starts when footer top enters the viewport
+          end: 'bottom bottom', // Ends when reaching absolute page bottom
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const vel = Math.abs(self.getVelocity() || 0);
+            const velStretch = Math.min(vel / 1500, 0.25); // Velocity-reactive stretch boost
+
+            if (self.progress >= 0.88) {
+              // Reached bottom: release into juicy Wolff Olins elastic spring bounce
+              if (!hasBounced) {
+                hasBounced = true;
+                gsap.killTweensOf(footerSvg);
+                gsap.to(footerSvg, {
+                  scaleY: 1,
+                  rotationX: 0,
+                  duration: 1.4,
+                  ease: 'elastic.out(1.2, 0.35)',
+                  overwrite: 'auto',
+                });
+              }
+            } else {
+              hasBounced = false;
+              // Standing up smoothly as user scrolls into footer
+              const baseTarget = self.direction === 1
+                ? 0.15 + self.progress * 1.15 + velStretch
+                : 0.15 + self.progress * 0.95;
+
+              const targetScaleY = Math.max(0.15, Math.min(baseTarget, 1.35));
+              const targetRotateX = Math.max(0, 55 * (1 - self.progress * 1.1));
+
+              gsap.to(footerSvg, {
+                scaleY: targetScaleY,
+                rotationX: targetRotateX,
+                duration: 0.12,
+                ease: 'power1.out',
+                overwrite: 'auto',
+              });
+            }
+          },
+          onLeave: () => {
+            if (!hasBounced) {
+              hasBounced = true;
+              gsap.killTweensOf(footerSvg);
+              gsap.to(footerSvg, {
+                scaleY: 1,
+                rotationX: 0,
+                duration: 1.4,
+                ease: 'elastic.out(1.2, 0.35)',
+                overwrite: 'auto',
+              });
+            }
+          },
+          onLeaveBack: () => {
+            hasBounced = false;
+            gsap.killTweensOf(footerSvg);
+            gsap.to(footerSvg, {
+              scaleY: 0.15,
+              rotationX: 55,
+              duration: 0.35,
+              ease: 'power2.out',
+              overwrite: 'auto',
+            });
+          },
+        });
+      }
+
+      // 3. Two26 Kinetic Character Hover on Footer Links
+      const footerLinks = footer.querySelectorAll('.footer-link');
+      footerLinks.forEach((link) => {
+        const chars = link.querySelectorAll('.footer-link-char');
+        if (!chars.length) return;
+
+        const onEnter = () => {
+          chars.forEach((char, idx) => {
+            const randomTilt = (idx % 2 === 0 ? -1 : 1) * 6;
+            gsap.to(char, {
+              scale: 1.15,
+              rotation: randomTilt,
+              color: 'var(--accent)',
+              duration: 0.35,
+              delay: idx * 0.025,
+              ease: 'back.out(1.8)',
+              overwrite: 'auto',
+              onComplete: () => {
+                gsap.to(char, {
+                  scale: 1,
+                  rotation: 0,
+                  duration: 0.4,
+                  ease: 'power2.out',
+                });
+              }
+            });
+          });
+        };
+
+        const onLeave = () => {
+          gsap.to(chars, {
+            scale: 1,
+            rotation: 0,
+            color: '#ffffff',
+            duration: 0.3,
+            stagger: 0.01,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        };
+
+        link.addEventListener('mouseenter', onEnter);
+        link.addEventListener('mouseleave', onLeave);
+      });
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const renderKineticLink = (text) => {
+    return text.split('').map((c, i) => (
+      <span key={i} className="footer-link-char">
+        {c === ' ' ? '\u00A0' : c}
+      </span>
+    ));
+  };
+
   return (
-    <footer className="footer-transparent" style={{ padding: '0 24px 40px 24px' }}>
-      <div className="container reveal">
-        <div className="footer-container-dark">
-          {/* Top Split */}
-          <div className="footer-top-grid">
+    <footer ref={footerRef} className="footer">
+      <div className="footer-wrapper">
+        <div className="footer-top">
+          {/* Top Left */}
+          <div className="footer-top-left">
+            <h2 className="footer-heading">
+              <span className="footer-heading-line-mask">
+                <span ref={(el) => (headingLinesRef.current[0] = el)} className="footer-heading-line">
+                  OKAY, THAT'S
+                </span>
+              </span>
+              <span className="footer-heading-line-mask">
+                <span ref={(el) => (headingLinesRef.current[1] = el)} className="footer-heading-line">
+                  ENOUGH WEBSITE.
+                </span>
+              </span>
+            </h2>
 
-            <div>
-              <div style={{ color: '#10b981', fontSize: '0.95rem', fontWeight: 600, marginBottom: '24px' }}>Get in touch</div>
-              <h2 className="footer-heading-shadow" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-0.04em', marginBottom: '24px' }}>Ready for your<br/>project?</h2>
-              <p style={{ color: '#a3a3a3', fontSize: '1.1rem', marginBottom: '40px', maxWidth: '400px', lineHeight: 1.6 }}>Let's get started together. Send me a request and receive a response within 12 hours.</p>
-              
-              <a href="https://wa.me/919566697301?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website!" target="_blank" rel="noreferrer" 
-                style={{ 
-                  display: 'inline-flex', padding: '16px 32px', border: '1px solid rgba(255,255,255,0.2)', 
-                  borderRadius: '999px', color: 'white', fontWeight: 600, letterSpacing: '0.05em', 
-                  alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)',
-                  transition: 'all 0.3s'
-                }}
-                onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.transform = 'scale(1.02)'; }}
-                onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1)'; }}
+            <div style={{ marginTop: '2em' }}>
+              <button
+                className="cta-btn"
+                style={{ fontSize: '1.05em', padding: '0.8em 2em' }}
+                onClick={onOpenContact}
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.912 5.813a2 2 0 001.275 1.275L21 12l-5.813 1.912a2 2 0 00-1.275 1.275L12 21l-1.912-5.813a2 2 0 00-1.275-1.275L3 12l5.813-1.912a2 2 0 001.275-1.275L12 3z"/></svg>
-                START PROJECT
+                <span className="cta-text">Let's Talk</span>
+                <span className="cta-btn-arrow">
+                  <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
+                    <path
+                      d="M1.464 8.536L8.535 1.465M3.055 1.288L8.535 1.465L8.712 6.945"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span className="cta-btn-fill-hover"></span>
+              </button>
+            </div>
+
+            {/* Direct Line: ZERO phone numbers as commanded by user */}
+            <div className="footer-links-block" style={{ marginTop: '3em' }}>
+              <div className="footer-link-header">Direct Inquiry</div>
+              <a href="mailto:vinovb21@gmail.com?subject=Project%20Inquiry" className="footer-link">
+                {renderKineticLink('vinovb21@gmail.com')}
               </a>
-            </div>
-            {/* Right part: Yashtex Dark Card */}
-            <div className="footer-dark-card-wrap">
-              <div className="footer-dark-card">
-                <div className="footer-logo-chip">
-                  <img src={logo} alt="Sync Aura" />
-                </div>
-                <p style={{ color: '#a3a3a3', fontSize: '0.95rem', marginBottom: '24px' }}>Web Development & Automation Development</p>
-                
-                <div style={{ 
-                  border: '1px solid rgba(16,185,129,0.3)', borderRadius: '999px', padding: '8px 16px', 
-                  display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#10b981',
-                  background: 'rgba(16,185,129,0.05)'
-                }}>
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 8px #10b981' }}></div>
-                  Available for new projects
-                </div>
-              </div>
+              <button
+                onClick={onOpenContact}
+                className="footer-link"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  color: 'var(--accent-cyan)',
+                  cursor: 'pointer',
+                  textAlign: 'left'
+                }}
+              >
+                {renderKineticLink('Start Studio Scope ↗')}
+              </button>
             </div>
           </div>
 
-          {/* Location Row */}
-          <div style={{ 
-            background: '#171717', border: '1px solid rgba(255,255,255,0.05)', 
-            borderRadius: '16px', padding: '24px 32px', marginBottom: '60px' 
-          }}>
-            <div style={{ color: '#10b981', fontSize: '0.9rem', marginBottom: '8px' }}>Our Location</div>
-            <div style={{ fontSize: '1.1rem' }}>India</div>
-          </div>
+          {/* Top Right */}
+          <div className="footer-top-right">
+            <div className="footer-top-right-top">
+              <div className="footer-links-block">
+                <div className="footer-link-header">Navigation</div>
+                <a
+                  href="/work"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('work');
+                    }
+                  }}
+                >
+                  {renderKineticLink('Work')}
+                </a>
+                <a
+                  href="/#services"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'services');
+                    }
+                  }}
+                >
+                  {renderKineticLink('Services')}
+                </a>
+                <a
+                  href="/about"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('about');
+                    }
+                  }}
+                >
+                  {renderKineticLink('About us')}
+                </a>
+                <a
+                  href="/work#pricing"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('work', 'pricing');
+                    }
+                  }}
+                >
+                  {renderKineticLink('Pricing')}
+                </a>
+                <a
+                  href="/#faq"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home', 'faq');
+                    }
+                  }}
+                >
+                  {renderKineticLink('FAQ')}
+                </a>
+              </div>
 
-          {/* Footer Bottom Nav */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '32px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '16px', color: '#a3a3a3', fontSize: '0.9rem' }}>
-              <strong style={{ color: 'white', fontSize: '1.2rem', fontFamily: 'sans-serif', fontStyle: 'italic', paddingRight: '12px' }}>Sync Aura</strong>
-              <span>© 2026</span>
-              <span style={{ opacity: 0.5 }}>•</span>
-              <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='#a3a3a3'}>Cookie Settings</span>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '32px', color: '#d4d4d4', fontSize: '0.95rem' }}>
-              <button onClick={() => scrollTo('about')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>About</button>
-              <button onClick={() => scrollTo('portfolio')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>Portfolio</button>
-              <button onClick={() => scrollTo('hero')} style={{ textDecoration: 'none', color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}>Contact</button>
-              
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginLeft: '16px' }}>
-                <a href="#" style={{ color: '#d4d4d4', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='#d4d4d4'}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                <a href="#" style={{ color: '#d4d4d4', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='#d4d4d4'}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
-                <a href="#" style={{ color: '#d4d4d4', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='#d4d4d4'}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+              <div className="footer-links-block">
+                <div className="footer-link-header">Social & Code</div>
+                <a href="https://linkedin.com/company/sync-aura" target="_blank" rel="noreferrer" className="footer-link">
+                  {renderKineticLink('LinkedIn')} ↗
+                </a>
+                <a href="https://github.com/vinodhan07" target="_blank" rel="noreferrer" className="footer-link">
+                  {renderKineticLink('GitHub')} ↗
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="footer-link">
+                  {renderKineticLink('Instagram')} ↗
+                </a>
               </div>
             </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '2em', flexWrap: 'wrap', marginTop: '2em' }}>
+              <div>
+                <div style={{ color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.8em', marginBottom: '0.4em' }}>STUDIO LOCATION</div>
+                <div style={{ color: '#ffffff', fontWeight: 600 }}>Salem, Tamil Nadu, India</div>
+              </div>
+
+              <div>
+                <div style={{ color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.8em', marginBottom: '0.4em' }}>AVAILABILITY</div>
+                <div style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>● Open for High-Impact Projects</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Giant Wolff Olins Full Bleed Elastic Stretch Logo */}
+        <div className="footer-btm">
+          <div className="footer-rights-text" style={{ padding: '0 4vw 0.8rem' }}>
+            © 2026 Sync Aura Studio. All rights reserved. Hand-coded with zero templates.
+          </div>
+
+          <div className="footer-logo-wrap">
+            <svg
+              ref={footerSvgRef}
+              className="footer-svg-logo"
+              viewBox="0 0 1920 260"
+              fill="none"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                transformOrigin: 'bottom center'
+              }}
+            >
+              <text
+                x="0"
+                y="215"
+                textLength="1920"
+                lengthAdjust="spacingAndGlyphs"
+                fontFamily="var(--font-heading)"
+                fontSize="240"
+                fontWeight="900"
+                fill="#ffffff"
+              >
+                SYNC AURA
+              </text>
+            </svg>
           </div>
         </div>
       </div>
