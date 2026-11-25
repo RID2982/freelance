@@ -15,7 +15,7 @@ const primaryProjects = [
     impact: '42% decrease in downtime',
     img: '/forge.png',
     link: 'https://www.forge.ind.in/login',
-    accentColor: '#2563eb',
+    accentColor: '#F28C28',
     tags: ['React', 'Vite', 'Node.js', 'WebSocket']
   },
   {
@@ -26,7 +26,7 @@ const primaryProjects = [
     impact: '10,000+ members onboarded',
     img: '/rotaract.png',
     link: 'https://racsalemmidtown.in',
-    accentColor: '#00b4d8',
+    accentColor: '#FF7800',
     tags: ['Next.js', 'PostgreSQL', 'Express', 'TailwindCSS']
   },
   {
@@ -37,7 +37,7 @@ const primaryProjects = [
     impact: '3.4x faster order fulfillment',
     img: telegramMockup,
     link: 'https://github.com/vinodhan07',
-    accentColor: '#10b981',
+    accentColor: '#F28C28',
     tags: ['Python', 'n8n', 'Telegram API', 'PostgreSQL']
   },
   {
@@ -48,25 +48,8 @@ const primaryProjects = [
     impact: '85% manual screening reduction',
     img: hrAutomation,
     link: 'https://github.com/N8n-automations-works/HR-Agent-Pre-Screening-Workflow-.git',
-    accentColor: '#8b5cf6',
+    accentColor: '#FFB347',
     tags: ['n8n', 'OpenAI', 'REST APIs', 'Slack Bot']
-  }
-];
-
-const spotlightPosters = [
-  {
-    id: 1,
-    title: 'Modern Restaurant Brand System',
-    type: 'Brand Identity & Visual Menu',
-    img: '/posters/Black and Orange Modern Restaurant Menu.png',
-    accent: '#f59e0b'
-  },
-  {
-    id: 2,
-    title: 'Dynamic Motorsport Campaign',
-    type: 'High-Octane Visual Motion',
-    img: '/posters/Red and Black Dynamic Race Car Tournament Instagram Post.png',
-    accent: '#ef4444'
   }
 ];
 
@@ -219,7 +202,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
   };
 
   return (
-    <section ref={sectionRef} className="section-projects" id="projects" style={{ padding: '6em 0 5em', background: '#fafafa', width: '100%' }}>
+    <section ref={sectionRef} className="section-projects" id="projects" style={{ padding: '6em 0 5em', background: 'var(--bg-main)', width: '100%' }}>
       <div className="section-projects-wrapper" style={{ width: '100%', maxWidth: '1720px', margin: '0 auto', padding: '0 4vw' }}>
         
         {/* Section Header with Two26 Magnetic Dual Heading */}
@@ -261,13 +244,13 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                   onMouseEnter={(e) => handleCardMouseEnter(e, idx)}
                   onMouseLeave={(e) => handleCardMouseLeave(e, idx)}
                   style={{
-                    background: '#ffffff',
-                    border: '1.5px solid var(--border-light, #e5e7eb)',
+                    background: 'var(--surface-white)',
+                    border: '1.5px solid var(--border-light)',
                     borderRadius: '24px',
                     overflow: 'hidden',
                     display: 'flex',
                     flexDirection: 'column',
-                    boxShadow: '0 8px 30px rgba(0,0,0,0.04)',
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.28)',
                     textDecoration: 'none',
                     color: 'inherit',
                     position: 'relative',
@@ -345,7 +328,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                             width: '40px',
                             height: '40px',
                             borderRadius: '50%',
-                            background: 'rgba(10, 10, 10, 0.05)',
+                            background: 'rgba(255, 255, 255, 0.06)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -369,7 +352,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                     </div>
 
                     {/* Tech Stack Pills */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em', marginTop: '1.5em', paddingTop: '1.2em', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em', marginTop: '1.5em', paddingTop: '1.2em', borderTop: '1px solid var(--border-light)' }}>
                       {proj.tags.map((t, tidx) => (
                         <span
                           key={tidx}
@@ -378,7 +361,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                             fontWeight: 600,
                             padding: '0.3em 0.75em',
                             borderRadius: '6px',
-                            backgroundColor: 'rgba(10, 10, 10, 0.04)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.06)',
                             color: 'var(--ink-black)',
                             fontFamily: 'var(--font-mono, monospace)'
                           }}
@@ -392,77 +375,6 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* 2 Curated Posters Spotlight */}
-        <div style={{ marginTop: '3em', marginBottom: '4em' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.8em', flexWrap: 'wrap', gap: '1em' }}>
-            <div>
-              <div style={{ fontSize: '0.8em', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-                DESIGN SPOTLIGHTS
-              </div>
-              <h3 style={{ fontSize: '1.8em', fontWeight: 800, margin: '0.2em 0 0', color: 'var(--ink-black)' }}>
-                Visual Identity &amp; Print Typography
-              </h3>
-            </div>
-            <button
-              onClick={() => onNavigate && onNavigate('work')}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--accent)',
-                fontWeight: 700,
-                fontSize: '0.95em',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5em'
-              }}
-            >
-              <span>View All Studio Artifacts</span>
-              <span>→</span>
-            </button>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))', gap: '2em' }}>
-            {spotlightPosters.map((poster) => (
-              <div
-                key={poster.id}
-                style={{
-                  background: '#ffffff',
-                  borderRadius: '20px',
-                  border: '1.5px solid var(--border-light, #e5e7eb)',
-                  overflow: 'hidden',
-                  boxShadow: '0 6px 25px rgba(0,0,0,0.04)',
-                  transition: 'transform 0.35s ease, box-shadow 0.35s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.boxShadow = `0 20px 45px ${poster.accent}20`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0px)';
-                  e.currentTarget.style.boxShadow = '0 6px 25px rgba(0,0,0,0.04)';
-                }}
-              >
-                <div style={{ width: '100%', height: '300px', overflow: 'hidden', backgroundColor: '#0a0a0a' }}>
-                  <img
-                    src={poster.img}
-                    alt={poster.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                </div>
-                <div style={{ padding: '1.5em 1.8em' }}>
-                  <div style={{ fontSize: '0.78em', fontFamily: 'var(--font-mono)', fontWeight: 700, color: poster.accent, textTransform: 'uppercase', marginBottom: '0.25em' }}>
-                    {poster.type}
-                  </div>
-                  <h4 style={{ fontSize: '1.25em', fontWeight: 800, margin: 0, color: 'var(--ink-black)' }}>
-                    {poster.title}
-                  </h4>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Projects End Line-by-Line Reveal with Milestone Pills */}
@@ -483,28 +395,29 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
             <div style={{ display: 'flex', gap: '1.25em', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5em' }}>
               <button
                 className="cta-btn"
-                style={{ fontSize: '1.05em', padding: '0.85em 2.2em', backgroundColor: 'var(--accent)', color: '#ffffff' }}
+                style={{ fontSize: '1.05em', padding: '0.85em 2.2em', backgroundColor: 'var(--accent)', color: '#FFFFFF' }}
                 onClick={() => {
                   if (onNavigate) onNavigate('work');
                 }}
               >
-                <span className="cta-text" style={{ color: '#ffffff', fontWeight: '800' }}>Explore All Projects</span>
-                <span className="cta-btn-arrow" style={{ backgroundColor: '#ffffff' }}>
+                <span className="cta-text" style={{ color: '#FFFFFF', fontWeight: '800' }}>Explore All Projects</span>
+                <span className="cta-btn-arrow" style={{ backgroundColor: '#0A0B0E', color: '#FFFFFF' }}>
                   <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
                     <path
                       d="M1.464 8.536L8.535 1.465M3.055 1.288L8.535 1.465L8.712 6.945"
-                      stroke="#0a0a0a"
+                      stroke="#FFFFFF"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
                 </span>
+                <span className="cta-btn-fill-hover"></span>
               </button>
 
               <button
                 className="cta-btn"
-                style={{ fontSize: '1.05em', padding: '0.85em 2.2em', background: 'transparent', color: 'var(--ink-black)', border: '1.5px solid rgba(10,10,10,0.2)' }}
+                style={{ fontSize: '1.05em', padding: '0.85em 2.2em', background: 'transparent', color: 'var(--ink-black)', border: '1.5px solid var(--border-light)' }}
                 onClick={onOpenContact}
               >
                 <span className="cta-text">Start a Project</span>
@@ -519,6 +432,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                     />
                   </svg>
                 </span>
+                <span className="cta-btn-fill-hover"></span>
               </button>
             </div>
           </div>

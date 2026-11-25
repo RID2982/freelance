@@ -12,42 +12,28 @@ const slides = [
     title: 'Forge Industrial Portal',
     cat: 'Full-Stack Platform',
     img: '/forge.png',
-    accent: '#2563eb'
+    accent: '#F28C28'
   },
   {
     id: 'rotaract',
     title: 'Rotaract Salem Club Platform',
     cat: 'High-Performance Web App',
     img: '/rotaract.png',
-    accent: '#00b4d8'
+    accent: '#FF7800'
   },
   {
     id: 'telegram',
     title: 'Telegram Food Order Automation',
     cat: 'n8n & AI Agent Workflow',
     img: telegramMockup,
-    accent: '#10b981'
+    accent: '#F28C28'
   },
   {
     id: 'hr',
     title: 'HR Recruitment Engine',
     cat: 'Autonomous Candidate Pipeline',
     img: hrAutomation,
-    accent: '#8b5cf6'
-  },
-  {
-    id: 'restaurant',
-    title: 'Modern Restaurant Brand System',
-    cat: 'Visual Identity & Print Collateral',
-    img: '/posters/Black and Orange Modern Restaurant Menu.png',
-    accent: '#f59e0b'
-  },
-  {
-    id: 'motorsport',
-    title: 'Dynamic Motorsport Campaign',
-    cat: 'Visual Identity & Motion Post',
-    img: '/posters/Red and Black Dynamic Race Car Tournament Instagram Post.png',
-    accent: '#ef4444'
+    accent: '#FFB347'
   }
 ];
 
@@ -162,7 +148,7 @@ export default function ShowcaseSlider({ onNavigate }) {
         position: 'relative',
         width: '100%',
         padding: '3em 0 4.5em',
-        background: '#fafafa',
+        background: 'var(--bg-main)',
         overflow: 'hidden'
       }}
     >

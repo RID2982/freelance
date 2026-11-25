@@ -202,18 +202,11 @@ export default function Hero({ onOpenContact, onNavigate }) {
       <div className="section-hero-wrapper">
         <div className="hero-text">
           {/* Magnetic Dual Heading with Anchored Floating Badge Pills */}
-          <div ref={headingWrapperRef} className="section-heading-wrapper" style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
             {/* Pill 1: Floating at Top-Right of Heading */}
             <div
               ref={(el) => (pillsRef.current[0] = el)}
               className="hero-pill one"
-              style={{
-                position: 'absolute',
-                top: '-1.4em',
-                right: '-1.5em',
-                zIndex: 4,
-                transform: 'rotate(6deg)'
-              }}
             >
               <span className="hero-pill-text-mask">
                 <span className="hero-pill-text">Salem &amp; Worldwide</span>
@@ -224,35 +217,30 @@ export default function Hero({ onOpenContact, onNavigate }) {
             <div
               ref={(el) => (pillsRef.current[1] = el)}
               className="hero-pill two"
-              style={{
-                position: 'absolute',
-                bottom: '-0.8em',
-                left: '-1em',
-                zIndex: 4,
-                transform: 'rotate(-7deg)'
-              }}
             >
               <span className="hero-pill-text-mask">
                 <span className="hero-pill-text">Digital Studio</span>
               </span>
             </div>
 
-            <h1 className="section-heading">
-              <span className="hero-line-mask">
-                <span className="hero-line">ENGINEERING BOLD</span>
-              </span>
-              <span className="hero-line-mask">
-                <span className="hero-line">DIGITAL IMPACT</span>
-              </span>
-            </h1>
+            <div ref={headingWrapperRef} className="section-heading-wrapper" style={{ position: 'relative' }}>
+              <h1 className="section-heading">
+                <span className="hero-line-mask">
+                  <span className="hero-line">VHX — INTELLIGENT</span>
+                </span>
+                <span className="hero-line-mask">
+                  <span className="hero-line">REAL-WORLD IMPACT</span>
+                </span>
+              </h1>
 
-            <h1 ref={offsetHeadingRef} className="section-heading accent-offset" aria-hidden="true">
-              ENGINEERING BOLD<br />DIGITAL IMPACT
-            </h1>
+              <h1 ref={offsetHeadingRef} className="section-heading accent-offset" aria-hidden="true">
+                VHX — INTELLIGENT<br />REAL-WORLD IMPACT
+              </h1>
+            </div>
           </div>
 
-          <p style={{ maxWidth: '640px', marginTop: '1.8em', fontSize: '1.15em', color: 'var(--ink-gray)', fontWeight: 500, lineHeight: 1.6 }}>
-            Sync Aura crafts bespoke high-performance web applications, intelligent n8n workflows, and iconic brand identities engineered for real-world impact.
+          <p style={{ maxWidth: '660px', marginTop: '1.8em', fontSize: '1.15em', color: 'var(--ink-gray)', fontWeight: 500, lineHeight: 1.6 }}>
+            VHX engineers high-performance software platforms, intelligent n8n automations, and proprietary digital products — built for real-world impact.
           </p>
 
           {/* Clean Primary Single CTA Button (Two26 Exact Standard) */}
@@ -282,7 +270,7 @@ export default function Hero({ onOpenContact, onNavigate }) {
             borderRadius: '28px',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             padding: '2.5em clamp(1.2rem, 3vw, 3rem)',
-            background: 'radial-gradient(circle at 50% 20%, #172554 0%, #0a0a0a 75%)',
+            background: 'radial-gradient(circle at 50% 20%, rgba(242, 140, 40, 0.16) 0%, #0A0B0E 75%)',
             boxSizing: 'border-box'
           }}
         >
@@ -340,7 +328,7 @@ export default function Hero({ onOpenContact, onNavigate }) {
                 overflow: 'hidden',
                 background: '#09090b',
                 border: '2px solid var(--accent)',
-                boxShadow: '0 25px 60px rgba(37, 99, 235, 0.3)',
+                boxShadow: '0 25px 60px rgba(242, 140, 40, 0.25)',
                 position: 'relative',
                 transition: 'transform 0.35s ease',
               }}
@@ -357,7 +345,7 @@ export default function Hero({ onOpenContact, onNavigate }) {
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }}></div>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981' }}></div>
                 <div style={{ marginLeft: '1em', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '6px', padding: '2px 14px', fontSize: '0.72em', color: 'rgba(255, 255, 255, 0.7)', fontFamily: 'var(--font-mono)' }}>
-                  syncaura.studio/portal/telemetry
+                  vhx.studio/portal/telemetry
                 </div>
               </div>
               <img src="/forge.png" alt="Forge Industrial Portal" style={{ width: '100%', height: 'calc(100% - 36px)', objectFit: 'cover' }} />
@@ -448,10 +436,10 @@ export default function Hero({ onOpenContact, onNavigate }) {
           <g ref={textGroupRef} mask="url(#hero-marquee-text-mask)">
             <text className="hero-marquee-text" fontSize="74" fontWeight="900" fill="#FFFFFF">
               <textPath ref={textPathRef} href="#hero-marquee-curve" startOffset="0">
-                SYNC AURA &nbsp;•&nbsp; SCALABLE WEB APPS &nbsp;•&nbsp; INTELLIGENT AUTOMATIONS &nbsp;•&nbsp; BESPOKE BRAND IDENTITIES &nbsp;•&nbsp;
-                SYNC AURA &nbsp;•&nbsp; SCALABLE WEB APPS &nbsp;•&nbsp; INTELLIGENT AUTOMATIONS &nbsp;•&nbsp; BESPOKE BRAND IDENTITIES &nbsp;•&nbsp;
-                SYNC AURA &nbsp;•&nbsp; SCALABLE WEB APPS &nbsp;•&nbsp; INTELLIGENT AUTOMATIONS &nbsp;•&nbsp; BESPOKE BRAND IDENTITIES &nbsp;•&nbsp;
-                SYNC AURA &nbsp;•&nbsp; SCALABLE WEB APPS &nbsp;•&nbsp; INTELLIGENT AUTOMATIONS &nbsp;•&nbsp; BESPOKE BRAND IDENTITIES &nbsp;•&nbsp;
+                VHX &nbsp;•&nbsp; CUSTOM SOFTWARE &nbsp;•&nbsp; AI &amp; N8N AUTOMATIONS &nbsp;•&nbsp; REAL-WORLD IMPACT &nbsp;•&nbsp;
+                VHX &nbsp;•&nbsp; CUSTOM SOFTWARE &nbsp;•&nbsp; AI &amp; N8N AUTOMATIONS &nbsp;•&nbsp; REAL-WORLD IMPACT &nbsp;•&nbsp;
+                VHX &nbsp;•&nbsp; CUSTOM SOFTWARE &nbsp;•&nbsp; AI &amp; N8N AUTOMATIONS &nbsp;•&nbsp; REAL-WORLD IMPACT &nbsp;•&nbsp;
+                VHX &nbsp;•&nbsp; CUSTOM SOFTWARE &nbsp;•&nbsp; AI &amp; N8N AUTOMATIONS &nbsp;•&nbsp; REAL-WORLD IMPACT &nbsp;•&nbsp;
               </textPath>
             </text>
           </g>

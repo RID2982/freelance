@@ -7,115 +7,80 @@ gsap.registerPlugin(ScrollTrigger);
 const servicesData = [
   {
     id: 'web',
-    title1: 'Web Application',
-    title2: '& Landing Page',
-    desc: 'High-performance bespoke web applications and high-conversion landing pages built with React and Next.js.',
-    accent: '#2563eb',
+    title1: 'Full-Stack Web',
+    title2: '& SaaS Platforms',
+    desc: 'High-performance bespoke web applications, SaaS dashboards, and scalable cloud platforms built with React, Next.js, and Node.js.',
+    accent: '#F28C28',
     align: 'right',
     offset: '8vw',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="60" height="42" rx="6" fill="#0a0a0a" stroke="#2563eb" strokeWidth="2" />
+        <rect x="10" y="10" width="60" height="42" rx="6" fill="#0a0b0e" stroke="#F28C28" strokeWidth="2" />
         <circle cx="18" cy="18" r="2.5" fill="#ef4444" />
-        <circle cx="25" cy="18" r="2.5" fill="#f59e0b" />
+        <circle cx="25" cy="18" r="2.5" fill="#F28C28" />
         <circle cx="32" cy="18" r="2.5" fill="#10b981" />
         <line x1="10" y1="24" x2="70" y2="24" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        <rect x="16" y="29" width="22" height="18" rx="3" fill="rgba(37,99,235,0.25)" stroke="#2563eb" strokeWidth="1.2" />
+        <rect x="16" y="29" width="22" height="18" rx="3" fill="rgba(242,140,40,0.22)" stroke="#F28C28" strokeWidth="1.2" />
         <line x1="44" y1="31" x2="62" y2="31" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
         <line x1="44" y1="37" x2="58" y2="37" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="44" y1="43" x2="52" y2="43" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="44" y1="43" x2="52" y2="43" stroke="#F28C28" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    id: 'automations',
+    title1: 'AI & n8n',
+    title2: 'Automations',
+    desc: 'Autonomous n8n workflows connecting Telegram bots, WhatsApp APIs, CRMs, databases, and LLM reasoning pipelines.',
+    accent: '#FF7800',
+    align: 'left',
+    offset: '6vw',
+    illustration: (
+      <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="30" r="10" fill="#1A140E" stroke="#FF7800" strokeWidth="2.5" />
+        <circle cx="60" cy="18" r="9" fill="#0a0b0e" stroke="#FF7800" strokeWidth="2" />
+        <circle cx="60" cy="42" r="9" fill="#0a0b0e" stroke="#FF7800" strokeWidth="2" />
+        <path d="M30 30 C44 30, 46 18, 51 18" stroke="#FF7800" strokeWidth="2" strokeLinecap="round" />
+        <path d="M30 30 C44 30, 46 42, 51 42" stroke="#FF7800" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="40" cy="30" r="3" fill="#FF7800" />
+        <path d="M18 30 L22 30 M20 28 L20 32" stroke="#FF7800" strokeWidth="2" strokeLinecap="round" />
       </svg>
     )
   },
   {
     id: 'mobile',
     title1: 'Mobile App',
-    title2: 'Development',
-    desc: 'Fluid, cross-platform mobile experiences and intuitive interfaces designed for iOS and Android.',
-    accent: '#00b4d8',
+    title2: 'Engineering',
+    desc: 'Fluid, cross-platform mobile applications and native-feeling experiences engineered for iOS and Android.',
+    accent: '#F28C28',
     align: 'left',
-    offset: '6vw',
+    offset: '20vw',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="25" y="8" width="30" height="46" rx="6" fill="#0a0a0a" stroke="#00b4d8" strokeWidth="2" />
+        <rect x="25" y="8" width="30" height="46" rx="6" fill="#0a0b0e" stroke="#F28C28" strokeWidth="2" />
         <line x1="36" y1="12" x2="44" y2="12" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
-        <rect x="29" y="17" width="22" height="28" rx="3" fill="#e0f2fe" />
-        <circle cx="35" cy="24" r="3" fill="#00b4d8" />
-        <rect x="31" y="31" width="18" height="3" rx="1.5" fill="#0284c7" />
-        <rect x="31" y="37" width="12" height="3" rx="1.5" fill="#38bdf8" />
+        <rect x="29" y="17" width="22" height="28" rx="3" fill="#1A140E" />
+        <circle cx="35" cy="24" r="3" fill="#F28C28" />
+        <rect x="31" y="31" width="18" height="3" rx="1.5" fill="#FF7800" />
+        <rect x="31" y="37" width="12" height="3" rx="1.5" fill="#FFB347" />
         <circle cx="40" cy="50" r="1.5" fill="rgba(255,255,255,0.6)" />
       </svg>
     )
   },
   {
-    id: 'automations',
-    title1: 'AI & Workflow',
-    title2: 'Automations',
-    desc: 'Autonomous n8n workflows connecting Telegram bots, WhatsApp APIs, CRMs, and LLM reasoning.',
-    accent: '#10b981',
-    align: 'left',
-    offset: '22vw',
-    illustration: (
-      <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="30" r="10" fill="#ecfdf5" stroke="#10b981" strokeWidth="2.5" />
-        <circle cx="60" cy="18" r="9" fill="#0a0a0a" stroke="#10b981" strokeWidth="2" />
-        <circle cx="60" cy="42" r="9" fill="#0a0a0a" stroke="#10b981" strokeWidth="2" />
-        <path d="M30 30 C44 30, 46 18, 51 18" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
-        <path d="M30 30 C44 30, 46 42, 51 42" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="40" cy="30" r="3" fill="#10b981" />
-        <path d="M18 30 L22 30 M20 28 L20 32" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    )
-  },
-  {
-    id: 'posters',
-    title1: 'Poster Design',
-    title2: '& Carousels',
-    desc: 'High-impact editorial posters, dynamic social carousels, and eye-catching visual campaign collateral.',
-    accent: '#f59e0b',
-    align: 'right',
-    offset: '7vw',
-    illustration: (
-      <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="10" width="30" height="42" rx="4" fill="#ffffff" stroke="#0a0a0a" strokeWidth="2" />
-        <rect x="30" y="8" width="30" height="42" rx="4" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" />
-        <circle cx="45" cy="22" r="6" fill="#f59e0b" />
-        <line x1="36" y1="34" x2="54" y2="34" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" />
-        <line x1="36" y1="40" x2="48" y2="40" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    )
-  },
-  {
-    id: 'brand',
-    title1: 'Logos & Brand',
-    title2: 'Identity',
-    desc: 'Distinctive logos, calibrated typography systems, and iconic visual identities built to endure.',
-    accent: '#8b5cf6',
-    align: 'left',
-    offset: '12vw',
-    illustration: (
-      <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="30" r="22" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="3 3" />
-        <polygon points="40,14 62,26 40,38 18,26" fill="#f5f3ff" stroke="#8b5cf6" strokeWidth="2.5" strokeLinejoin="round" />
-        <polygon points="18,26 40,38 40,50 18,38" fill="#7c3aed" stroke="#8b5cf6" strokeWidth="2" strokeLinejoin="round" />
-        <polygon points="62,26 40,38 40,50 62,38" fill="#a78bfa" stroke="#8b5cf6" strokeWidth="2" strokeLinejoin="round" />
-      </svg>
-    )
-  },
-  {
-    id: 'direction',
-    title1: 'Art Direction',
-    title2: '& Video',
-    desc: 'Creative supervision, promotional video production, and cohesive visual storytelling for modern brands.',
-    accent: '#2563eb',
+    id: 'apis',
+    title1: 'Custom APIs &',
+    title2: 'Cloud Systems',
+    desc: 'Resilient backend architectures, real-time WebSocket engines, payment gateways, and automated data synchronization.',
+    accent: '#FFB347',
     align: 'center',
     offset: '0%',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="14" y="12" width="52" height="38" rx="6" fill="#0a0a0a" stroke="#2563eb" strokeWidth="2" />
-        <polygon points="36,22 48,31 36,40" fill="#00b4d8" />
-        <line x1="14" y1="20" x2="66" y2="20" stroke="rgba(255,255,255,0.2)" strokeWidth="1" strokeDasharray="4 4" />
-        <circle cx="58" cy="16" r="2" fill="#ef4444" />
+        <rect x="14" y="14" width="52" height="32" rx="6" fill="#0a0b0e" stroke="#FFB347" strokeWidth="2" />
+        <path d="M26 26 L20 30 L26 34" stroke="#F28C28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M54 26 L60 30 L54 34" stroke="#F28C28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <line x1="44" y1="22" x2="36" y2="38" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
       </svg>
     )
   }
@@ -276,7 +241,7 @@ export default function ServicesSection() {
       id="services"
       style={{
         position: 'relative',
-        backgroundColor: '#fafafa',
+        backgroundColor: 'var(--bg-main)',
         overflow: 'hidden',
         width: '100%',
         padding: '7em 0 10em',
@@ -353,16 +318,16 @@ export default function ServicesSection() {
         style={{
           position: 'relative',
           width: '100%',
-          minHeight: '2200px',
+          minHeight: '1380px',
           margin: 0,
           padding: 0,
           overflow: 'hidden'
         }}
       >
-        {/* Continuous Winding SVG Stroke (Draws dynamically from top-right corner to bottom-left corner on scroll) */}
+        {/* Continuous Winding SVG Stroke (Draws dynamically from top-right corner through all 4 services to bottom-left corner) */}
         <svg
           className="services-journey-svg"
-          viewBox="0 0 1920 2200"
+          viewBox="0 0 1920 1400"
           fill="none"
           preserveAspectRatio="none"
           style={{
@@ -375,57 +340,51 @@ export default function ServicesSection() {
             zIndex: 1
           }}
         >
-          {/* Path: Starts at Top-Right Corner (1920, 25), loops every service, exits at Bottom-Left Corner (0, 2180) */}
+          {/* Path: Starts at Top-Right Corner (1895, 30), loops cleanly through all 4 services, exits at Bottom-Left Pin (25, 1360) */}
           <path
             ref={pathRef}
             d="
-              M 1920 25
-              C 1780 30, 1620 40, 1500 110
-              C 1400 170, 1520 230, 1580 200
-              C 1640 160, 1300 240, 950 360
-              C 600 480, 290 520, 260 630
-              C 230 740, 380 790, 520 810
-              C 660 830, 620 920, 560 980
-              C 490 1040, 620 1110, 840 1130
-              C 1120 1150, 1640 1200, 1580 1330
-              C 1520 1450, 1260 1480, 960 1510
-              C 650 1540, 320 1580, 290 1690
-              C 260 1800, 480 1840, 740 1850
-              C 1080 1860, 1500 1900, 1300 2020
-              C 1050 2120, 600 2160, 300 2175
-              L 0 2180
+              M 1895 30
+              C 1720 40, 1580 120, 1380 210
+              C 1180 300, 620 260, 380 410
+              C 220 510, 340 640, 680 680
+              C 1020 720, 620 820, 420 930
+              C 260 1020, 480 1120, 960 1160
+              C 1380 1195, 1180 1310, 640 1345
+              L 25 1360
             "
             stroke="var(--accent)"
-            strokeWidth="14"
+            strokeWidth="16"
+            vectorEffect="non-scaling-stroke"
             strokeLinecap="round"
             strokeLinejoin="round"
             opacity="0.9"
           />
 
-          {/* Start Pin at Exact Far Right Screen Corner (1895, 25) */}
-          <g transform="translate(1895, 25)">
-            <circle r="18" fill="#ffffff" stroke="var(--accent)" strokeWidth="4" />
-            <circle r="8" fill="var(--accent)" />
+          {/* Start Pin at Top-Right Corner (1895, 30) */}
+          <g transform="translate(1895, 30)">
+            <circle r="16" fill="#0A0B0E" stroke="var(--accent)" strokeWidth="4" />
+            <circle r="7" fill="var(--accent)" />
           </g>
 
           {/* Active Glowing Tracer Dot (Rides drawing head dynamically) */}
           <circle
             ref={tracerRef}
             cx="1895"
-            cy="25"
+            cy="30"
             r="10"
             fill="var(--accent)"
             stroke="#ffffff"
-            strokeWidth="4"
+            strokeWidth="3.5"
             style={{
-              filter: 'drop-shadow(0 0 16px rgba(37,99,235,0.95))'
+              filter: 'drop-shadow(0 0 16px rgba(242, 140, 40, 0.95))'
             }}
           />
 
-          {/* End Pin at Exact Far Left Screen Corner (25, 2180) */}
-          <g transform="translate(25, 2180)">
-            <circle r="18" fill="#ffffff" stroke="var(--accent)" strokeWidth="4" />
-            <circle r="8" fill="var(--accent)" />
+          {/* End Pin at Bottom-Left Corner (25, 1360) */}
+          <g transform="translate(25, 1360)">
+            <circle r="16" fill="#0A0B0E" stroke="var(--accent)" strokeWidth="4" />
+            <circle r="7" fill="var(--accent)" />
           </g>
         </svg>
 
@@ -486,8 +445,8 @@ export default function ServicesSection() {
                       fontWeight: 900,
                       letterSpacing: '-0.04em',
                       lineHeight: 0.95,
-                      color: 'var(--ink-black, #0a0a0a)',
-                      textShadow: '0 0 20px #fafafa, 0 0 35px #fafafa'
+                      color: 'var(--ink-black, #ffffff)',
+                      textShadow: '0 0 20px rgba(10,11,14,0.9), 0 0 35px rgba(10,11,14,0.8)'
                     }}
                   >
                     {item.title1}
@@ -503,7 +462,7 @@ export default function ServicesSection() {
                       height: 'clamp(52px, 7vw, 76px)',
                       borderRadius: '999px',
                       overflow: 'hidden',
-                      backgroundColor: '#ffffff',
+                      backgroundColor: 'var(--surface-white)',
                       border: `2px solid ${item.accent}`,
                       padding: '0.45em',
                       boxShadow: `0 8px 24px ${item.accent}30`,
@@ -532,15 +491,15 @@ export default function ServicesSection() {
                       fontWeight: 900,
                       letterSpacing: '-0.04em',
                       lineHeight: 0.95,
-                      color: 'var(--ink-black, #0a0a0a)',
-                      textShadow: '0 0 20px #fafafa, 0 0 35px #fafafa'
+                      color: 'var(--ink-black, #ffffff)',
+                      textShadow: '0 0 20px rgba(10,11,14,0.9), 0 0 35px rgba(10,11,14,0.8)'
                     }}
                   >
                     {item.title2}
                   </span>
                 </div>
 
-                {/* Clean Two26 Description Pill below title */}
+                {/* Clean Description Pill below title */}
                 <div
                   className="service-pill"
                   style={{
@@ -549,9 +508,9 @@ export default function ServicesSection() {
                     alignItems: 'center',
                     padding: '0.65em 1.4em',
                     borderRadius: '999px',
-                    background: '#ffffff',
+                    background: 'var(--surface-white)',
                     border: `1.5px solid ${item.accent}`,
-                    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.28)',
                     maxWidth: '480px',
                     transformOrigin: 'left center',
                     position: 'relative',
@@ -564,7 +523,7 @@ export default function ServicesSection() {
                       fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)',
                       fontWeight: 500,
                       lineHeight: 1.45,
-                      color: '#1f2937'
+                      color: 'var(--ink-gray)'
                     }}
                   >
                     {item.desc}
@@ -592,7 +551,7 @@ export default function ServicesSection() {
               gap: '0.8em',
               padding: '0.7em 1.6em',
               borderRadius: '999px',
-              background: 'rgba(37, 99, 235, 0.08)',
+              background: 'rgba(242, 140, 40, 0.1)',
               border: '1.5px solid var(--accent)',
               color: 'var(--ink-black)',
               fontWeight: 700,

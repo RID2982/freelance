@@ -10,12 +10,15 @@ import Hero from './components/Hero';
 import AboutPinned from './components/AboutPinned';
 import ShowcaseSlider from './components/ShowcaseSlider';
 import ProjectsVertical from './components/ProjectsVertical';
+import ProductsSection from './components/ProductsSection';
 import ServicesSection from './components/ServicesSection';
 import TestimonialsStack from './components/TestimonialsStack';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import WorkPage from './components/WorkPage';
-import AboutPage from './components/AboutPage';
+import WorkPage from './pages/WorkPage';
+import ProductsPage from './pages/ProductsPage';
+import ServicesPage from './pages/ServicesPage';
+import AboutPage from './pages/AboutPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +26,8 @@ export default function App() {
   const getInitialPage = () => {
     const path = window.location.pathname.toLowerCase();
     if (path.includes('/work')) return 'work';
+    if (path.includes('/products')) return 'products';
+    if (path.includes('/services')) return 'services';
     if (path.includes('/about')) return 'about';
     return 'home';
   };
@@ -101,6 +106,8 @@ export default function App() {
       const path = window.location.pathname.toLowerCase();
       let page = 'home';
       if (path.includes('/work')) page = 'work';
+      else if (path.includes('/products')) page = 'products';
+      else if (path.includes('/services')) page = 'services';
       else if (path.includes('/about')) page = 'about';
 
       setCurrentPage(page);
@@ -136,9 +143,23 @@ export default function App() {
         onClose={() => setIsContactOpen(false)}
       />
 
-      {/* Conditional Multi-Page View */}
+      {/* Conditional Multi-Page View (5 Dedicated Enterprise Pages) */}
       {currentPage === 'work' && (
         <WorkPage
+          onOpenContact={() => setIsContactOpen(true)}
+          onNavigate={handleNavigate}
+        />
+      )}
+
+      {currentPage === 'products' && (
+        <ProductsPage
+          onOpenContact={() => setIsContactOpen(true)}
+          onNavigate={handleNavigate}
+        />
+      )}
+
+      {currentPage === 'services' && (
+        <ServicesPage
           onOpenContact={() => setIsContactOpen(true)}
           onNavigate={handleNavigate}
         />
@@ -166,8 +187,14 @@ export default function App() {
             {/* Horizontal Showcase Slider with Directional Velocity Physics & Proximity Scale */}
             <ShowcaseSlider onNavigate={handleNavigate} />
 
-            {/* Selected Works: 4-Card Flagship Grid & Design Highlights */}
+            {/* Selected Works: 4-Card Flagship Grid */}
             <ProjectsVertical
+              onOpenContact={() => setIsContactOpen(true)}
+              onNavigate={handleNavigate}
+            />
+
+            {/* VHX Labs: Proprietary Product Releases Showcase */}
+            <ProductsSection
               onOpenContact={() => setIsContactOpen(true)}
               onNavigate={handleNavigate}
             />
@@ -197,14 +224,14 @@ export default function App() {
         aria-label="Start a Project / Direct Inquiry"
         title="Start a Project"
         style={{
-          background: 'var(--accent-gradient, linear-gradient(135deg, #2563eb, #00b4d8))',
+          background: 'var(--accent-gradient, linear-gradient(135deg, #FF7800, #F28C28))',
           border: 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: '#ffffff',
-          boxShadow: '0 8px 30px rgba(37, 99, 235, 0.4)'
+          boxShadow: '0 8px 30px rgba(242, 140, 40, 0.4)'
         }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

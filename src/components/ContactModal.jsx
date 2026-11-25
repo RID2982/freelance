@@ -154,9 +154,8 @@ export default function ContactModal({ isOpen, onClose }) {
 
       {/* Top Bar */}
       <div className="contact-navbar">
-        <div ref={logoRef} className="navbar-logo-contact">
-          <span>SYNC AURA</span>
-          <span style={{ color: 'var(--accent)' }}>✦</span>
+        <div ref={logoRef} className="navbar-logo-contact" style={{ display: 'flex', alignItems: 'center', gap: '0.6em' }}>
+          <img src="/VHX_logo_4K.svg" alt="VHX" style={{ height: '28px', width: 'auto' }} />
         </div>
         <button ref={closeBtnRef} className="close-btn" onClick={onClose} aria-label="Close Contact Modal">
           <svg width="12" height="12" viewBox="0 0 8 8" fill="none">
@@ -181,7 +180,7 @@ export default function ContactModal({ isOpen, onClose }) {
           <div className="contact-email-wrap">
             <div className="email-heading">Client Inquiries &amp; Projects</div>
             <a
-              href="mailto:vinovb21@gmail.com?subject=New%20Project%20Inquiry%20-%20Sync%20Aura"
+              href="mailto:vinovb21@gmail.com?subject=New%20Project%20Inquiry%20-%20VHX"
               className="email-link"
               onMouseEnter={handleEmailHover}
             >
@@ -203,7 +202,7 @@ export default function ContactModal({ isOpen, onClose }) {
           <div className="contact-email-wrap">
             <div className="email-heading">Direct Inquiry &amp; Fast Response</div>
             <a
-              href="https://wa.me/919566697301?text=Hi%20Vinodhan,%20I'm%20interested%20in%20working%20with%20Sync%20Aura!"
+              href="https://wa.me/919566697301?text=Hi%20Vinodhan,%20I'm%20interested%20in%20working%20with%20VHX!"
               target="_blank"
               rel="noreferrer"
               className="contact-whatsapp-btn"
@@ -216,7 +215,7 @@ export default function ContactModal({ isOpen, onClose }) {
           </div>
 
           <div className="contact-social-bar">
-            <a href="https://linkedin.com/company/sync-aura" target="_blank" rel="noreferrer" className="contact-social">
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="contact-social">
               <span>LinkedIn</span>
             </a>
             <a href="https://github.com/vinodhan07" target="_blank" rel="noreferrer" className="contact-social">

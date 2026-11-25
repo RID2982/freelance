@@ -3,8 +3,8 @@ import gsap from 'gsap';
 
 const faqData = [
   {
-    q: 'What kind of projects does Sync Aura take on?',
-    a: 'Full-stack web applications, custom marketing landing pages, n8n workflow automations, brand identities, and mobile apps. We like projects where there is room to think, eliminate bottlenecks, and build something with unmistakable character.'
+    q: 'What kind of projects does VHX take on?',
+    a: 'Full-stack web applications, custom SaaS platforms, n8n workflow automations, AI agents, and mobile apps. We focus 100% on software engineering and intelligent automations that eliminate bottlenecks and scale.'
   },
   {
     q: 'How much does a website development project cost?',
@@ -48,23 +48,30 @@ export default function FAQ() {
       const logo = item.querySelector('.faq-logo');
       const answerText = item.querySelector('.faq-answer');
 
+      if (qBlock) gsap.killTweensOf(qBlock);
+      if (aBlock) gsap.killTweensOf(aBlock);
+      if (logo) gsap.killTweensOf(logo);
+      if (answerText) gsap.killTweensOf(answerText);
+
       if (index === activeIndex) {
         // Open active item
-        gsap.to(qBlock, { width: getOpenWidth(), borderWidth: '1.5px', duration: 0.45, ease: 'power2.out' });
-        gsap.set(aBlock, { display: 'flex', overflow: 'hidden' });
-        gsap.fromTo(aBlock, { height: 0, scale: 0.8 }, { height: 'auto', scale: 1, duration: 0.5, ease: 'back.out(1.6)' });
-        if (logo) gsap.fromTo(logo, { scale: 0 }, { scale: 1, duration: 0.45, ease: 'back.out(2)' });
-        if (answerText) gsap.fromTo(answerText, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, delay: 0.15, ease: 'power2.out' });
+        gsap.to(qBlock, { width: getOpenWidth(), borderWidth: '1.5px', duration: 0.4, ease: 'power2.out' });
+        if (aBlock) {
+          gsap.set(aBlock, { display: 'flex', overflow: 'hidden' });
+          gsap.fromTo(aBlock, { height: 0, scale: 0.92 }, { height: 'auto', scale: 1, duration: 0.45, ease: 'back.out(1.4)' });
+        }
+        if (logo) gsap.fromTo(logo, { scale: 0 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
+        if (answerText) gsap.fromTo(answerText, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, delay: 0.1, ease: 'power2.out' });
       } else {
         // Close other items
-        gsap.to(qBlock, { width: '100%', borderWidth: '0px', duration: 0.4, ease: 'power2.out' });
-        if (answerText) gsap.to(answerText, { opacity: 0, duration: 0.2 });
-        if (logo) gsap.to(logo, { scale: 0, duration: 0.2 });
+        gsap.to(qBlock, { width: '100%', borderWidth: '0px', duration: 0.35, ease: 'power2.out' });
+        if (answerText) gsap.to(answerText, { opacity: 0, duration: 0.18 });
+        if (logo) gsap.to(logo, { scale: 0, duration: 0.18 });
         if (aBlock) {
           gsap.to(aBlock, {
-            scale: 0.8,
+            scale: 0.92,
             height: 0,
-            duration: 0.35,
+            duration: 0.3,
             ease: 'power2.inOut',
             onComplete: () => {
               gsap.set(aBlock, { display: 'none' });
@@ -107,13 +114,13 @@ export default function FAQ() {
                   <stop offset="100%" stopColor="#dbeafe" />
                 </linearGradient>
                 <filter id="catShadow" x="-10%" y="-10%" width="120%" height="130%">
-                  <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#2563eb" floodOpacity="0.12" />
+                  <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#F28C28" floodOpacity="0.16" />
                 </filter>
               </defs>
 
               {/* Tech Pedestal / Laptop Pad */}
               <rect x="25" y="175" width="270" height="14" rx="7" fill="#0a0a0a" filter="url(#catShadow)" />
-              <rect x="35" y="172" width="250" height="6" rx="3" fill="#2563eb" />
+              <rect x="35" y="172" width="250" height="6" rx="3" fill="#F28C28" />
 
               {/* Cat Body */}
               <ellipse cx="160" cy="140" rx="65" ry="44" fill="url(#catGlow)" stroke="#0a0a0a" strokeWidth="3.5" />
@@ -173,11 +180,11 @@ export default function FAQ() {
 
               {/* Floating Storyset Query Bubble */}
               <g transform="translate(230, 25)">
-                <circle cx="18" cy="18" r="18" fill="#ffffff" stroke="#2563eb" strokeWidth="2" />
-                <text x="18" y="24" textAnchor="middle" fill="#2563eb" fontSize="18" fontWeight="900" fontFamily="var(--font-heading)">?</text>
+                <circle cx="18" cy="18" r="18" fill="#12141A" stroke="#F28C28" strokeWidth="2" />
+                <text x="18" y="24" textAnchor="middle" fill="#F28C28" fontSize="18" fontWeight="900" fontFamily="var(--font-heading)">?</text>
               </g>
-              <circle cx="225" cy="58" r="4" fill="#00b4d8" />
-              <circle cx="218" cy="68" r="2.5" fill="#8b5cf6" />
+              <circle cx="225" cy="58" r="4" fill="#FF7800" />
+              <circle cx="218" cy="68" r="2.5" fill="#FFB347" />
             </svg>
           </div>
         </div>
@@ -205,8 +212,8 @@ export default function FAQ() {
                   <p className="faq-answer">{item.a}</p>
                 </div>
 
-                <div className="faq-logo">
-                  <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.4em' }}>SA</span>
+                <div className="faq-logo" style={{ color: '#0A0B0E' }}>
+                  <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.15em', color: '#0A0B0E' }}>VHX</span>
                 </div>
               </div>
             </div>

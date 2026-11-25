@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,8 +11,9 @@ const TEAM_MEMBERS = [
     name: 'VINODHAN V A',
     role: 'FOUNDER & LEAD ENGINEER / DESIGNER',
     image: '/member-vinodhan.jpg',
+    imgPosition: '50% 30%',
     bio: [
-      'Full-stack engineer turned design technologist with an obsession for micro-interactions, responsive architectures, and zero-latency interfaces. Leading Sync Aura’s frontend engineering, GSAP physics pipelines, and system architectures.',
+      'Full-stack engineer turned product architect with an obsession for micro-interactions, responsive architectures, and zero-latency interfaces. Leading VHX’s frontend engineering, GSAP physics pipelines, and core software systems.',
       'When not crafting component libraries or profiling frame rates, he is deep in software ergonomics, exploring typographic design systems, and building high-impact platforms for ambitious businesses.'
     ],
     socials: [
@@ -26,9 +27,10 @@ const TEAM_MEMBERS = [
     name: 'HARI DEV M V',
     role: 'CO-FOUNDER & TECHNICAL ARCHITECT / AI SPECIALIST',
     image: '/member-haridev.jpg',
+    imgPosition: '50% 10%',
     bio: [
       'System architect and AI automation specialist with a strong background in backend distributed systems, API orchestration, and agentic workflows using n8n and large language models.',
-      'He ensures every system built at Sync Aura is rock-solid, secure, and capable of operating 24/7 without manual intervention. Always thinking three steps ahead in scalable system architecture.'
+      'He ensures every system built at VHX is rock-solid, secure, and capable of operating 24/7 without manual intervention. Always thinking three steps ahead in scalable system architecture.'
     ],
     socials: [
       { name: 'GitHub', url: 'https://github.com' },
@@ -229,22 +231,22 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
           <div className="about-hero-text">
             <h1 className="heading left-align">
               <span className="about-hero-line-mask">
-                <span className="about-hero-line">SMALL STUDIO,</span>
+                <span className="about-hero-line">VHX SOLUTIONS,</span>
               </span>
             </h1>
 
             <div className="about-hero-pill two">
-              <span>Boutique Engineering</span>
+              <span>Software &amp; Automations</span>
             </div>
 
             <h1 className="heading right-align">
               <span className="about-hero-line-mask">
-                <span className="about-hero-line">BIG BRAND ENERGY</span>
+                <span className="about-hero-line">BUILT FOR IMPACT</span>
               </span>
             </h1>
 
             <div className="about-hero-pill one">
-              <span>Independent</span>
+              <span>Founder-Led</span>
             </div>
           </div>
 
@@ -275,7 +277,7 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               </svg>
             </div>
             <p className="about-hero-para">
-              Founded in Salem by Vinodhan V A and Hari Dev M V, Sync Aura brings together years of intense engineering across full-stack applications, distributed automation workflows, and high-conversion aesthetic brand design.
+              Founded in Salem by Vinodhan V A and Hari Dev M V, VHX brings together years of intense engineering across full-stack software applications, distributed AI automation workflows, and proprietary digital products.
             </p>
           </div>
         </div>
@@ -286,7 +288,7 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
           ======================================================= */}
       <section className="about-story-team" ref={storyContainerRef} style={{ position: 'relative', overflow: 'hidden' }}>
         <div className="about-story-team-wrapper" style={{ width: '100%', maxWidth: '100%', margin: '0 auto', padding: '6em 4vw', position: 'relative' }}>
-          
+
           {/* Continuous Scrubbing SVG Path (Engineered with Two26 proportional curve anchors) */}
           <div className="about-story-scroll-path" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
             <svg width="100%" height="100%" viewBox="0 0 1440 3400" fill="none" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
@@ -294,9 +296,11 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
                 ref={storyPathRef}
                 d="M 720 40 C 660 180, 1180 260, 1120 480 C 1050 780, 220 680, 240 1050 C 260 1420, 1260 1380, 1220 1820 C 1180 2150, 320 2250, 340 2600 C 360 2850, 720 2950, 720 3300"
                 stroke="var(--accent)"
-                strokeWidth="20"
+                strokeWidth="16"
+                vectorEffect="non-scaling-stroke"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                opacity="0.85"
                 fill="none"
               />
             </svg>
@@ -310,9 +314,9 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               <svg width="340" height="280" viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="two-minds-svg">
                 <defs>
                   <linearGradient id="mindsWireGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#00b4d8" />
-                    <stop offset="50%" stopColor="#2563eb" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
+                    <stop offset="0%" stopColor="#FF7800" />
+                    <stop offset="50%" stopColor="#F28C28" />
+                    <stop offset="100%" stopColor="#FFB347" />
                   </linearGradient>
                   <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
                     <feGaussianBlur stdDeviation="4" result="blur" />
@@ -339,54 +343,54 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
                   />
                   <path
                     d="M 120 135 C 150 145, 190 145, 220 135"
-                    stroke="#2563eb"
+                    stroke="#F28C28"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeDasharray="4 4"
                     fill="none"
                   />
                   {/* Central Innovation Spark Node */}
-                  <circle cx="170" cy="78" r="9" fill="#8b5cf6" filter="url(#glowEffect)" />
+                  <circle cx="170" cy="78" r="10" fill="#F28C28" filter="url(#glowEffect)" />
                   <circle cx="170" cy="78" r="4" fill="#ffffff" />
-                  <path d="M 170 60 L 170 70 M 170 86 L 170 96 M 154 78 L 162 78 M 178 78 L 186 78" stroke="#00b4d8" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M 170 60 L 170 70 M 170 86 L 170 96 M 154 78 L 162 78 M 178 78 L 186 78" stroke="#FFB347" strokeWidth="2" strokeLinecap="round" />
                 </g>
 
                 {/* BOY 1 (Left - Lead Engineer / Vinodhan) */}
                 <g className="boy-left" transform="translate(30, 80)">
-                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#0a0a0a" />
-                  <path d="M 50 100 L 75 125 L 100 100" fill="#2563eb" />
-                  <circle cx="75" cy="50" r="32" fill="#f8f7f4" stroke="#0a0a0a" strokeWidth="3.5" />
-                  <path d="M 45 45 C 45 22, 65 14, 85 15 C 105 16, 110 30, 108 42 C 100 32, 85 30, 72 34 C 60 38, 50 45, 45 45 Z" fill="#0a0a0a" />
-                  <rect x="56" y="44" width="16" height="12" rx="3" stroke="#0a0a0a" strokeWidth="2.5" fill="rgba(37,99,235,0.15)" />
-                  <rect x="78" y="44" width="16" height="12" rx="3" stroke="#0a0a0a" strokeWidth="2.5" fill="rgba(37,99,235,0.15)" />
-                  <line x1="72" y1="49" x2="78" y2="49" stroke="#0a0a0a" strokeWidth="2.5" />
-                  <path d="M 68 64 Q 75 70 82 64" stroke="#0a0a0a" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M 75 14 Q 75 2 82 -2" stroke="#00b4d8" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="84" cy="-4" r="3.5" fill="#00b4d8" filter="url(#glowEffect)" />
+                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#18181b" stroke="#F28C28" strokeWidth="2" />
+                  <path d="M 50 100 L 75 125 L 100 100" fill="#F28C28" />
+                  <circle cx="75" cy="50" r="32" fill="#12141A" stroke="#F28C28" strokeWidth="3" />
+                  <path d="M 45 45 C 45 22, 65 14, 85 15 C 105 16, 110 30, 108 42 C 100 32, 85 30, 72 34 C 60 38, 50 45, 45 45 Z" fill="#FFFFFF" />
+                  <rect x="56" y="44" width="16" height="12" rx="3" stroke="#F28C28" strokeWidth="2.5" fill="rgba(242,140,40,0.18)" />
+                  <rect x="78" y="44" width="16" height="12" rx="3" stroke="#F28C28" strokeWidth="2.5" fill="rgba(242,140,40,0.18)" />
+                  <line x1="72" y1="49" x2="78" y2="49" stroke="#F28C28" strokeWidth="2.5" />
+                  <path d="M 68 64 Q 75 70 82 64" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M 75 14 Q 75 2 82 -2" stroke="#FF7800" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="84" cy="-4" r="3.5" fill="#FF7800" filter="url(#glowEffect)" />
                 </g>
 
                 {/* BOY 2 (Right - Technical Architect / Hari Dev) */}
                 <g className="boy-right" transform="translate(160, 80)">
-                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#0a0a0a" />
-                  <path d="M 50 100 L 75 125 L 100 100" fill="#8b5cf6" />
-                  <circle cx="75" cy="50" r="32" fill="#f8f7f4" stroke="#0a0a0a" strokeWidth="3.5" />
-                  <path d="M 44 42 C 45 18, 70 12, 95 15 C 108 17, 110 32, 108 45 C 98 32, 85 28, 70 32 C 55 36, 46 42, 44 42 Z" fill="#0a0a0a" />
-                  <circle cx="63" cy="48" r="3" fill="#0a0a0a" />
-                  <circle cx="87" cy="48" r="3" fill="#0a0a0a" />
-                  <path d="M 68 64 Q 75 70 82 64" stroke="#0a0a0a" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M 75 14 Q 75 2 68 -2" stroke="#8b5cf6" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="66" cy="-4" r="3.5" fill="#8b5cf6" filter="url(#glowEffect)" />
+                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#18181b" stroke="#FFB347" strokeWidth="2" />
+                  <path d="M 50 100 L 75 125 L 100 100" fill="#FF7800" />
+                  <circle cx="75" cy="50" r="32" fill="#12141A" stroke="#FFB347" strokeWidth="3" />
+                  <path d="M 44 42 C 45 18, 70 12, 95 15 C 108 17, 110 32, 108 45 C 98 32, 85 28, 70 32 C 55 36, 46 42, 44 42 Z" fill="#FFFFFF" />
+                  <circle cx="63" cy="48" r="3" fill="#FFFFFF" />
+                  <circle cx="87" cy="48" r="3" fill="#FFFFFF" />
+                  <path d="M 68 64 Q 75 70 82 64" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M 75 14 Q 75 2 68 -2" stroke="#FFB347" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="66" cy="-4" r="3.5" fill="#FFB347" filter="url(#glowEffect)" />
                 </g>
 
-                <circle cx="60" cy="50" r="4" fill="#00b4d8" opacity="0.6" />
-                <circle cx="280" cy="50" r="4" fill="#8b5cf6" opacity="0.6" />
+                <circle cx="60" cy="50" r="4" fill="#FF7800" opacity="0.75" />
+                <circle cx="280" cy="50" r="4" fill="#FFB347" opacity="0.75" />
               </svg>
             </div>
             <div>
-              <div className="about-story-text">HOW WE STARTED</div>
-              <h2 className="about-story-heading">Two tech minds, one shared itch to build better digital experiences.</h2>
+              <div className="about-story-text">WHY VHX EXISTS</div>
+              <h2 className="about-story-heading">Built to eliminate manual bottlenecks with intelligent software.</h2>
               <p className="about-story-para">
-                After architecting software and automations across freelance contracts and open projects, we joined forces to create Sync Aura. A boutique studio where we question the brief, obsess over typography and physics, and engineer software that makes founders smile.
+                VHX was founded by Vinodhan V A and Hari Dev M V to give businesses direct access to production-grade software engineering and AI automation. We replace slow, repetitive workflows with custom web platforms, mobile apps, and autonomous systems engineered for measurable real-world impact.
               </p>
             </div>
           </div>
@@ -396,10 +400,10 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               ======================================================= */}
           <div className="about-story-section reverse">
             <div>
-              <div className="about-story-text">NOW WE’RE HERE</div>
-              <h2 className="about-story-heading">Less size, more scope.</h2>
+              <div className="about-story-text">HOW VHX OPERATES</div>
+              <h2 className="about-story-heading">Direct founder engineering, zero agency bloat.</h2>
               <p className="about-story-para">
-                We haven’t bloated into a maze of account managers or bureaucratic bottlenecks. Sync Aura is an agile, founder-led core engineering team. This means you talk directly with the engineers building your product, moving 10x faster with complete accountability from day one.
+                At VHX, you never get passed through layers of account managers or slow handoffs. You work directly with our founders and core engineering team — moving 10x faster with full architectural ownership from day one.
               </p>
             </div>
             <div className="about-story-svg-wrap">
@@ -407,69 +411,69 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               <svg width="320" height="280" viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="chairCushion" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#eff6ff" />
-                    <stop offset="100%" stopColor="#dbeafe" />
+                    <stop offset="0%" stopColor="#1A140E" />
+                    <stop offset="100%" stopColor="#2A1F14" />
                   </linearGradient>
                   <linearGradient id="chairAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#00b4d8" />
-                    <stop offset="100%" stopColor="#2563eb" />
+                    <stop offset="0%" stopColor="#FF7800" />
+                    <stop offset="100%" stopColor="#F28C28" />
                   </linearGradient>
                 </defs>
 
                 {/* Ground Shadow Ellipse */}
-                <ellipse cx="160" cy="245" rx="100" ry="14" fill="rgba(10, 10, 10, 0.08)" />
+                <ellipse cx="160" cy="245" rx="100" ry="14" fill="rgba(242, 140, 40, 0.14)" />
 
                 {/* Designer Chair Base / Chrome Spider Tripod Legs */}
-                <line x1="160" y1="185" x2="110" y2="240" stroke="#0a0a0a" strokeWidth="5" strokeLinecap="round" />
-                <line x1="160" y1="185" x2="210" y2="240" stroke="#0a0a0a" strokeWidth="5" strokeLinecap="round" />
-                <line x1="160" y1="185" x2="160" y2="245" stroke="#0a0a0a" strokeWidth="5.5" strokeLinecap="round" />
-                <line x1="160" y1="185" x2="70" y2="235" stroke="#0a0a0a" strokeWidth="4.5" strokeLinecap="round" />
-                <line x1="160" y1="185" x2="250" y2="235" stroke="#0a0a0a" strokeWidth="4.5" strokeLinecap="round" />
+                <line x1="160" y1="185" x2="110" y2="240" stroke="#F28C28" strokeWidth="5" strokeLinecap="round" />
+                <line x1="160" y1="185" x2="210" y2="240" stroke="#F28C28" strokeWidth="5" strokeLinecap="round" />
+                <line x1="160" y1="185" x2="160" y2="245" stroke="#F28C28" strokeWidth="5.5" strokeLinecap="round" />
+                <line x1="160" y1="185" x2="70" y2="235" stroke="#F28C28" strokeWidth="4.5" strokeLinecap="round" />
+                <line x1="160" y1="185" x2="250" y2="235" stroke="#F28C28" strokeWidth="4.5" strokeLinecap="round" />
 
                 {/* Central Swivel Pillar */}
-                <rect x="154" y="150" width="12" height="38" rx="4" fill="#0a0a0a" />
-                <rect x="151" y="160" width="18" height="6" rx="2" fill="#2563eb" />
+                <rect x="154" y="150" width="12" height="38" rx="4" fill="#18181b" />
+                <rect x="151" y="160" width="18" height="6" rx="2" fill="#F28C28" />
 
                 {/* Chair Seat Base */}
                 <path
                   d="M 90 152 C 90 162, 230 162, 230 152 C 240 142, 235 125, 215 125 L 105 125 C 85 125, 80 142, 90 152 Z"
                   fill="url(#chairAccent)"
-                  stroke="#0a0a0a"
-                  strokeWidth="3.5"
+                  stroke="#FFFFFF"
+                  strokeWidth="2.5"
                 />
 
                 {/* Ergonomic Curved Backrest */}
                 <path
                   d="M 105 125 C 95 65, 110 35, 160 35 C 210 35, 225 65, 215 125 Z"
                   fill="url(#chairCushion)"
-                  stroke="#0a0a0a"
-                  strokeWidth="3.5"
+                  stroke="#F28C28"
+                  strokeWidth="3"
                 />
 
                 {/* Cushioned Inset Lines */}
-                <path d="M 125 50 Q 160 60 195 50" stroke="rgba(37, 99, 235, 0.3)" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M 120 75 Q 160 88 200 75" stroke="rgba(37, 99, 235, 0.3)" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M 115 100 Q 160 115 205 100" stroke="rgba(37, 99, 235, 0.3)" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 125 50 Q 160 60 195 50" stroke="rgba(242, 140, 40, 0.45)" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 120 75 Q 160 88 200 75" stroke="rgba(242, 140, 40, 0.45)" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 115 100 Q 160 115 205 100" stroke="rgba(242, 140, 40, 0.45)" strokeWidth="2.5" strokeLinecap="round" />
 
                 {/* Timber Curved Armrests */}
-                <path d="M 85 110 C 75 95, 95 85, 105 95" stroke="#0a0a0a" strokeWidth="4.5" strokeLinecap="round" fill="none" />
-                <path d="M 235 110 C 245 95, 225 85, 215 95" stroke="#0a0a0a" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+                <path d="M 85 110 C 75 95, 95 85, 105 95" stroke="#FFFFFF" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+                <path d="M 235 110 C 245 95, 225 85, 215 95" stroke="#FFFFFF" strokeWidth="4.5" strokeLinecap="round" fill="none" />
 
                 {/* Beside Table: Round Pedestal with Coffee & Laptop Wireframe */}
                 <g transform="translate(210, 140)">
-                  <ellipse cx="40" cy="85" rx="32" ry="7" fill="rgba(10, 10, 10, 0.08)" />
-                  <rect x="37" y="35" width="6" height="50" fill="#0a0a0a" />
-                  <ellipse cx="40" cy="35" rx="28" ry="6" fill="#f8f7f4" stroke="#0a0a0a" strokeWidth="2.5" />
+                  <ellipse cx="40" cy="85" rx="32" ry="7" fill="rgba(242, 140, 40, 0.14)" />
+                  <rect x="37" y="35" width="6" height="50" fill="#FFFFFF" />
+                  <ellipse cx="40" cy="35" rx="28" ry="6" fill="#1A140E" stroke="#F28C28" strokeWidth="2.5" />
                   {/* Steaming Coffee Cup */}
-                  <rect x="25" y="18" width="12" height="15" rx="3" fill="#2563eb" stroke="#0a0a0a" strokeWidth="2" />
-                  <path d="M 37 22 Q 42 25 37 28" stroke="#0a0a0a" strokeWidth="1.5" fill="none" />
-                  <path d="M 31 14 Q 34 8 31 4" stroke="#8b5cf6" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  <rect x="25" y="18" width="12" height="15" rx="3" fill="#F28C28" stroke="#FFFFFF" strokeWidth="1.5" />
+                  <path d="M 37 22 Q 42 25 37 28" stroke="#FFFFFF" strokeWidth="1.5" fill="none" />
+                  <path d="M 31 14 Q 34 8 31 4" stroke="#FFB347" strokeWidth="1.5" strokeLinecap="round" fill="none" />
                 </g>
 
                 {/* Tech Aura floating badge */}
                 <g transform="translate(45, 60)">
-                  <rect x="0" y="0" width="48" height="24" rx="12" fill="#0a0a0a" />
-                  <text x="24" y="16" fill="#00b4d8" fontSize="10" fontWeight="700" fontFamily="monospace" textAnchor="middle">&lt;/&gt;</text>
+                  <rect x="0" y="0" width="48" height="24" rx="12" fill="#1A140E" stroke="#F28C28" strokeWidth="1.5" />
+                  <text x="24" y="16" fill="#F28C28" fontSize="10" fontWeight="700" fontFamily="monospace" textAnchor="middle">&lt;/&gt;</text>
                 </g>
               </svg>
             </div>
@@ -484,7 +488,7 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               <div className="about-story-text">HOW WE DELIVER</div>
               <h2>Built On Three Uncompromising Pillars</h2>
               <p style={{ color: 'var(--ink-gray)', marginTop: '0.8em', fontSize: '1.15em' }}>
-                Every engagement at Sync Aura is governed by velocity, infinite scalability, and total architectural trust.
+                Every engagement at VHX is governed by velocity, infinite scalability, and total architectural trust.
               </p>
             </div>
 
@@ -492,36 +496,40 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               {/* PILLAR 1: SUCCESS & VELOCITY */}
               <div className="pillar-card">
                 <div>
-                  <div className="pillar-img-wrap">
-                    <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="rocketThrust" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#00b4d8" />
-                          <stop offset="100%" stopColor="#2563eb" />
-                        </linearGradient>
-                      </defs>
-                      {/* Orbital Trajectory Arc */}
-                      <path d="M 30 145 C 50 80, 100 45, 170 30" stroke="var(--accent-soft)" strokeWidth="8" strokeDasharray="6 6" fill="none" />
-                      {/* Speed Particles */}
-                      <circle cx="155" cy="20" r="3" fill="#00b4d8" />
-                      <circle cx="175" cy="45" r="2.5" fill="#8b5cf6" />
-                      <circle cx="35" cy="120" r="2" fill="#2563eb" />
-                      {/* Flame Exhaust */}
-                      <path d="M 80 105 C 70 125, 75 145, 65 155 C 80 145, 95 140, 95 112 Z" fill="url(#rocketThrust)" />
-                      {/* Rocket Ship Body */}
-                      <path d="M 130 40 C 130 40, 100 65, 85 105 L 115 115 C 135 90, 150 55, 150 40 Z" fill="#ffffff" stroke="#0a0a0a" strokeWidth="3" />
-                      {/* Rocket Nosecone */}
-                      <path d="M 130 40 C 135 25, 150 25, 150 40 Z" fill="#2563eb" stroke="#0a0a0a" strokeWidth="2.5" />
-                      {/* Porthole Glass */}
-                      <circle cx="120" cy="68" r="8" fill="#eff6ff" stroke="#0a0a0a" strokeWidth="2.5" />
-                      <circle cx="120" cy="68" r="4" fill="#00b4d8" />
-                      {/* Rocket Fins */}
-                      <polygon points="80,100 60,115 88,110" fill="#0a0a0a" />
-                      <polygon points="110,118 120,135 125,115" fill="#0a0a0a" />
-                      {/* Target KPI Metric Badge */}
-                      <rect x="15" y="30" width="60" height="24" rx="6" fill="#0a0a0a" />
-                      <text x="45" y="46" fill="#00F59B" fontSize="10" fontWeight="700" fontFamily="monospace" textAnchor="middle">10x SPEED</text>
-                    </svg>
+                  <div
+                    style={{
+                      width: '100%',
+                      padding: '1.4em',
+                      borderRadius: '16px',
+                      marginBottom: '1.6em',
+                      backgroundColor: '#0A0B0E',
+                      backgroundImage: 'radial-gradient(circle at 85% 20%, rgba(242, 140, 40, 0.18), transparent 60%), radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
+                      backgroundSize: '100% 100%, 16px 16px',
+                      border: '1px solid rgba(242, 140, 40, 0.28)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '1.2em'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.78em', fontWeight: 800, color: 'var(--accent)', letterSpacing: '0.1em' }}>
+                        01 // VELOCITY
+                      </span>
+                      <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(242, 140, 40, 0.14)', border: '1px solid var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-heading)', fontSize: '2.2em', fontWeight: 900, color: '#FFFFFF', lineHeight: 1 }}>
+                        10x <span style={{ color: 'var(--accent)', fontSize: '0.55em', fontWeight: 800 }}>FASTER SHIP</span>
+                      </div>
+                      <div style={{ marginTop: '0.6em', height: '4px', width: '100%', borderRadius: '999px', background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+                        <div style={{ height: '100%', width: '88%', background: 'linear-gradient(90deg, #FF7800, #FFB347)', borderRadius: '999px' }} />
+                      </div>
+                    </div>
                   </div>
                   <span className="pillar-badge">Velocity & Success</span>
                   <h3 className="pillar-title">Rapid Time-to-Market</h3>
@@ -534,33 +542,43 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               {/* PILLAR 2: GROWTH & SCALABILITY */}
               <div className="pillar-card">
                 <div>
-                  <div className="pillar-img-wrap">
-                    <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="barGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#8b5cf6" />
-                          <stop offset="100%" stopColor="#2563eb" />
-                        </linearGradient>
-                      </defs>
-                      {/* Isometric Grid Base */}
-                      <path d="M 30 130 L 100 150 L 170 130 L 100 110 Z" fill="var(--accent-soft)" stroke="rgba(37, 99, 235, 0.2)" strokeWidth="1.5" />
-                      {/* Rising Bar 1 */}
-                      <rect x="50" y="90" width="18" height="40" rx="3" fill="#dbeafe" stroke="#0a0a0a" strokeWidth="2" />
-                      {/* Rising Bar 2 */}
-                      <rect x="78" y="70" width="18" height="60" rx="3" fill="#93c5fd" stroke="#0a0a0a" strokeWidth="2" />
-                      {/* Rising Bar 3 */}
-                      <rect x="106" y="45" width="18" height="85" rx="3" fill="url(#barGrad)" stroke="#0a0a0a" strokeWidth="2" />
-                      {/* Rising Bar 4 (Peak) */}
-                      <rect x="134" y="25" width="18" height="105" rx="3" fill="#2563eb" stroke="#0a0a0a" strokeWidth="2" />
-                      {/* Upward Growth Vector Arrow */}
-                      <path d="M 45 105 Q 95 65 155 18" stroke="#00b4d8" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-                      <polyline points="145,18 155,18 155,28" stroke="#00b4d8" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                      {/* Connected Scale Node */}
-                      <circle cx="155" cy="18" r="6" fill="#00F59B" stroke="#0a0a0a" strokeWidth="2" />
-                      {/* Scalability Badge */}
-                      <rect x="15" y="15" width="70" height="24" rx="6" fill="#0a0a0a" />
-                      <text x="50" y="31" fill="#8b5cf6" fontSize="10" fontWeight="700" fontFamily="monospace" textAnchor="middle">100K+ SCALE</text>
-                    </svg>
+                  <div
+                    style={{
+                      width: '100%',
+                      padding: '1.4em',
+                      borderRadius: '16px',
+                      marginBottom: '1.6em',
+                      backgroundColor: '#0A0B0E',
+                      backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
+                      backgroundSize: '20px 20px',
+                      border: '1px solid rgba(242, 140, 40, 0.28)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '1.2em'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.78em', fontWeight: 800, color: 'var(--accent)', letterSpacing: '0.1em' }}>
+                        02 // ARCHITECTURE
+                      </span>
+                      <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(242, 140, 40, 0.14)', border: '1px solid var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                          <polyline points="17 6 23 6 23 12" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-heading)', fontSize: '2.2em', fontWeight: 900, color: '#FFFFFF', lineHeight: 1 }}>
+                        100K+ <span style={{ color: 'var(--accent)', fontSize: '0.55em', fontWeight: 800 }}>TXN READY</span>
+                      </div>
+                      <div style={{ marginTop: '0.6em', display: 'flex', gap: '4px', alignItems: 'flex-end', height: '14px' }}>
+                        {[35, 50, 65, 80, 95, 100].map((h, i) => (
+                          <span key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '2px', background: i >= 4 ? 'var(--accent)' : 'rgba(242, 140, 40, 0.35)' }} />
+                        ))}
+                      </div>
+                    </div>
                   </div>
                   <span className="pillar-badge">Growth & Scale</span>
                   <h3 className="pillar-title">Engineered to Expand</h3>
@@ -573,39 +591,40 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               {/* PILLAR 3: TRUST & RELIABILITY */}
               <div className="pillar-card">
                 <div>
-                  <div className="pillar-img-wrap">
-                    <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#eff6ff" />
-                          <stop offset="100%" stopColor="#dbeafe" />
-                        </linearGradient>
-                      </defs>
-                      {/* Outer Cryptographic Trust Ring */}
-                      <circle cx="100" cy="80" r="62" stroke="#2563eb" strokeWidth="2" strokeDasharray="6 6" fill="none" />
-                      {/* Shield Outer Silhouette */}
-                      <path
-                        d="M 100 30 C 130 30, 148 45, 148 75 C 148 110, 115 130, 100 140 C 85 130, 52 110, 52 75 C 52 45, 70 30, 100 30 Z"
-                        fill="url(#shieldGrad)"
-                        stroke="#0a0a0a"
-                        strokeWidth="3.5"
-                      />
-                      {/* Verified Checkmark */}
-                      <path
-                        d="M 82 80 L 95 93 L 122 66"
-                        stroke="#2563eb"
-                        strokeWidth="5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      {/* Interlocking Handshake / Key Nodes */}
-                      <circle cx="65" cy="50" r="4" fill="#00b4d8" />
-                      <circle cx="135" cy="50" r="4" fill="#8b5cf6" />
-                      <circle cx="100" cy="148" r="4" fill="#2563eb" />
-                      {/* Uptime Badge */}
-                      <rect x="65" y="118" width="70" height="24" rx="6" fill="#0a0a0a" />
-                      <text x="100" y="134" fill="#00F59B" fontSize="10" fontWeight="700" fontFamily="monospace" textAnchor="middle">99.9% TRUST</text>
-                    </svg>
+                  <div
+                    style={{
+                      width: '100%',
+                      padding: '1.4em',
+                      borderRadius: '16px',
+                      marginBottom: '1.6em',
+                      backgroundColor: '#0A0B0E',
+                      backgroundImage: 'radial-gradient(circle at 15% 85%, rgba(242, 140, 40, 0.16), transparent 55%), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 10px)',
+                      border: '1px solid rgba(242, 140, 40, 0.28)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '1.2em'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.78em', fontWeight: 800, color: 'var(--accent)', letterSpacing: '0.1em' }}>
+                        03 // RELIABILITY
+                      </span>
+                      <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(242, 140, 40, 0.14)', border: '1px solid var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                          <polyline points="9 12 11 14 15 10" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-heading)', fontSize: '2.2em', fontWeight: 900, color: '#FFFFFF', lineHeight: 1 }}>
+                        99.9% <span style={{ color: 'var(--accent)', fontSize: '0.55em', fontWeight: 800 }}>OWNERSHIP</span>
+                      </div>
+                      <div style={{ marginTop: '0.6em', fontFamily: 'var(--font-body)', fontSize: '0.78em', color: 'var(--ink-gray)', fontWeight: 600 }}>
+                        ● Zero Lock-In • Automated Failover
+                      </div>
+                    </div>
                   </div>
                   <span className="pillar-badge">Trust & Reliability</span>
                   <h3 className="pillar-title">Uncompromising Quality</h3>
@@ -637,14 +656,18 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
                   onClick={() => setActiveMember(member)}
                 >
                   <div className="team-img-wrap">
-                    <img src={member.image} alt={member.name} />
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      style={{ objectPosition: member.imgPosition || '50% 15%' }}
+                    />
                   </div>
                   <h3 className="team-name">{member.name}</h3>
                   <div className="team-sub">{member.role}</div>
                   <div style={{ marginTop: '1em', fontSize: '0.85em', color: 'var(--ink-muted)', display: 'flex', alignItems: 'center', gap: '0.4em' }}>
                     <span>Click to read full story</span>
                     <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
-                      <path d="M1.5 8.5L8.5 1.5M3 1.3L8.5 1.5L8.7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M1.5 8.5L8.5 1.5M3 1.3L8.5 1.5L8.7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 </div>
@@ -666,8 +689,13 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
               </svg>
             </button>
 
-            <div className="team-popup-img-wrap">
-              <img src={activeMember.image} alt={activeMember.name} className="team-popup-img" />
+            <div className="team-popup-img-wrap" style={{ maxHeight: '440px' }}>
+              <img
+                src={activeMember.image}
+                alt={activeMember.name}
+                className="team-popup-img"
+                style={{ objectPosition: activeMember.imgPosition || '50% 15%' }}
+              />
             </div>
 
             <div className="team-popup-content">
@@ -693,7 +721,7 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
                   >
                     <span>{soc.name}</span>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M1.5 8.5L8.5 1.5M3 1.3L8.5 1.5L8.7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M1.5 8.5L8.5 1.5M3 1.3L8.5 1.5L8.7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
                 ))}

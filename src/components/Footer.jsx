@@ -217,9 +217,6 @@ export default function Footer({ onOpenContact, onNavigate }) {
             {/* Direct Line: ZERO phone numbers as commanded by user */}
             <div className="footer-links-block" style={{ marginTop: '3em' }}>
               <div className="footer-link-header">Direct Inquiry</div>
-              <a href="mailto:vinovb21@gmail.com?subject=Project%20Inquiry" className="footer-link">
-                {renderKineticLink('vinovb21@gmail.com')}
-              </a>
               <button
                 onClick={onOpenContact}
                 className="footer-link"
@@ -243,6 +240,18 @@ export default function Footer({ onOpenContact, onNavigate }) {
               <div className="footer-links-block">
                 <div className="footer-link-header">Navigation</div>
                 <a
+                  href="/"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('home');
+                    }
+                  }}
+                >
+                  {renderKineticLink('Home')}
+                </a>
+                <a
                   href="/work"
                   className="footer-link"
                   onClick={(e) => {
@@ -255,12 +264,24 @@ export default function Footer({ onOpenContact, onNavigate }) {
                   {renderKineticLink('Work')}
                 </a>
                 <a
-                  href="/#services"
+                  href="/products"
                   className="footer-link"
                   onClick={(e) => {
                     if (onNavigate) {
                       e.preventDefault();
-                      onNavigate('home', 'services');
+                      onNavigate('products');
+                    }
+                  }}
+                >
+                  {renderKineticLink('Products')}
+                </a>
+                <a
+                  href="/services"
+                  className="footer-link"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('services');
                     }
                   }}
                 >
@@ -278,35 +299,11 @@ export default function Footer({ onOpenContact, onNavigate }) {
                 >
                   {renderKineticLink('About us')}
                 </a>
-                <a
-                  href="/work#pricing"
-                  className="footer-link"
-                  onClick={(e) => {
-                    if (onNavigate) {
-                      e.preventDefault();
-                      onNavigate('work', 'pricing');
-                    }
-                  }}
-                >
-                  {renderKineticLink('Pricing')}
-                </a>
-                <a
-                  href="/#faq"
-                  className="footer-link"
-                  onClick={(e) => {
-                    if (onNavigate) {
-                      e.preventDefault();
-                      onNavigate('home', 'faq');
-                    }
-                  }}
-                >
-                  {renderKineticLink('FAQ')}
-                </a>
               </div>
 
               <div className="footer-links-block">
                 <div className="footer-link-header">Social & Code</div>
-                <a href="https://linkedin.com/company/sync-aura" target="_blank" rel="noreferrer" className="footer-link">
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="footer-link">
                   {renderKineticLink('LinkedIn')} ↗
                 </a>
                 <a href="https://github.com/vinodhan07" target="_blank" rel="noreferrer" className="footer-link">
@@ -335,7 +332,7 @@ export default function Footer({ onOpenContact, onNavigate }) {
         {/* Bottom Giant Wolff Olins Full Bleed Elastic Stretch Logo */}
         <div className="footer-btm">
           <div className="footer-rights-text" style={{ padding: '0 4vw 0.8rem' }}>
-            © 2026 Sync Aura Studio. All rights reserved. Hand-coded with zero templates.
+            © 2026 VHX. Intelligent Solutions for Real-World Impact. All rights reserved.
           </div>
 
           <div className="footer-logo-wrap">
@@ -363,7 +360,7 @@ export default function Footer({ onOpenContact, onNavigate }) {
                 fontWeight="900"
                 fill="#ffffff"
               >
-                SYNC AURA
+                VHX
               </text>
             </svg>
           </div>

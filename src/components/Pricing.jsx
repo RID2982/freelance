@@ -11,15 +11,16 @@ const tiers = [
   {
     id: 'web-dev',
     name: 'Website Development & Management',
-    desc: 'High-performance websites, custom landing pages, Next.js dynamic apps, and active site management.',
+    desc: '4-page custom website development plus tailored CRM, E-Commerce, and business software built around your exact needs.',
     price: 'From ₹15,000',
-    badge: 'WEBSITES & WEB APPS',
+    badge: '4 PAGES + CUSTOM SOFTWARE',
+    customNote: 'Customization Notice: For CRM, E-Commerce, or additional custom pages, the price will differ based on requirements.',
     features: [
-      'Static & Dynamic Web App Development',
+      '4 Pages of Website Development (Static & Dynamic)',
+      'Custom Software: CRM, E-Commerce & Business Portals',
       'Vercel / AWS Cloud Hosting & Domain Setup',
       'Technical SEO Optimization & Performance',
-      'Admin Control Panels & Secure Auth',
-      'Ongoing Security & Content Updates'
+      'Admin Control Panels & Ongoing Security Updates'
     ]
   },
   {
@@ -28,6 +29,7 @@ const tiers = [
     desc: 'Automate daily operations, sync databases, send alerts, and build smart AI agents with n8n.',
     price: 'From ₹4,500',
     badge: 'N8N & AI AUTOMATION',
+    customNote: null,
     features: [
       'n8n Custom Workflow Automations',
       'API Integrations (Telegram, WhatsApp, Slack)',
@@ -38,30 +40,32 @@ const tiers = [
   },
   {
     id: 'mobile-app',
-    name: 'Mobile App Engineering',
-    desc: 'Custom cross-platform mobile apps for iOS and Android built with modern frameworks and seamless APIs.',
-    price: 'Custom Quote',
-    badge: 'MOBILE ENGINEERING',
+    name: 'Mobile Application Development',
+    desc: 'Custom mobile apps for iOS & Android and full Website-to-Application conversions engineered with 100% custom code.',
+    price: 'Based on Negotiation',
+    badge: 'CUSTOM CODE & WEB-TO-APP',
+    customNote: 'Customization Notice: Pricing is finalized based on customer negotiation, feature scope, and custom code complexity.',
     features: [
-      'Cross-Platform iOS & Android Apps',
+      'Custom Mobile Application Development (iOS & Android)',
+      'Website-to-Application Conversion (100% Custom Code)',
       'App Store & Play Store Deployment',
       'Push Notifications & Offline Storage',
-      'Secure Authentication & Backend APIs',
-      'Long-Term Maintenance & Updates'
+      'Secure Authentication & Long-Term Maintenance'
     ]
   },
   {
-    id: 'branding-posters',
-    name: 'Brand & Poster Designing',
-    desc: 'Professional visual branding and custom digital posters designed to elevate your brand presence.',
-    price: '₹2,500 (Pack of 10)',
-    badge: 'BRANDING & GRAPHICS',
+    id: 'saas-ai-voice',
+    name: 'Software Systems, AI & Voice Agents',
+    desc: 'End-to-end SaaS products, enterprise AI integration platforms, and intelligent AI Voice Call Agents tailored to your workflow.',
+    price: 'Custom Quote',
+    badge: 'SAAS • AI • VOICE AGENTS',
+    customNote: 'Customization Notice: Major SaaS builds, AI integrations, and Voice Call Agents are priced dynamically per customer scope.',
     features: [
-      '10 Custom High-Res Poster Designs',
-      'Typography & Brand Palette Matching',
-      'Fast Turnaround & Rapid Revision Loops',
-      'Tailored for Instagram & Social Marketing',
-      'Vector Asset Deliverables (Figma/SVG/PNG)'
+      'SaaS Product Engineering & Multi-Tenant Backends',
+      'AI Integration Platforms & Autonomous LLM Agents',
+      'AI Voice Call Agents (Inbound & Outbound Automation)',
+      'Custom REST / GraphQL & Webhook APIs',
+      'Dedicated Architecture & SLA Support'
     ]
   }
 ];
@@ -129,7 +133,7 @@ export default function Pricing({ onOpenContact }) {
                 key={tier.id}
                 className="pricing-card"
                 style={{
-                  background: '#ffffff',
+                  background: 'var(--surface-white)',
                   border: isExpanded ? '2px solid var(--accent)' : '1.5px solid var(--border-light)',
                   borderRadius: '24px',
                   padding: '2.2em 1.8em',
@@ -137,7 +141,7 @@ export default function Pricing({ onOpenContact }) {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   transition: 'all 0.35s ease',
-                  boxShadow: isExpanded ? '0 20px 40px rgba(37, 99, 235, 0.12)' : 'none',
+                  boxShadow: isExpanded ? '0 20px 40px rgba(242, 140, 40, 0.16)' : 'none',
                   cursor: 'pointer'
                 }}
                 onClick={() => toggleTier(tier.id)}
@@ -186,6 +190,24 @@ export default function Pricing({ onOpenContact }) {
                   {/* Collapsible Features Details & Enquiry Button */}
                   {isExpanded && (
                     <div style={{ marginTop: '0.8em', animation: 'fadeIn 0.3s ease' }}>
+                      {tier.customNote && (
+                        <div
+                          style={{
+                            color: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            border: '1px solid rgba(239, 68, 68, 0.4)',
+                            borderRadius: '10px',
+                            padding: '0.7em 0.9em',
+                            fontSize: '0.84em',
+                            fontWeight: 700,
+                            lineHeight: 1.45,
+                            marginBottom: '1em'
+                          }}
+                        >
+                          ★ {tier.customNote}
+                        </div>
+                      )}
+
                       <div style={{ fontSize: '0.78em', fontFamily: 'var(--font-mono)', color: 'var(--ink-muted)', textTransform: 'uppercase', marginBottom: '0.6em', letterSpacing: '0.05em' }}>
                         Included Deliverables:
                       </div>
@@ -212,6 +234,7 @@ export default function Pricing({ onOpenContact }) {
                             <path d="M1.464 8.536L8.535 1.465M3.055 1.288L8.535 1.465L8.712 6.945" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
+                        <span className="cta-btn-fill-hover"></span>
                       </button>
                     </div>
                   )}

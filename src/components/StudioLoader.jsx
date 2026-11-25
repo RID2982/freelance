@@ -201,21 +201,21 @@ export default function StudioLoader({ onComplete }) {
             strokeLinejoin="round"
           />
 
-          {/* Styled Letters for "SYNC • AURA" (Positioned cleanly above underline) */}
+          {/* Styled Letters for "VHX" (Positioned cleanly above underline) */}
           <g fill="var(--accent)">
-            {['S', 'Y', 'N', 'C', '•', 'A', 'U', 'R', 'A'].map((char, index) => {
-              const xPositions = [120, 240, 360, 480, 600, 720, 840, 960, 1080];
+            {['V', 'H', 'X'].map((char, index) => {
+              const xPositions = [420, 600, 780];
               return (
                 <text
                   key={index}
                   ref={(el) => (lettersRef.current[index] = el)}
                   x={xPositions[index]}
-                  y="210"
+                  y="215"
                   textAnchor="middle"
                   fontFamily="var(--font-heading)"
-                  fontSize={char === '•' ? '48' : '105'}
-                  fontWeight="900"
-                  fill="var(--accent)"
+                  fontSize="130"
+                  fontWeight="800"
+                  fill="var(--ink-black)"
                 >
                   {char}
                 </text>

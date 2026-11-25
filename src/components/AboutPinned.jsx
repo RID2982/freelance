@@ -12,7 +12,7 @@ export default function AboutPinned({ onNavigate }) {
   const pill3Ref = useRef(null);
 
   const fullText =
-    "We believe creative work needs focus. That's why we keep our team tight and our involvement high, so every project gets our full attention. We build brands from scratch, automate what's slow, and engineer digital platforms that look suspiciously good.";
+    "We believe great software needs focus. That's why we keep our team tight and our involvement high, so every project gets our full attention. We build custom software from scratch, automate what's slow, and engineer digital platforms that look suspiciously good.";
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -23,9 +23,9 @@ export default function AboutPinned({ onNavigate }) {
       const chars = para.querySelectorAll('.about-char');
       const pills = [pill1Ref.current, pill2Ref.current, pill3Ref.current].filter(Boolean);
 
-      // Initial character styling: faint readable unread state
+      // Initial character styling: faint readable unread state (VHX Orange tint)
       gsap.set(chars, {
-        color: 'rgba(37, 99, 235, 0.28)',
+        color: 'rgba(242, 140, 40, 0.28)',
         scale: 1,
         rotation: 0,
         display: 'inline-block',
@@ -77,11 +77,11 @@ export default function AboutPinned({ onNavigate }) {
           startTime
         );
 
-        // Stage 2: Settle to crisp dark readable state
+        // Stage 2: Settle to crisp light readable state on dark VHX canvas
         tl.to(
           char,
           {
-            color: '#0a0a0a',
+            color: '#FFFFFF',
             scale: 1,
             rotation: 0,
             textShadow: 'none',
@@ -116,14 +116,17 @@ export default function AboutPinned({ onNavigate }) {
           <div className="about-text">A BIT ABOUT US</div>
 
           <p ref={paraRef} className="about-para">
-            {fullText.split(' ').map((word, wIdx) => (
-              <span key={wIdx} className="about-word" style={{ display: 'inline-block', marginRight: '0.28em' }}>
-                {word.split('').map((c, cIdx) => (
-                  <span key={cIdx} className="about-char">
-                    {c}
-                  </span>
-                ))}
-              </span>
+            {fullText.split(' ').map((word, wIdx, arr) => (
+              <React.Fragment key={wIdx}>
+                <span className="about-word" style={{ display: 'inline-block', marginRight: '0.12em' }}>
+                  {word.split('').map((c, cIdx) => (
+                    <span key={cIdx} className="about-char">
+                      {c}
+                    </span>
+                  ))}
+                </span>
+                {wIdx < arr.length - 1 ? ' ' : ''}
+              </React.Fragment>
             ))}
           </p>
 
@@ -131,7 +134,7 @@ export default function AboutPinned({ onNavigate }) {
             <span className="about-pill-text">Professional overthinkers</span>
           </div>
           <div ref={pill2Ref} className="about-pill pill-two">
-            <span className="about-pill-text">Nerding out on design</span>
+            <span className="about-pill-text">Obsessed with systems</span>
           </div>
           <div ref={pill3Ref} className="about-pill pill-third">
             <span className="about-pill-text">Allergic to generic</span>

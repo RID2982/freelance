@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import logoImg from '../assets/logo.png';
 
 export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -277,6 +276,52 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
             </a>
 
             <a
+              href="/products"
+              className={`navbar-link-btn ${currentPage === 'products' ? 'w--current' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('products');
+              }}
+            >
+              <span className="navlink-text" style={{ color: currentPage === 'products' ? 'var(--accent)' : 'inherit' }}>
+                Products
+              </span>
+              <span className="stroke-fill">
+                <svg viewBox="0 0 75 36" fill="none" preserveAspectRatio="none">
+                  <path
+                    d="M0 21.5C0 21.5 6.5 2.8 15.5 4.4C25.7 6.3 5.6 21.3 12.5 29.2C22.9 41.1 29.4 -7.9 42.5 1.1C53.3 8.6 27.2 26.8 37.7 34.7C50.8 44.7 58.1 -7.9 67.3 5.6C72.5 13.2 58 30.4 67.3 30.4C70.8 30.4 75 19.8 75 19.8"
+                    stroke="currentColor"
+                    strokeWidth="24"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </a>
+
+            <a
+              href="/services"
+              className={`navbar-link-btn ${currentPage === 'services' ? 'w--current' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('services');
+              }}
+            >
+              <span className="navlink-text" style={{ color: currentPage === 'services' ? 'var(--accent)' : 'inherit' }}>
+                Services
+              </span>
+              <span className="stroke-fill">
+                <svg viewBox="0 0 75 36" fill="none" preserveAspectRatio="none">
+                  <path
+                    d="M0 21.5C0 21.5 6.5 2.8 15.5 4.4C25.7 6.3 5.6 21.3 12.5 29.2C22.9 41.1 29.4 -7.9 42.5 1.1C53.3 8.6 27.2 26.8 37.7 34.7C50.8 44.7 58.1 -7.9 67.3 5.6C72.5 13.2 58 30.4 67.3 30.4C70.8 30.4 75 19.8 75 19.8"
+                    stroke="currentColor"
+                    strokeWidth="24"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </a>
+
+            <a
               href="/about"
               className={`navbar-link-btn ${currentPage === 'about' ? 'w--current' : ''}`}
               onClick={(e) => {
@@ -300,7 +345,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
             </a>
           </div>
 
-          {/* Center Logo with Authentic Sync Aura Brand Mark */}
+          {/* Center Logo with Official VHX Brand Mark */}
           <a
             href="/"
             className={`navbar-logo ${currentPage === 'home' ? 'w--current' : ''}`}
@@ -310,7 +355,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
             }}
             style={{ display: 'flex', alignItems: 'center', gap: '0.6em' }}
           >
-            <img src={logoImg} alt="Sync Aura" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
+            <img src="/VHX_logo_4K.svg" alt="VHX" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
           </a>
 
           {/* Right Controls */}
@@ -397,6 +442,26 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
             Work
           </a>
           <a
+            href="/products"
+            className={`navbar-link-btn ${currentPage === 'products' ? 'w--current' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('products');
+            }}
+          >
+            Products
+          </a>
+          <a
+            href="/services"
+            className={`navbar-link-btn ${currentPage === 'services' ? 'w--current' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('services');
+            }}
+          >
+            Services
+          </a>
+          <a
             href="/about"
             className={`navbar-link-btn ${currentPage === 'about' ? 'w--current' : ''}`}
             onClick={(e) => {
@@ -406,38 +471,8 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
           >
             About us
           </a>
-          <a
-            href="#services"
-            className="navbar-link-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('home', 'services');
-            }}
-          >
-            Services
-          </a>
-          <a
-            href="#pricing"
-            className="navbar-link-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('work');
-            }}
-          >
-            Pricing
-          </a>
-          <a
-            href="#faq"
-            className="navbar-link-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('home', 'faq');
-            }}
-          >
-            FAQ
-          </a>
 
-          <div style={{ marginTop: '1.5em' }}>
+          <div style={{ marginTop: '1em' }}>
             <button
               className="cta-btn"
               style={{ fontSize: '1.2em', padding: '0.8em 2em' }}
@@ -458,6 +493,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
                   />
                 </svg>
               </span>
+              <span className="cta-btn-fill-hover"></span>
             </button>
           </div>
         </div>

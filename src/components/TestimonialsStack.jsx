@@ -4,7 +4,7 @@ import gsap from 'gsap';
 const testimonials = [
   {
     id: 1,
-    heading: 'Working with Sync Aura has been one of the smoothest technical collaborations we have ever had',
+    heading: 'Working with VHX has been one of the smoothest technical collaborations we have ever had',
     name: 'Suresh Kumar',
     designation: 'Managing Director, Forge Industrial Technologies',
     avatar: (
@@ -28,7 +28,7 @@ const testimonials = [
   },
   {
     id: 2,
-    heading: 'Sync Aura truly brought our community web platform to life with incredible speed and polish',
+    heading: 'VHX truly brought our community web platform to life with incredible speed and polish',
     name: 'Dr. K. Vignesh',
     designation: 'President, Rotaract Club Salem Midtown',
     avatar: (
@@ -69,7 +69,7 @@ const testimonials = [
         <path d="M33 50 L40 62 L47 50" stroke="#a7f3d0" strokeWidth="2.5" fill="none" />
       </svg>
     ),
-    para: 'Instant Telegram bot notifications, automatic Google Sheets sync, zero order drops. Our staff and customers love it. Getting complex automations done with Sync Aura is effortless.'
+    para: 'Instant Telegram bot notifications, automatic Google Sheets sync, zero order drops. Our staff and customers love it. Getting complex automations done with VHX is effortless.'
   }
 ];
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Pricing from './Pricing';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 import telegramMockup from '../assets/telegram_food_automation.jpg';
 import hrAutomation from '../assets/hr_automation.jpg';
 
@@ -19,7 +18,7 @@ const PROJECTS = [
     desc: 'High-performance manufacturing dashboard with real-time telemetry, automated asset dispatching, and sensory alert pipelines.',
     impact: '42% decrease in machine downtime',
     tech: ['React', 'Vite', 'TailwindCSS', 'WebSocket', 'Node.js'],
-    color: '#2563eb',
+    color: '#F28C28',
     imgMain: '/forge.png',
     imgHover: '/rotaract.png',
   },
@@ -33,9 +32,9 @@ const PROJECTS = [
     desc: 'Institutional ecosystem platform managing multi-chapter community events, real-time member registrations, and automated fundraising receipts.',
     impact: '10,000+ active members onboarded',
     tech: ['Next.js', 'React', 'TailwindCSS', 'PostgreSQL', 'Express'],
-    color: '#00b4d8',
+    color: '#FF7800',
     imgMain: '/rotaract.png',
-    imgHover: '/posters/Salem Midtown.Rotaract2982.org.png',
+    imgHover: '/forge.png',
   },
   {
     id: 'telegram-ai-bot',
@@ -47,9 +46,9 @@ const PROJECTS = [
     desc: 'Conversational order orchestration bot with natural language processing, dynamic menu recommendations, and automated POS sync.',
     impact: '3.4x faster order turnaround',
     tech: ['Python', 'Telegram API', 'Gemini AI', 'n8n', 'Redis'],
-    color: '#8b5cf6',
+    color: '#F28C28',
     imgMain: telegramMockup,
-    imgHover: '/posters/Black and Orange Modern Restaurant Menu.png',
+    imgHover: hrAutomation,
   },
   {
     id: 'hr-automation',
@@ -61,37 +60,9 @@ const PROJECTS = [
     desc: 'Autonomous candidate pipeline analyzing resumes against job descriptions, auto-scheduling interviews, and scoring assessments via LLM agents.',
     impact: '85% manual screening reduction',
     tech: ['n8n', 'Gemini Pro', 'REST APIs', 'PostgreSQL', 'Slack Bot'],
-    color: '#00b4d8',
+    color: '#FFB347',
     imgMain: hrAutomation,
     imgHover: '/forge.png',
-  },
-  {
-    id: 'restaurant-branding',
-    category: 'brand',
-    categoryLabel: 'Brand Identity',
-    title: 'Modern Restaurant Menu & Brand System',
-    client: 'Epicurean Dining',
-    year: '2025',
-    desc: 'Complete dining visual identity, high-contrast typography, printed collateral, and digital POS menus.',
-    impact: '200% social engagement surge',
-    tech: ['Figma', 'Illustrator', 'Typography', 'Print Production'],
-    color: '#f59e0b',
-    imgMain: '/posters/Black and Orange Modern Restaurant Menu.png',
-    imgHover: '/posters/Red and Yellow Modern Quiz Night Poster.png',
-  },
-  {
-    id: 'motorsport-campaign',
-    category: 'brand',
-    categoryLabel: 'Visual Campaign',
-    title: 'Dynamic Motorsport Campaign',
-    client: 'Apex Racing Series',
-    year: '2026',
-    desc: 'High-octane visual identity, social posters, tournament motion graphics, and race day branding.',
-    impact: '50K+ event reach across socials',
-    tech: ['Adobe Creative Suite', 'Motion Graphics', 'Typography'],
-    color: '#ef4444',
-    imgMain: '/posters/Red and Black Dynamic Race Car Tournament Instagram Post.png',
-    imgHover: '/posters/handloom day.png',
   },
 ];
 
@@ -273,9 +244,8 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
       <div className="work-filter-bar">
         {[
           { key: 'all', label: 'All Projects' },
-          { key: 'web', label: 'Web Applications' },
-          { key: 'automation', label: 'AI & Automation' },
-          { key: 'brand', label: 'Brand & Systems' },
+          { key: 'web', label: 'Software & Web' },
+          { key: 'automation', label: 'AI & Automations' },
         ].map((tab) => (
           <button
             key={tab.key}
@@ -291,14 +261,14 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
           PROJECTS SHOWCASE GRID (TWO26 3D REVEAL STYLE)
           ======================================================= */}
       <section style={{ width: '100%', maxWidth: '1840px', margin: '0 auto', padding: '1em clamp(1.2rem, 2.2vw, 2.5rem) 6em', boxSizing: 'border-box' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '3em' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: '2em' }}>
           {filteredProjects.map((project) => (
             <div
               key={project.id}
               className="work-card-container"
               style={{
                 position: 'relative',
-                background: '#ffffff',
+                background: 'var(--surface-white)',
                 border: '1.5px solid var(--border-light)',
                 borderRadius: '24px',
                 overflow: 'hidden',
@@ -359,7 +329,7 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
                     fontWeight: '700',
                     fontFamily: 'var(--font-mono)',
                     backgroundColor: 'var(--accent)',
-                    color: '#ffffff'
+                    color: '#0A0B0E'
                   }}>
                     {project.year}
                   </span>
@@ -390,7 +360,7 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
                     marginBottom: '1.5em',
                     fontSize: '0.9em',
                     fontWeight: '600',
-                    color: '#1d4ed8'
+                    color: 'var(--accent)'
                   }}>
                     ★ Impact: {project.impact}
                   </div>
@@ -466,7 +436,7 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
                 <div className="team-popup-body" style={{ marginTop: '1.25em' }}>
                   <p>{activeProject.desc}</p>
                   <p style={{ marginTop: '0.8em', fontSize: '0.95em', color: 'var(--ink-gray)' }}>
-                    Engineered from concept to deployment by Sync Aura. Designed with bespoke micro-animations, zero-latency workflows, and production-tested resilience.
+                    Engineered from concept to deployment by VHX. Designed with bespoke micro-animations, zero-latency workflows, and production-tested resilience.
                   </p>
                 </div>
 
@@ -506,17 +476,13 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
                       <path d="M1.464 8.536L8.535 1.465M3.055 1.288L8.535 1.465L8.712 6.945" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
+                  <span className="cta-btn-fill-hover"></span>
                 </button>
               </div>
             </div>
           </div>
         )}
       </div>
-
-      {/* =======================================================
-          STUDIO PRICING SECTION (INTEGRATED ON WORK PAGE)
-          ======================================================= */}
-      <Pricing onOpenContact={onOpenContact} />
 
       {/* =======================================================
           FOOTER WITH LOGO BOUNCE
