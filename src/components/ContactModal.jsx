@@ -154,8 +154,20 @@ export default function ContactModal({ isOpen, onClose }) {
 
       {/* Top Bar */}
       <div className="contact-navbar">
-        <div ref={logoRef} className="navbar-logo-contact" style={{ display: 'flex', alignItems: 'center', gap: '0.6em' }}>
-          <img src="/VHX_logo_4K.svg" alt="VHX" style={{ height: '28px', width: 'auto' }} />
+        <div
+          ref={logoRef}
+          className="navbar-logo-contact"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.6em',
+            backgroundColor: '#0A0B0E',
+            padding: '0.45em 1.05em',
+            borderRadius: '999px',
+            boxShadow: '0 8px 24px rgba(10, 11, 14, 0.2)',
+          }}
+        >
+          <img src="/VHX_logo_4K.svg" alt="VHX" style={{ height: '26px', width: 'auto', display: 'block' }} />
         </div>
         <button ref={closeBtnRef} className="close-btn" onClick={onClose} aria-label="Close Contact Modal">
           <svg width="12" height="12" viewBox="0 0 8 8" fill="none">
