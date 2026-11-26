@@ -263,7 +263,7 @@ export default function ServicesPage({ onOpenContact, onNavigate }) {
                         fontWeight: 700,
                         padding: '0.3em 0.75em',
                         borderRadius: '6px',
-                        background: 'rgba(255, 255, 255, 0.06)',
+                        background: 'rgba(10, 11, 14, 0.05)',
                         color: 'var(--ink-black)'
                       }}
                     >

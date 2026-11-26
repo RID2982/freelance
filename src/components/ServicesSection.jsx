@@ -363,7 +363,7 @@ export default function ServicesSection() {
 
           {/* Start Pin at Top-Right Corner (1895, 30) */}
           <g transform="translate(1895, 30)">
-            <circle r="16" fill="#0A0B0E" stroke="var(--accent)" strokeWidth="4" />
+            <circle r="16" fill="#FFFFFF" stroke="var(--accent)" strokeWidth="4" />
             <circle r="7" fill="var(--accent)" />
           </g>
 
@@ -383,7 +383,7 @@ export default function ServicesSection() {
 
           {/* End Pin at Bottom-Left Corner (25, 1360) */}
           <g transform="translate(25, 1360)">
-            <circle r="16" fill="#0A0B0E" stroke="var(--accent)" strokeWidth="4" />
+            <circle r="16" fill="#FFFFFF" stroke="var(--accent)" strokeWidth="4" />
             <circle r="7" fill="var(--accent)" />
           </g>
         </svg>
@@ -445,8 +445,8 @@ export default function ServicesSection() {
                       fontWeight: 900,
                       letterSpacing: '-0.04em',
                       lineHeight: 0.95,
-                      color: 'var(--ink-black, #ffffff)',
-                      textShadow: '0 0 20px rgba(10,11,14,0.9), 0 0 35px rgba(10,11,14,0.8)'
+                      color: 'var(--ink-black, #0A0B0E)',
+                      textShadow: '0 0 20px rgba(255,255,255,0.95), 0 0 35px rgba(255,255,255,0.9)'
                     }}
                   >
                     {item.title1}
@@ -491,8 +491,8 @@ export default function ServicesSection() {
                       fontWeight: 900,
                       letterSpacing: '-0.04em',
                       lineHeight: 0.95,
-                      color: 'var(--ink-black, #ffffff)',
-                      textShadow: '0 0 20px rgba(10,11,14,0.9), 0 0 35px rgba(10,11,14,0.8)'
+                      color: 'var(--ink-black, #0A0B0E)',
+                      textShadow: '0 0 20px rgba(255,255,255,0.95), 0 0 35px rgba(255,255,255,0.9)'
                     }}
                   >
                     {item.title2}

@@ -77,11 +77,11 @@ export default function AboutPinned({ onNavigate }) {
           startTime
         );
 
-        // Stage 2: Settle to crisp light readable state on dark VHX canvas
+        // Stage 2: Settle to crisp black readable state on white VHX canvas
         tl.to(
           char,
           {
-            color: '#FFFFFF',
+            color: '#0A0B0E',
             scale: 1,
             rotation: 0,
             textShadow: 'none',

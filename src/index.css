@@ -25,23 +25,23 @@
   --size-font: clamp(15px, 1.1vw, 17px);
   --site-padding: clamp(1.2rem, 2.2vw, 2.5rem);
 
-  /* VHX Official Brand Kit Palette (#F28C28 Orange, #FFFFFF White, Obsidian Dark) */
+  /* VHX Official Brand Kit Palette (White Theme + #F28C28 Orange + #0A0B0E Black Ink) */
   --accent: #F28C28;
   --accent-cyan: #FF7800;
   --accent-violet: #FFB347;
   --accent-rgb: 242, 140, 40;
   --accent-hover: #D97719;
-  --accent-soft: #1A140E;
-  --accent-light: #16181F;
+  --accent-soft: #FFF4E8;
+  --accent-light: #FFF8F0;
   --accent-glow: rgba(242, 140, 40, 0.35);
   --accent-gradient: linear-gradient(135deg, #FF7800 0%, #F28C28 55%, #FFB347 100%);
-  --bg-main: #0A0B0E;
-  --bg-dark: #060709;
-  --ink-black: #FFFFFF;
-  --ink-gray: #A1A1AA;
-  --ink-muted: #71717A;
-  --surface-white: #12141A;
-  --border-light: rgba(255, 255, 255, 0.10);
+  --bg-main: #FFFFFF;
+  --bg-dark: #0A0B0E;
+  --ink-black: #0A0B0E;
+  --ink-gray: #4B5563;
+  --ink-muted: #6B7280;
+  --surface-white: #F8F9FB;
+  --border-light: rgba(10, 11, 14, 0.10);
   --border-dark: rgba(255, 255, 255, 0.14);
 
   /* Typography System — VHX Brand Kit */
@@ -96,7 +96,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--size-font);
   line-height: 1.4;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -130,7 +130,7 @@ button {
 .page {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: var(--bg-main);
 }
 
@@ -463,7 +463,7 @@ button {
   width: 100vw !important;
   height: 100vh !important;
   height: 100svh !important;
-  background-color: rgba(10, 11, 14, 0.97) !important;
+  background-color: rgba(255, 255, 255, 0.97) !important;
   backdrop-filter: blur(16px);
   z-index: 9998;
   opacity: 0;
@@ -873,6 +873,331 @@ button {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* Monochrome Circular Stack Marquee (Right-to-Left) */
+@keyframes stackScrollRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.stack-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 2.5vw, 2.2rem);
+  width: max-content;
+  padding-block: 6px;
+  animation: stackScrollRTL 28s linear infinite;
+  will-change: transform;
+}
+
+.stack-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.stack-circle-badge {
+  width: clamp(64px, 6vw, 82px);
+  height: clamp(64px, 6vw, 82px);
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  color: #0A0B0E;
+  border: 1.5px solid rgba(10, 11, 14, 0.14);
+  box-shadow: 0 8px 24px rgba(10, 11, 14, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.stack-circle-badge:hover {
+  transform: translateY(-4px) scale(1.06);
+  background-color: #0A0B0E;
+  color: #FFFFFF;
+}
+
+/* =======================================================
+   WORK PAGE FULL-VIEWPORT SCENE OVERLAP (racsalemmidtown.in style)
+   ======================================================= */
+.work-scenes-container {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.work-scene-wrapper {
+  display: contents;
+}
+
+.work-scene-hold {
+  isolation: isolate;
+  height: 100svh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  border-top: 1.5px solid var(--border-light);
+  box-shadow: 0 -20px 60px rgba(10, 11, 14, 0.08);
+}
+
+.work-scene-hold-inner {
+  will-change: transform, opacity;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-scene-runway {
+  pointer-events: none;
+  width: 100%;
+}
+
+.work-scene-section {
+  width: 100%;
+  max-width: 1550px;
+  margin: 0 auto;
+  padding: 5.5rem clamp(1.5rem, 4vw, 3.5rem) 2.5rem;
+  box-sizing: border-box;
+}
+
+.work-scene-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.work-scene-number {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.work-scene-heading-label {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+}
+
+.work-scene-line {
+  width: 42px;
+  height: 1.5px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.work-scene-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  cursor: pointer;
+}
+
+.work-scene-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+}
+
+.work-scene-meta-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.work-scene-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.6vw, 3.3rem);
+  font-weight: 900;
+  color: var(--ink-black);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.work-scene-desc {
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.6;
+  color: var(--ink-gray);
+  margin: 0;
+}
+
+.work-scene-media {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 52vh, 520px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #0A0B0E;
+  border: 1.5px solid var(--border-light);
+  box-shadow: 0 24px 60px rgba(10, 11, 14, 0.12);
+}
+
+.work-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.work-scene-grid:hover .work-scene-img {
+  transform: scale(1.05);
+}
+
+.work-overlap-cat-pill {
+  padding: 0.35em 0.85em;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  background: rgba(10, 11, 14, 0.06);
+  color: var(--ink-black);
+}
+
+.work-overlap-year-pill {
+  padding: 0.35em 0.85em;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  background: var(--accent);
+  color: #0A0B0E;
+}
+
+.work-overlap-body {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  min-height: 360px;
+}
+
+.work-overlap-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  max-height: 420px;
+  overflow: hidden;
+  background: #0A0B0E;
+}
+
+.work-overlap-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.work-overlap-card:hover .work-overlap-img {
+  transform: scale(1.05);
+}
+
+.work-overlap-content {
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.work-overlap-client {
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.work-overlap-subhead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.3vw, 2.15rem);
+  font-weight: 800;
+  color: var(--ink-black);
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+
+.work-overlap-desc {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--ink-gray);
+  margin: 0;
+}
+
+.work-overlap-impact {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background-color: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 1.35rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.work-overlap-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.work-overlap-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.work-overlap-tech-pill {
+  font-size: 0.76rem;
+  padding: 0.3em 0.65em;
+  border-radius: 6px;
+  background: #f4f4f5;
+  color: #52525b;
+  font-family: var(--font-mono);
+}
+
+.work-overlap-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.92rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+@media (max-width: 900px) {
+  .work-scene-section {
+    padding: 5rem 1.25rem 2rem;
+  }
+
+  .work-scene-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .work-scene-media {
+    height: 220px;
+    order: -1;
+  }
 }
 
 .hero-marquee-text,
@@ -2621,7 +2946,7 @@ button {
   font-weight: 800 !important;
   letter-spacing: -0.03em !important;
   line-height: 1.25 !important;
-  color: #FFFFFF !important;
+  color: #0A0B0E !important;
   text-align: center !important;
   margin: 0 auto !important;
   position: relative !important;

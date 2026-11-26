@@ -233,8 +233,8 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
           }}
         >
           {primaryProjects.map((proj, idx) => (
-            <div key={proj.id} className="project-item" style={{ width: '100%' }}>
-              <div className="project-card-clip-mask" style={{ width: '100%', height: '100%' }}>
+            <div key={proj.id} className="project-item" style={{ width: '100%', height: '100%' }}>
+              <div className="project-card-clip-mask" style={{ width: '100%', height: '100%', borderRadius: '24px' }}>
                 <a
                   ref={(el) => (cardsRef.current[idx] = el)}
                   href={proj.link}
@@ -250,7 +250,8 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                     overflow: 'hidden',
                     display: 'flex',
                     flexDirection: 'column',
-                    boxShadow: '0 8px 30px rgba(0,0,0,0.28)',
+                    height: '100%',
+                    boxShadow: '0 10px 30px rgba(10, 11, 14, 0.06)',
                     textDecoration: 'none',
                     color: 'inherit',
                     position: 'relative',
@@ -328,7 +329,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                             width: '40px',
                             height: '40px',
                             borderRadius: '50%',
-                            background: 'rgba(255, 255, 255, 0.06)',
+                            background: 'rgba(10, 11, 14, 0.05)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -361,7 +362,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                             fontWeight: 600,
                             padding: '0.3em 0.75em',
                             borderRadius: '6px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                            backgroundColor: 'rgba(10, 11, 14, 0.05)',
                             color: 'var(--ink-black)',
                             fontFamily: 'var(--font-mono, monospace)'
                           }}
@@ -401,7 +402,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
                 }}
               >
                 <span className="cta-text" style={{ color: '#FFFFFF', fontWeight: '800' }}>Explore All Projects</span>
-                <span className="cta-btn-arrow" style={{ backgroundColor: '#0A0B0E', color: '#FFFFFF' }}>
+                <span className="cta-btn-arrow">
                   <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
                     <path
                       d="M1.464 8.536L8.535 1.465M3.055 1.288L8.535 1.465L8.712 6.945"

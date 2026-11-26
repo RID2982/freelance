@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import telegramMockup from '../assets/telegram_food_automation.jpg';
-import hrAutomation from '../assets/hr_automation.jpg';
+import StackMarquee from './StackMarquee';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -257,137 +256,8 @@ export default function Hero({ onOpenContact, onNavigate }) {
           </div>
         </div>
 
-        {/* Sync Aura Full-Width Bespoke Engineering & Design Showcase */}
-        <div
-          className="hero-showcase-wrapper"
-          style={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '100%',
-            overflow: 'hidden',
-            margin: '3em auto 0',
-            backgroundColor: '#0a0a0a',
-            borderRadius: '28px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            padding: '2.5em clamp(1.2rem, 3vw, 3rem)',
-            background: 'radial-gradient(circle at 50% 20%, rgba(242, 140, 40, 0.16) 0%, #0A0B0E 75%)',
-            boxSizing: 'border-box'
-          }}
-        >
-          {/* Subtle Ambient Glowing Grids */}
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }}></div>
-
-          {/* Clean 3-Column Studio Platform Grid (Level, Perfectly Aligned) */}
-          <div
-            style={{
-              position: 'relative',
-              zIndex: 2,
-              width: '100%',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              alignItems: 'center',
-              gap: 'clamp(1rem, 2vw, 2.5rem)',
-              boxSizing: 'border-box'
-            }}
-          >
-            {/* Left Card: Telegram AI Bot Ordering Platform */}
-            <div
-              style={{
-                width: '100%',
-                height: 'clamp(280px, 26vw, 400px)',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                background: '#18181b',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)',
-                position: 'relative',
-                transition: 'transform 0.35s ease, border-color 0.35s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.borderColor = 'var(--accent)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0px)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-              }}
-            >
-              <img src={telegramMockup} alt="Telegram Food Bot" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', bottom: '1em', left: '1em', right: '1em', background: 'rgba(10, 10, 10, 0.88)', backdropFilter: 'blur(10px)', padding: '0.75em 1em', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                <div style={{ fontSize: '0.7em', color: '#00b4d8', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>AI &amp; N8N AUTOMATION</div>
-                <div style={{ fontSize: '0.95em', color: '#ffffff', fontWeight: 700 }}>Telegram Order Engine</div>
-              </div>
-            </div>
-
-            {/* Center Flagship Card: Forge Industrial Real-Time Portal */}
-            <div
-              style={{
-                width: '100%',
-                height: 'clamp(320px, 32vw, 440px)',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                background: '#09090b',
-                border: '2px solid var(--accent)',
-                boxShadow: '0 25px 60px rgba(242, 140, 40, 0.25)',
-                position: 'relative',
-                transition: 'transform 0.35s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0px)';
-              }}
-            >
-              {/* Browser Header Bar */}
-              <div style={{ height: '36px', background: '#18181b', display: 'flex', alignItems: 'center', padding: '0 1em', gap: '0.5em', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444' }}></div>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }}></div>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981' }}></div>
-                <div style={{ marginLeft: '1em', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '6px', padding: '2px 14px', fontSize: '0.72em', color: 'rgba(255, 255, 255, 0.7)', fontFamily: 'var(--font-mono)' }}>
-                  vhx.studio/portal/telemetry
-                </div>
-              </div>
-              <img src="/forge.png" alt="Forge Industrial Portal" style={{ width: '100%', height: 'calc(100% - 36px)', objectFit: 'cover' }} />
-              
-              {/* Floating Live Telemetry Badge */}
-              <div style={{ position: 'absolute', top: '48px', right: '1em', background: 'rgba(10, 10, 10, 0.92)', backdropFilter: 'blur(12px)', border: '1px solid #10b981', borderRadius: '999px', padding: '0.35em 0.9em', display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', display: 'inline-block', boxShadow: '0 0 10px #10b981' }}></span>
-                <span style={{ fontSize: '0.72em', fontFamily: 'var(--font-mono)', color: '#ffffff', fontWeight: 700 }}>LIVE PRODUCTION</span>
-              </div>
-            </div>
-
-            {/* Right Card: Salem Rotaract Community Platform */}
-            <div
-              style={{
-                width: '100%',
-                height: 'clamp(280px, 26vw, 400px)',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                background: '#18181b',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)',
-                position: 'relative',
-                transition: 'transform 0.35s ease, border-color 0.35s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.borderColor = 'var(--accent)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0px)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-              }}
-            >
-              <img src="/rotaract.png" alt="Rotaract Salem Ecosystem" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', bottom: '1em', left: '1em', right: '1em', background: 'rgba(10, 10, 10, 0.88)', backdropFilter: 'blur(10px)', padding: '0.75em 1em', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                <div style={{ fontSize: '0.7em', color: '#8b5cf6', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>FULL-STACK WEB</div>
-                <div style={{ fontSize: '0.95em', color: '#ffffff', fontWeight: 700 }}>Rotaract Salem Platform</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        {/* Monochrome Circular Tech Stack Marquee (Right-to-Left) */}
+        <StackMarquee />
       </div>
 
       {/* Sync Aura Signature Curved Ribbon Infinite Marquee */}

@@ -357,29 +357,29 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
 
                 {/* BOY 1 (Left - Lead Engineer / Vinodhan) */}
                 <g className="boy-left" transform="translate(30, 80)">
-                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#18181b" stroke="#F28C28" strokeWidth="2" />
+                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#0A0B0E" stroke="#F28C28" strokeWidth="2" />
                   <path d="M 50 100 L 75 125 L 100 100" fill="#F28C28" />
-                  <circle cx="75" cy="50" r="32" fill="#12141A" stroke="#F28C28" strokeWidth="3" />
-                  <path d="M 45 45 C 45 22, 65 14, 85 15 C 105 16, 110 30, 108 42 C 100 32, 85 30, 72 34 C 60 38, 50 45, 45 45 Z" fill="#FFFFFF" />
-                  <rect x="56" y="44" width="16" height="12" rx="3" stroke="#F28C28" strokeWidth="2.5" fill="rgba(242,140,40,0.18)" />
-                  <rect x="78" y="44" width="16" height="12" rx="3" stroke="#F28C28" strokeWidth="2.5" fill="rgba(242,140,40,0.18)" />
-                  <line x1="72" y1="49" x2="78" y2="49" stroke="#F28C28" strokeWidth="2.5" />
-                  <path d="M 68 64 Q 75 70 82 64" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="75" cy="50" r="32" fill="#FFF4E8" stroke="#0A0B0E" strokeWidth="3" />
+                  <path d="M 45 45 C 45 22, 65 14, 85 15 C 105 16, 110 30, 108 42 C 100 32, 85 30, 72 34 C 60 38, 50 45, 45 45 Z" fill="#0A0B0E" />
+                  <rect x="56" y="44" width="16" height="12" rx="3" stroke="#0A0B0E" strokeWidth="2.5" fill="rgba(242,140,40,0.18)" />
+                  <rect x="78" y="44" width="16" height="12" rx="3" stroke="#0A0B0E" strokeWidth="2.5" fill="rgba(242,140,40,0.18)" />
+                  <line x1="72" y1="49" x2="78" y2="49" stroke="#0A0B0E" strokeWidth="2.5" />
+                  <path d="M 68 64 Q 75 70 82 64" stroke="#0A0B0E" strokeWidth="2.5" strokeLinecap="round" />
                   <path d="M 75 14 Q 75 2 82 -2" stroke="#FF7800" strokeWidth="3" strokeLinecap="round" />
                   <circle cx="84" cy="-4" r="3.5" fill="#FF7800" filter="url(#glowEffect)" />
                 </g>
 
                 {/* BOY 2 (Right - Technical Architect / Hari Dev) */}
                 <g className="boy-right" transform="translate(160, 80)">
-                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#18181b" stroke="#FFB347" strokeWidth="2" />
+                  <path d="M 15 145 C 15 110, 35 95, 75 95 C 115 95, 135 110, 135 145" fill="#0A0B0E" stroke="#F28C28" strokeWidth="2" />
                   <path d="M 50 100 L 75 125 L 100 100" fill="#FF7800" />
-                  <circle cx="75" cy="50" r="32" fill="#12141A" stroke="#FFB347" strokeWidth="3" />
-                  <path d="M 44 42 C 45 18, 70 12, 95 15 C 108 17, 110 32, 108 45 C 98 32, 85 28, 70 32 C 55 36, 46 42, 44 42 Z" fill="#FFFFFF" />
-                  <circle cx="63" cy="48" r="3" fill="#FFFFFF" />
-                  <circle cx="87" cy="48" r="3" fill="#FFFFFF" />
-                  <path d="M 68 64 Q 75 70 82 64" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M 75 14 Q 75 2 68 -2" stroke="#FFB347" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="66" cy="-4" r="3.5" fill="#FFB347" filter="url(#glowEffect)" />
+                  <circle cx="75" cy="50" r="32" fill="#FFF4E8" stroke="#0A0B0E" strokeWidth="3" />
+                  <path d="M 44 42 C 45 18, 70 12, 95 15 C 108 17, 110 32, 108 45 C 98 32, 85 28, 70 32 C 55 36, 46 42, 44 42 Z" fill="#0A0B0E" />
+                  <circle cx="63" cy="48" r="3" fill="#0A0B0E" />
+                  <circle cx="87" cy="48" r="3" fill="#0A0B0E" />
+                  <path d="M 68 64 Q 75 70 82 64" stroke="#0A0B0E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M 75 14 Q 75 2 68 -2" stroke="#F28C28" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="66" cy="-4" r="3.5" fill="#F28C28" filter="url(#glowEffect)" />
                 </g>
 
                 <circle cx="60" cy="50" r="4" fill="#FF7800" opacity="0.75" />
@@ -438,15 +438,15 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
                 <path
                   d="M 90 152 C 90 162, 230 162, 230 152 C 240 142, 235 125, 215 125 L 105 125 C 85 125, 80 142, 90 152 Z"
                   fill="url(#chairAccent)"
-                  stroke="#FFFFFF"
-                  strokeWidth="2.5"
+                  stroke="#0A0B0E"
+                  strokeWidth="3"
                 />
 
                 {/* Ergonomic Curved Backrest */}
                 <path
                   d="M 105 125 C 95 65, 110 35, 160 35 C 210 35, 225 65, 215 125 Z"
-                  fill="url(#chairCushion)"
-                  stroke="#F28C28"
+                  fill="#FFF4E8"
+                  stroke="#0A0B0E"
                   strokeWidth="3"
                 />
 
@@ -456,18 +456,18 @@ export default function AboutPage({ onOpenContact, onNavigate }) {
                 <path d="M 115 100 Q 160 115 205 100" stroke="rgba(242, 140, 40, 0.45)" strokeWidth="2.5" strokeLinecap="round" />
 
                 {/* Timber Curved Armrests */}
-                <path d="M 85 110 C 75 95, 95 85, 105 95" stroke="#FFFFFF" strokeWidth="4.5" strokeLinecap="round" fill="none" />
-                <path d="M 235 110 C 245 95, 225 85, 215 95" stroke="#FFFFFF" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+                <path d="M 85 110 C 75 95, 95 85, 105 95" stroke="#0A0B0E" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+                <path d="M 235 110 C 245 95, 225 85, 215 95" stroke="#0A0B0E" strokeWidth="4.5" strokeLinecap="round" fill="none" />
 
                 {/* Beside Table: Round Pedestal with Coffee & Laptop Wireframe */}
                 <g transform="translate(210, 140)">
-                  <ellipse cx="40" cy="85" rx="32" ry="7" fill="rgba(242, 140, 40, 0.14)" />
-                  <rect x="37" y="35" width="6" height="50" fill="#FFFFFF" />
-                  <ellipse cx="40" cy="35" rx="28" ry="6" fill="#1A140E" stroke="#F28C28" strokeWidth="2.5" />
+                  <ellipse cx="40" cy="85" rx="32" ry="7" fill="rgba(10, 11, 14, 0.08)" />
+                  <rect x="37" y="35" width="6" height="50" fill="#0A0B0E" />
+                  <ellipse cx="40" cy="35" rx="28" ry="6" fill="#FFF4E8" stroke="#0A0B0E" strokeWidth="2.5" />
                   {/* Steaming Coffee Cup */}
-                  <rect x="25" y="18" width="12" height="15" rx="3" fill="#F28C28" stroke="#FFFFFF" strokeWidth="1.5" />
-                  <path d="M 37 22 Q 42 25 37 28" stroke="#FFFFFF" strokeWidth="1.5" fill="none" />
-                  <path d="M 31 14 Q 34 8 31 4" stroke="#FFB347" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  <rect x="25" y="18" width="12" height="15" rx="3" fill="#F28C28" stroke="#0A0B0E" strokeWidth="1.5" />
+                  <path d="M 37 22 Q 42 25 37 28" stroke="#0A0B0E" strokeWidth="1.5" fill="none" />
+                  <path d="M 31 14 Q 34 8 31 4" stroke="#F28C28" strokeWidth="1.5" strokeLinecap="round" fill="none" />
                 </g>
 
                 {/* Tech Aura floating badge */}

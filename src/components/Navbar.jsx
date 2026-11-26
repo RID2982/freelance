@@ -353,9 +353,16 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
               e.preventDefault();
               handleNavClick('home');
             }}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.6em' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.6em',
+              backgroundColor: '#0A0B0E',
+              padding: '0.35em 0.9em',
+              borderRadius: '999px'
+            }}
           >
-            <img src="/VHX_logo_4K.svg" alt="VHX" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+            <img src="/VHX_logo_4K.svg" alt="VHX" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
           </a>
 
           {/* Right Controls */}

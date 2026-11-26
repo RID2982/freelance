@@ -71,6 +71,8 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
   const [activeProject, setActiveProject] = useState(null);
   const heroRef = useRef(null);
   const pathRef = useRef(null);
+  const overlapSectionRef = useRef(null);
+  const cardsRef = useRef([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -150,6 +152,71 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
     ? PROJECTS 
     : PROJECTS.filter((p) => p.category === filter);
 
+  // Sticky Curtain Overlap Animation (racsalemmidtown.in .scene-hold + .scene-runway pattern)
+  useEffect(() => {
+    cardsRef.current = cardsRef.current.slice(0, filteredProjects.length);
+    const ctx = gsap.context(() => {
+      cardsRef.current.forEach((wrapper, idx) => {
+        if (!wrapper) return;
+        const hold = wrapper.querySelector('.work-scene-hold');
+        const inner = wrapper.querySelector('.work-scene-hold-inner');
+        const runway = wrapper.querySelector('.work-scene-runway');
+        if (!hold || !inner || !runway) return;
+
+        // Calculate extra scroll runway if content is taller than 100svh, plus hold pause
+        const overflowY = Math.max(0, inner.scrollHeight - hold.clientHeight);
+        const holdPause = idx === filteredProjects.length - 1 ? 0 : Math.round(window.innerHeight * 0.25);
+        runway.style.height = `${overflowY + holdPause}px`;
+
+        if (overflowY > 0) {
+          gsap.fromTo(
+            inner,
+            { y: 0 },
+            {
+              y: -overflowY,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: runway,
+                start: 'top bottom',
+                end: `+=${overflowY}`,
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        }
+
+        // Subtle depth recede when the next section slides up to overlap this one
+        const nextHold = cardsRef.current[idx + 1]?.querySelector('.work-scene-hold');
+        if (nextHold) {
+          gsap.fromTo(
+            inner,
+            { scale: 1, opacity: 1 },
+            {
+              scale: 0.95,
+              opacity: 0.45,
+              transformOrigin: 'center center',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: nextHold,
+                start: 'top bottom',
+                end: 'top top',
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        }
+      });
+    }, overlapSectionRef);
+
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 100);
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
+  }, [filter, filteredProjects.length]);
+
   return (
     <div className="work-page-root" style={{ width: '100%', minHeight: '100vh', backgroundColor: 'var(--bg-main)' }}>
       {/* =======================================================
@@ -198,37 +265,37 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
               <svg className="cat-work-img" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="workCatGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#eff6ff" />
-                    <stop offset="100%" stopColor="#dbeafe" />
+                    <stop offset="0%" stopColor="#FFF4E8" />
+                    <stop offset="100%" stopColor="#FFE4C4" />
                   </linearGradient>
                 </defs>
                 {/* Tech laptop base */}
                 <rect x="25" y="125" width="150" height="10" rx="5" fill="#0a0a0a" />
-                <rect x="35" y="123" width="130" height="4" rx="2" fill="#2563eb" />
+                <rect x="35" y="123" width="130" height="4" rx="2" fill="#F28C28" />
                 {/* Body */}
                 <ellipse cx="100" cy="100" rx="48" ry="32" fill="url(#workCatGlow)" stroke="#0a0a0a" strokeWidth="3" />
                 <path d="M75 106 C75 120, 85 128, 100 128 C115 128, 125 120, 125 106" fill="#ffffff" stroke="#0a0a0a" strokeWidth="2" />
                 {/* Head */}
                 <circle cx="100" cy="58" r="30" fill="url(#workCatGlow)" stroke="#0a0a0a" strokeWidth="3" />
                 {/* Ears */}
-                <path d="M78 40 L65 12 C63 9, 68 8, 71 11 L90 32 Z" fill="#2563eb" stroke="#0a0a0a" strokeWidth="3" />
-                <polygon points="72,17 69,15 82,30" fill="#fbcfe8" />
-                <path d="M122 40 L135 12 C137 9, 132 8, 129 11 L110 32 Z" fill="#2563eb" stroke="#0a0a0a" strokeWidth="3" />
-                <polygon points="128,17 131,15 118,30" fill="#fbcfe8" />
+                <path d="M78 40 L65 12 C63 9, 68 8, 71 11 L90 32 Z" fill="#F28C28" stroke="#0a0a0a" strokeWidth="3" />
+                <polygon points="72,17 69,15 82,30" fill="#FFE4C4" />
+                <path d="M122 40 L135 12 C137 9, 132 8, 129 11 L110 32 Z" fill="#F28C28" stroke="#0a0a0a" strokeWidth="3" />
+                <polygon points="128,17 131,15 118,30" fill="#FFE4C4" />
                 {/* Eyes */}
                 <ellipse cx="89" cy="56" rx="5.5" ry="6.5" fill="#0a0a0a" />
                 <circle cx="91" cy="54" r="2" fill="#ffffff" />
-                <circle cx="88" cy="58" r="1" fill="#00b4d8" />
+                <circle cx="88" cy="58" r="1" fill="#F28C28" />
                 <ellipse cx="111" cy="56" rx="5.5" ry="6.5" fill="#0a0a0a" />
                 <circle cx="113" cy="54" r="2" fill="#ffffff" />
-                <circle cx="110" cy="58" r="1" fill="#00b4d8" />
+                <circle cx="110" cy="58" r="1" fill="#F28C28" />
                 {/* Cheeks & Nose */}
                 <ellipse cx="80" cy="64" rx="4" ry="2.5" fill="#f472b6" opacity="0.6" />
                 <ellipse cx="120" cy="64" rx="4" ry="2.5" fill="#f472b6" opacity="0.6" />
                 <polygon points="100,63 97,60 103,60" fill="#ec4899" />
                 <path d="M100 63 L100 67 M100 67 Q95 72 90 68 M100 67 Q105 72 110 68" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" />
                 {/* Tail */}
-                <path d="M140 108 C160 112, 180 102, 175 75 C170 55, 155 60, 160 75" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" fill="none" />
+                <path d="M140 108 C160 112, 180 102, 175 75 C170 55, 155 60, 160 75" stroke="#F28C28" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
             </div>
             <p className="work-hero-para">
@@ -258,154 +325,90 @@ export default function WorkPage({ onOpenContact, onNavigate }) {
       </div>
 
       {/* =======================================================
-          PROJECTS SHOWCASE GRID (TWO26 3D REVEAL STYLE)
+          SEPARATE FULL-VIEWPORT OVERLAPPING PROJECT SECTIONS
+          (racsalemmidtown.in .scene-hold + .scene-runway pattern)
           ======================================================= */}
-      <section style={{ width: '100%', maxWidth: '1840px', margin: '0 auto', padding: '1em clamp(1.2rem, 2.2vw, 2.5rem) 6em', boxSizing: 'border-box' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: '2em' }}>
-          {filteredProjects.map((project) => (
+      <div ref={overlapSectionRef} className="work-scenes-container">
+        {filteredProjects.map((project, idx) => {
+          const sectionNumber = String(idx + 1).padStart(2, '0');
+          const isAltBg = idx % 2 === 1;
+          return (
             <div
               key={project.id}
-              className="work-card-container"
-              style={{
-                position: 'relative',
-                background: 'var(--surface-white)',
-                border: '1.5px solid var(--border-light)',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                cursor: 'pointer',
-                transition: 'transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.3s ease',
-              }}
-              onClick={() => setActiveProject(project)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = '0 25px 60px rgba(37, 99, 235, 0.15)';
-                e.currentTarget.style.borderColor = 'var(--accent)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0px)';
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.borderColor = 'var(--border-light)';
-              }}
+              ref={(el) => (cardsRef.current[idx] = el)}
+              className="work-scene-wrapper"
             >
-              {/* Image with hover zoom */}
-              <div style={{ position: 'relative', width: '100%', height: '320px', overflow: 'hidden', backgroundColor: '#0a0a0a' }}>
-                <img
-                  src={project.imgMain}
-                  alt={project.title}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.08)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                />
-                <div style={{ position: 'absolute', top: '1.25em', left: '1.25em', zIndex: 2 }}>
-                  <span style={{
-                    padding: '0.4em 0.9em',
-                    borderRadius: '999px',
-                    fontSize: '0.75em',
-                    fontWeight: '700',
-                    fontFamily: 'var(--font-mono)',
-                    backgroundColor: '#0a0a0a',
-                    color: '#ffffff',
-                    border: '1px solid rgba(255, 255, 255, 0.15)'
-                  }}>
-                    {project.categoryLabel}
-                  </span>
-                </div>
-                <div style={{ position: 'absolute', top: '1.25em', right: '1.25em', zIndex: 2 }}>
-                  <span style={{
-                    padding: '0.4em 0.9em',
-                    borderRadius: '999px',
-                    fontSize: '0.75em',
-                    fontWeight: '700',
-                    fontFamily: 'var(--font-mono)',
-                    backgroundColor: 'var(--accent)',
-                    color: '#0A0B0E'
-                  }}>
-                    {project.year}
-                  </span>
+              <div
+                className="work-scene-hold"
+                style={{
+                  zIndex: 10 + idx * 10,
+                  backgroundColor: isAltBg ? '#F8FAFC' : '#FFFFFF',
+                }}
+              >
+                <div className="work-scene-hold-inner">
+                  <section className="work-scene-section">
+                    {/* Number + Heading Eyebrow Row (racsalemmidtown.in style) */}
+                    <div className="work-scene-eyebrow">
+                      <span className="work-scene-number">{sectionNumber}</span>
+                      <span className="work-scene-heading-label">{project.title}</span>
+                      <span className="work-scene-line" />
+                    </div>
+
+                    {/* Split Showcase Layout */}
+                    <div className="work-scene-grid" onClick={() => setActiveProject(project)}>
+                      <div className="work-scene-content">
+                        <div>
+                          <div className="work-scene-meta-pills">
+                            <span className="work-overlap-cat-pill">{project.categoryLabel}</span>
+                            <span className="work-overlap-year-pill">{project.year}</span>
+                          </div>
+
+                          <div className="work-overlap-client">{project.client}</div>
+                          <h2 className="work-scene-title">{project.title}</h2>
+                          <p className="work-scene-desc">{project.desc}</p>
+                        </div>
+
+                        <div>
+                          <div className="work-overlap-impact">
+                            ★ Impact: {project.impact}
+                          </div>
+
+                          <div className="work-overlap-footer-row">
+                            <div className="work-overlap-tech-list">
+                              {project.tech.map((t) => (
+                                <span key={t} className="work-overlap-tech-pill">
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+
+                            <div className="work-overlap-cta">
+                              Case Study
+                              <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
+                                <path d="M1.5 8.5L8.5 1.5M3 1.3L8.5 1.5L8.7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="work-scene-media">
+                        <img
+                          src={project.imgMain}
+                          alt={project.title}
+                          className="work-scene-img"
+                        />
+                      </div>
+                    </div>
+                  </section>
                 </div>
               </div>
 
-              {/* Card Meta Content */}
-              <div style={{ padding: '2em', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontSize: '0.85em', fontFamily: 'var(--font-mono)', color: 'var(--ink-muted)', marginBottom: '0.3em', textTransform: 'uppercase' }}>
-                    {project.client}
-                  </div>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '2em', color: 'var(--ink-black)', marginBottom: '0.6em' }}>
-                    {project.title}
-                  </h3>
-                  <p style={{ fontSize: '1.05em', lineHeight: '1.5', color: 'var(--ink-gray)', marginBottom: '1.5em' }}>
-                    {project.desc}
-                  </p>
-                </div>
-
-                <div>
-                  {/* Impact Highlight */}
-                  <div style={{
-                    padding: '0.75em 1em',
-                    borderRadius: '12px',
-                    backgroundColor: 'var(--accent-soft)',
-                    borderLeft: '4px solid var(--accent)',
-                    marginBottom: '1.5em',
-                    fontSize: '0.9em',
-                    fontWeight: '600',
-                    color: 'var(--accent)'
-                  }}>
-                    ★ Impact: {project.impact}
-                  </div>
-
-                  {/* Tech Badges & CTA */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1em' }}>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4em' }}>
-                      {project.tech.map((t) => (
-                        <span key={t} style={{
-                          fontSize: '0.75em',
-                          padding: '0.25em 0.6em',
-                          borderRadius: '6px',
-                          background: '#f4f4f5',
-                          color: '#52525b',
-                          fontFamily: 'var(--font-mono)'
-                        }}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.4em',
-                        color: 'var(--accent)',
-                        fontWeight: '700',
-                        fontSize: '0.9em',
-                        borderBottom: '2px solid var(--accent)',
-                        paddingBottom: '2px'
-                      }}
-                    >
-                      Case Study
-                      <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
-                        <path d="M1.5 8.5L8.5 1.5M3 1.3L8.5 1.5L8.7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="work-scene-runway" aria-hidden="true" />
             </div>
-          ))}
-        </div>
-      </section>
+          );
+        })}
+      </div>
 
       {/* =======================================================
           PROJECT CASE STUDY EXPANDING MODAL POPUP

@@ -110,8 +110,8 @@ export default function FAQ() {
             <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="catGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#eff6ff" />
-                  <stop offset="100%" stopColor="#dbeafe" />
+                  <stop offset="0%" stopColor="#FFF4E8" />
+                  <stop offset="100%" stopColor="#FFE4C4" />
                 </linearGradient>
                 <filter id="catShadow" x="-10%" y="-10%" width="120%" height="130%">
                   <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#F28C28" floodOpacity="0.16" />
@@ -136,7 +136,7 @@ export default function FAQ() {
               />
               <path
                 d="M215 150 C245 155, 275 140, 270 105 C265 80, 240 85, 245 105"
-                stroke="#2563eb"
+                stroke="#F28C28"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 fill="none"
@@ -146,20 +146,20 @@ export default function FAQ() {
               <circle cx="160" cy="85" r="42" fill="url(#catGlow)" stroke="#0a0a0a" strokeWidth="3.5" />
 
               {/* Cat Ears */}
-              <path d="M130 58 L112 18 C110 14, 116 12, 120 16 L148 48 Z" fill="#2563eb" stroke="#0a0a0a" strokeWidth="3.5" strokeLinejoin="round" />
-              <polygon points="122,25 118,22 135,46" fill="#fbcfe8" />
+              <path d="M130 58 L112 18 C110 14, 116 12, 120 16 L148 48 Z" fill="#F28C28" stroke="#0a0a0a" strokeWidth="3.5" strokeLinejoin="round" />
+              <polygon points="122,25 118,22 135,46" fill="#FFE4C4" />
 
-              <path d="M190 58 L208 18 C210 14, 204 12, 200 16 L172 48 Z" fill="#2563eb" stroke="#0a0a0a" strokeWidth="3.5" strokeLinejoin="round" />
-              <polygon points="198,25 202,22 185,46" fill="#fbcfe8" />
+              <path d="M190 58 L208 18 C210 14, 204 12, 200 16 L172 48 Z" fill="#F28C28" stroke="#0a0a0a" strokeWidth="3.5" strokeLinejoin="round" />
+              <polygon points="198,25 202,22 185,46" fill="#FFE4C4" />
 
               {/* Expressive Eyes */}
               <ellipse cx="144" cy="82" rx="7.5" ry="9" fill="#0a0a0a" />
               <circle cx="146.5" cy="79.5" r="3" fill="#ffffff" />
-              <circle cx="142.5" cy="84.5" r="1.5" fill="#00b4d8" />
+              <circle cx="142.5" cy="84.5" r="1.5" fill="#F28C28" />
 
               <ellipse cx="176" cy="82" rx="7.5" ry="9" fill="#0a0a0a" />
               <circle cx="178.5" cy="79.5" r="3" fill="#ffffff" />
-              <circle cx="174.5" cy="84.5" r="1.5" fill="#00b4d8" />
+              <circle cx="174.5" cy="84.5" r="1.5" fill="#F28C28" />
 
               {/* Cute Pink Cheeks */}
               <ellipse cx="132" cy="94" rx="6" ry="3.5" fill="#f472b6" opacity="0.6" />
