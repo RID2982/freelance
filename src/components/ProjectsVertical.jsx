@@ -418,7 +418,7 @@ export default function ProjectsVertical({ onOpenContact, onNavigate }) {
 
               <button
                 className="cta-btn"
-                style={{ fontSize: '1.05em', padding: '0.85em 2.2em', background: 'transparent', color: 'var(--ink-black)', border: '1.5px solid var(--border-light)' }}
+                style={{ fontSize: '1.05em', padding: '0.85em 2.2em', background: 'var(--surface-white)', color: 'var(--ink-black)', border: '1.5px solid rgba(10, 11, 14, 0.22)' }}
                 onClick={onOpenContact}
               >
                 <span className="cta-text">Start a Project</span>

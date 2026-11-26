@@ -33,9 +33,13 @@ export default function App() {
   };
 
   const [currentPage, setCurrentPage] = useState(getInitialPage);
+  const [transitionLabel, setTransitionLabel] = useState('');
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [loaderComplete, setLoaderComplete] = useState(false);
   const lenisRef = useRef(null);
+  const curtainRef = useRef(null);
+  const pageViewRef = useRef(null);
+  const isTransitioningRef = useRef(false);
 
   // Initialize Lenis Smooth Scroll synchronized with GSAP ScrollTrigger
   useEffect(() => {
@@ -73,19 +77,18 @@ export default function App() {
     }
   }, [loaderComplete]);
 
-  // Multi-Page Navigation Handler with History PushState & Smooth Scroll Reset
+  // Multi-Page Navigation Handler with Kinetic Curtain Page Transition
   const handleNavigate = (page, sectionId = null) => {
-    setCurrentPage(page);
     const targetUrl = page === 'home' ? '/' : `/${page}`;
     if (window.location.pathname !== targetUrl) {
       window.history.pushState({ page }, '', targetUrl);
     }
 
-    setTimeout(() => {
+    const scrollToTarget = () => {
       if (sectionId) {
         const el = document.getElementById(sectionId);
         if (el && lenisRef.current) {
-          lenisRef.current.scrollTo(el, { offset: -80, duration: 1.2 });
+          lenisRef.current.scrollTo(el, { offset: -80, duration: 1.0 });
         } else if (el) {
           el.scrollIntoView({ behavior: 'smooth' });
         }
@@ -97,7 +100,76 @@ export default function App() {
         }
       }
       ScrollTrigger.refresh();
-    }, 60);
+    };
+
+    // If staying on the same page, just scroll smoothly without a curtain wipe
+    if (page === currentPage) {
+      scrollToTarget();
+      return;
+    }
+
+    const curtain = curtainRef.current;
+    if (!curtain || isTransitioningRef.current) {
+      setCurrentPage(page);
+      setTimeout(scrollToTarget, 60);
+      return;
+    }
+
+    isTransitioningRef.current = true;
+    const labels = {
+      home: 'VHX STUDIO',
+      work: 'SELECTED WORK',
+      products: 'VHX LABS',
+      services: 'CAPABILITIES',
+      about: 'ABOUT VHX',
+    };
+    setTransitionLabel(labels[page] || page.toUpperCase());
+
+    const labelEl = curtain.querySelector('.page-transition-label');
+    const tl = gsap.timeline({
+      onComplete: () => {
+        isTransitioningRef.current = false;
+      },
+    });
+
+    gsap.set(curtain, { display: 'flex', transformOrigin: 'bottom center', scaleY: 0 });
+    if (labelEl) gsap.set(labelEl, { opacity: 0, y: 18 });
+
+    tl.to(curtain, {
+      scaleY: 1,
+      duration: 0.32,
+      ease: 'power3.inOut',
+    })
+      .to(
+        labelEl,
+        { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out' },
+        0.14
+      )
+      .add(() => {
+        setCurrentPage(page);
+        requestAnimationFrame(() => {
+          scrollToTarget();
+          if (pageViewRef.current) {
+            gsap.fromTo(
+              pageViewRef.current,
+              { opacity: 0.2, y: 24 },
+              { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', clearProps: 'transform,opacity' }
+            );
+          }
+        });
+      })
+      .to(
+        labelEl,
+        { opacity: 0, y: -14, duration: 0.16, ease: 'power2.in' },
+        '+=0.08'
+      )
+      .to(curtain, {
+        transformOrigin: 'top center',
+        scaleY: 0,
+        duration: 0.38,
+        ease: 'power3.inOut',
+      })
+      .set(curtain, { display: 'none' });
   };
 
   // Browser back/forward navigation sync
@@ -143,7 +215,14 @@ export default function App() {
         onClose={() => setIsContactOpen(false)}
       />
 
+      {/* Page Transition Curtain Overlay */}
+      <div ref={curtainRef} className="page-transition-curtain" aria-hidden="true">
+        <div className="page-transition-accent-bar" />
+        <span className="page-transition-label">{transitionLabel}</span>
+      </div>
+
       {/* Conditional Multi-Page View (5 Dedicated Enterprise Pages) */}
+      <div ref={pageViewRef} className="page-view-shell">
       {currentPage === 'work' && (
         <WorkPage
           onOpenContact={() => setIsContactOpen(true)}
@@ -216,6 +295,7 @@ export default function App() {
           />
         </>
       )}
+      </div>
 
       {/* Quick Floating Action Button for Direct Project Contact (No Phone Numbers) */}
       <button

@@ -114,66 +114,82 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
       btn.addEventListener('mouseenter', onEnter);
       btn.addEventListener('mouseleave', onLeave);
     });
-
-    // Magnetic CTA Button with 10x expanding circle & looping arrow bounce
-    const ctaButtons = document.querySelectorAll('.cta-btn');
-    ctaButtons.forEach((btn) => {
-      const text = btn.querySelector('.cta-text');
-      const arrow = btn.querySelector('.cta-btn-arrow');
-      const fillHover = btn.querySelector('.cta-btn-fill-hover');
-      let arrowLoop = null;
-
-      const onEnter = () => {
-        if (fillHover) {
-          gsap.to(fillHover, { scale: 18, duration: 0.55, ease: 'power2.out', overwrite: 'auto' });
-        }
-        if (arrow) {
-          gsap.set(arrow, { transformOrigin: 'center center' });
-          if (arrowLoop) arrowLoop.kill();
-          arrowLoop = gsap.timeline({ repeat: -1, repeatDelay: 0.2 });
-          arrowLoop
-            .to(arrow, { rotation: -25, duration: 0.22, ease: 'power2.out' })
-            .to(arrow, { rotation: 0, duration: 0.4, ease: 'back.out(2.5)' });
-        }
-      };
-
-      const onMove = (e) => {
-        const rect = btn.getBoundingClientRect();
-        const currentX = gsap.getProperty(btn, 'x') || 0;
-        const currentY = gsap.getProperty(btn, 'y') || 0;
-        const originCenterX = rect.left - currentX + rect.width / 2;
-        const originCenterY = rect.top - currentY + rect.height / 2;
-        const deltaX = e.clientX - originCenterX;
-        const deltaY = e.clientY - originCenterY;
-
-        gsap.to(btn, { x: deltaX * 0.35, y: deltaY * 0.35, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-        if (text && arrow) {
-          gsap.to([text, arrow], { x: deltaX * 0.15, y: deltaY * 0.15, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-        }
-      };
-
-      const onLeave = () => {
-        if (arrowLoop) {
-          arrowLoop.kill();
-          arrowLoop = null;
-        }
-        if (arrow) {
-          gsap.to(arrow, { rotation: 0, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-        }
-        gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1.1, 0.4)', overwrite: 'auto' });
-        if (text && arrow) {
-          gsap.to([text, arrow], { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1.1, 0.4)', overwrite: 'auto' });
-        }
-        if (fillHover) {
-          gsap.to(fillHover, { scale: 0, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
-        }
-      };
-
-      btn.addEventListener('mouseenter', onEnter);
-      btn.addEventListener('mousemove', onMove);
-      btn.addEventListener('mouseleave', onLeave);
-    });
   }, []);
+
+  // Magnetic CTA Button with expanding circle & looping arrow bounce (re-binds on page change)
+  useEffect(() => {
+    const cleanups = [];
+    const timer = setTimeout(() => {
+      const ctaButtons = document.querySelectorAll('.cta-btn');
+      ctaButtons.forEach((btn) => {
+        const text = btn.querySelector('.cta-text');
+        const arrow = btn.querySelector('.cta-btn-arrow');
+        const fillHover = btn.querySelector('.cta-btn-fill-hover');
+        let arrowLoop = null;
+
+        const onEnter = () => {
+          if (fillHover) {
+            gsap.to(fillHover, { scale: 20, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
+          }
+          if (arrow) {
+            gsap.set(arrow, { transformOrigin: 'center center' });
+            if (arrowLoop) arrowLoop.kill();
+            arrowLoop = gsap.timeline({ repeat: -1, repeatDelay: 0.2 });
+            arrowLoop
+              .to(arrow, { rotation: -25, duration: 0.22, ease: 'power2.out' })
+              .to(arrow, { rotation: 0, duration: 0.4, ease: 'back.out(2.5)' });
+          }
+        };
+
+        const onMove = (e) => {
+          const rect = btn.getBoundingClientRect();
+          const currentX = gsap.getProperty(btn, 'x') || 0;
+          const currentY = gsap.getProperty(btn, 'y') || 0;
+          const originCenterX = rect.left - currentX + rect.width / 2;
+          const originCenterY = rect.top - currentY + rect.height / 2;
+          const deltaX = e.clientX - originCenterX;
+          const deltaY = e.clientY - originCenterY;
+
+          gsap.to(btn, { x: deltaX * 0.35, y: deltaY * 0.35, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+          if (text && arrow) {
+            gsap.to([text, arrow], { x: deltaX * 0.15, y: deltaY * 0.15, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+          }
+        };
+
+        const onLeave = () => {
+          if (arrowLoop) {
+            arrowLoop.kill();
+            arrowLoop = null;
+          }
+          if (arrow) {
+            gsap.to(arrow, { rotation: 0, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+          }
+          gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1.1, 0.4)', overwrite: 'auto' });
+          if (text && arrow) {
+            gsap.to([text, arrow], { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1.1, 0.4)', overwrite: 'auto' });
+          }
+          if (fillHover) {
+            gsap.to(fillHover, { scale: 0, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
+          }
+        };
+
+        btn.addEventListener('mouseenter', onEnter);
+        btn.addEventListener('mousemove', onMove);
+        btn.addEventListener('mouseleave', onLeave);
+        cleanups.push(() => {
+          if (arrowLoop) arrowLoop.kill();
+          btn.removeEventListener('mouseenter', onEnter);
+          btn.removeEventListener('mousemove', onMove);
+          btn.removeEventListener('mouseleave', onLeave);
+        });
+      });
+    }, 80);
+
+    return () => {
+      clearTimeout(timer);
+      cleanups.forEach((fn) => fn());
+    };
+  }, [currentPage]);
 
   // Menu Open/Close Logic
   const toggleMenu = () => {
@@ -260,7 +276,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
                 handleNavClick('work');
               }}
             >
-              <span className="navlink-text" style={{ color: currentPage === 'work' ? 'var(--accent)' : 'inherit' }}>
+              <span className="navlink-text">
                 Work
               </span>
               <span className="stroke-fill">
@@ -283,7 +299,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
                 handleNavClick('products');
               }}
             >
-              <span className="navlink-text" style={{ color: currentPage === 'products' ? 'var(--accent)' : 'inherit' }}>
+              <span className="navlink-text">
                 Products
               </span>
               <span className="stroke-fill">
@@ -306,7 +322,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
                 handleNavClick('services');
               }}
             >
-              <span className="navlink-text" style={{ color: currentPage === 'services' ? 'var(--accent)' : 'inherit' }}>
+              <span className="navlink-text">
                 Services
               </span>
               <span className="stroke-fill">
@@ -329,7 +345,7 @@ export default function Navbar({ onOpenContact, currentPage = 'home', onNavigate
                 handleNavClick('about');
               }}
             >
-              <span className="navlink-text" style={{ color: currentPage === 'about' ? 'var(--accent)' : 'inherit' }}>
+              <span className="navlink-text">
                 About us
               </span>
               <span className="stroke-fill">
