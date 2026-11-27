@@ -12,7 +12,7 @@ const servicesData = [
     desc: 'High-performance bespoke web applications, SaaS dashboards, and scalable cloud platforms built with React, Next.js, and Node.js.',
     accent: '#F28C28',
     align: 'right',
-    offset: '8vw',
+    offset: '4vw',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="10" y="10" width="60" height="42" rx="6" fill="#0a0b0e" stroke="#F28C28" strokeWidth="2" />
@@ -34,7 +34,7 @@ const servicesData = [
     desc: 'Autonomous n8n workflows connecting Telegram bots, WhatsApp APIs, CRMs, databases, and LLM reasoning pipelines.',
     accent: '#FF7800',
     align: 'left',
-    offset: '6vw',
+    offset: '4vw',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="20" cy="30" r="10" fill="#1A140E" stroke="#FF7800" strokeWidth="2.5" />
@@ -53,8 +53,8 @@ const servicesData = [
     title2: 'Engineering',
     desc: 'Fluid, cross-platform mobile applications and native-feeling experiences engineered for iOS and Android.',
     accent: '#F28C28',
-    align: 'left',
-    offset: '20vw',
+    align: 'right',
+    offset: '10vw',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="25" y="8" width="30" height="46" rx="6" fill="#0a0b0e" stroke="#F28C28" strokeWidth="2" />
@@ -73,8 +73,8 @@ const servicesData = [
     title2: 'Cloud Systems',
     desc: 'Resilient backend architectures, real-time WebSocket engines, payment gateways, and automated data synchronization.',
     accent: '#FFB347',
-    align: 'center',
-    offset: '0%',
+    align: 'left',
+    offset: '12vw',
     illustration: (
       <svg width="100%" height="100%" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="14" y="14" width="52" height="32" rx="6" fill="#0a0b0e" stroke="#FFB347" strokeWidth="2" />
@@ -90,6 +90,9 @@ export default function ServicesSection() {
   const sectionRef = useRef(null);
   const headingWrapperRef = useRef(null);
   const offsetHeadingRef = useRef(null);
+  const svgRef = useRef(null);
+  const startPinRef = useRef(null);
+  const endPinRef = useRef(null);
   const pathRef = useRef(null);
   const tracerRef = useRef(null);
   const journeyRef = useRef(null);
@@ -129,13 +132,54 @@ export default function ServicesSection() {
         headingWrapper.parentElement.addEventListener('pointerleave', handleLeave);
       }
 
-      // 2. Setup Winding Serpentine SVG Path
+      // 2. Setup Winding Serpentine SVG Path dynamically aligned to every .service-capsule
       const path = pathRef.current;
       const tracer = tracerRef.current;
-      if (!path) return;
+      const svgEl = svgRef.current;
+      const journey = journeyRef.current;
+      if (!path || !svgEl || !journey) return;
 
-      const len = path.getTotalLength ? path.getTotalLength() : 4800;
-      path.style.strokeDasharray = `${len}`;
+      let totalPathLen = 4000;
+      const updateDynamicPath = () => {
+        const jRect = journey.getBoundingClientRect();
+        const w = Math.max(320, jRect.width);
+        const h = Math.max(600, jRect.height);
+        svgEl.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+        const anchors = itemsRef.current
+          .map((itemEl) => {
+            if (!itemEl) return null;
+            const cap = itemEl.querySelector('.service-capsule') || itemEl.querySelector('.service-title-row') || itemEl;
+            const r = cap.getBoundingClientRect();
+            return {
+              x: r.left - jRect.left + r.width / 2,
+              y: r.top - jRect.top + r.height / 2,
+            };
+          })
+          .filter(Boolean);
+
+        const startPt = { x: w - 28, y: 28 };
+        const endPt = { x: 28, y: h - 28 };
+        const pts = [startPt, ...anchors, endPt];
+
+        let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+        for (let i = 0; i < pts.length - 1; i++) {
+          const p0 = pts[i];
+          const p1 = pts[i + 1];
+          const midY = (p0.y + p1.y) / 2;
+          d += ` C ${p0.x.toFixed(1)} ${midY.toFixed(1)}, ${p1.x.toFixed(1)} ${midY.toFixed(1)}, ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+        }
+
+        path.setAttribute('d', d);
+        if (startPinRef.current) startPinRef.current.setAttribute('transform', `translate(${startPt.x}, ${startPt.y})`);
+        if (endPinRef.current) endPinRef.current.setAttribute('transform', `translate(${endPt.x}, ${endPt.y})`);
+
+        totalPathLen = path.getTotalLength ? path.getTotalLength() : 4000;
+        path.style.strokeDasharray = `${totalPathLen}`;
+        return totalPathLen;
+      };
+
+      const len = updateDynamicPath();
       path.style.strokeDashoffset = `${len}`;
 
       // Position tracer dot at start coordinates (Top Right Corner)
@@ -146,29 +190,29 @@ export default function ServicesSection() {
         tracer.setAttribute('opacity', 1);
       }
 
-      // 3. Setup Initial State for Service Items
+      // 3. Setup Initial State for Service Items (preserve layout width so path stays locked to capsules)
       itemsRef.current.forEach((el) => {
         if (!el) return;
         const capsule = el.querySelector('.service-capsule');
         const pill = el.querySelector('.service-pill');
-        if (capsule) gsap.set(capsule, { scale: 0, width: 0, opacity: 0 });
-        if (pill) gsap.set(pill, { scale: 0.75, opacity: 0, y: 15 });
+        if (capsule) gsap.set(capsule, { scale: 0.35, opacity: 0 });
+        if (pill) gsap.set(pill, { scale: 0.85, opacity: 0, y: 15 });
       });
 
-      // 4. Master Scrubbed Timeline: Draws along path from Top-Right Corner to Bottom-Left Corner
+      // 4. Master Scrubbed Timeline: Draws along path from Top-Right Corner through all 4 capsules to Bottom-Left Corner
       const masterTl = gsap.timeline({
         scrollTrigger: {
-          trigger: journeyRef.current || section,
-          start: 'top 70%',
-          end: 'bottom 80%',
-          scrub: 1.2,
+          trigger: journey,
+          start: 'top 72%',
+          end: 'bottom 82%',
+          scrub: 1.1,
           invalidateOnRefresh: true
         }
       });
 
       masterTl.fromTo(
         path,
-        { strokeDashoffset: len },
+        { strokeDashoffset: () => totalPathLen },
         {
           strokeDashoffset: 0,
           ease: 'none',
@@ -176,7 +220,7 @@ export default function ServicesSection() {
           onUpdate: function () {
             if (tracer && path.getPointAtLength) {
               const p = this.progress();
-              const drawnLength = Math.min(len, Math.max(0, p * len));
+              const drawnLength = Math.min(totalPathLen, Math.max(0, p * totalPathLen));
               const pt = path.getPointAtLength(drawnLength);
               tracer.setAttribute('cx', pt.x);
               tracer.setAttribute('cy', pt.y);
@@ -186,27 +230,26 @@ export default function ServicesSection() {
         0
       );
 
-      // Staggered Expansion for Each Service as Winding Path Reaches It
+      // Staggered Expansion for Each Service as Winding Path Reaches Its Capsule
       const totalLayers = itemsRef.current.length;
       itemsRef.current.forEach((el, index) => {
         if (!el) return;
         const capsule = el.querySelector('.service-capsule');
         const pill = el.querySelector('.service-pill');
 
-        const point = totalLayers > 1 ? index / (totalLayers - 1) : 0;
-        const stepDuration = 0.12;
-        const startTime = Math.max(0, point - 0.03);
+        const point = totalLayers > 1 ? (index + 1) / (totalLayers + 1) : 0.5;
+        const stepDuration = 0.14;
+        const startTime = Math.max(0, point - 0.06);
 
         if (capsule) {
           masterTl.fromTo(
             capsule,
-            { scale: 0, width: 0, opacity: 0 },
+            { scale: 0.35, opacity: 0 },
             {
               scale: 1,
-              width: 'clamp(58px, 6.8vw, 88px)',
               opacity: 1,
               duration: stepDuration,
-              ease: 'back.out(3.2)'
+              ease: 'back.out(2.6)'
             },
             startTime
           );
@@ -215,18 +258,27 @@ export default function ServicesSection() {
         if (pill) {
           masterTl.fromTo(
             pill,
-            { scale: 0.75, opacity: 0, y: 15 },
+            { scale: 0.85, opacity: 0, y: 15 },
             {
               scale: 1,
               opacity: 1,
               y: 0,
               duration: stepDuration,
-              ease: 'back.out(2.2)'
+              ease: 'back.out(2.0)'
             },
-            startTime + 0.02
+            startTime + 0.03
           );
         }
       });
+
+      const handleResize = () => {
+        updateDynamicPath();
+        ScrollTrigger.refresh();
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     }, sectionRef);
 
     return () => {
@@ -324,12 +376,12 @@ export default function ServicesSection() {
           overflow: 'hidden'
         }}
       >
-        {/* Continuous Winding SVG Stroke (Draws dynamically from top-right corner through all 4 services to bottom-left corner) */}
+        {/* Continuous Winding SVG Stroke (Dynamically anchored from top-right corner through all 4 capsules to bottom-left corner) */}
         <svg
+          ref={svgRef}
           className="services-journey-svg"
           viewBox="0 0 1920 1400"
           fill="none"
-          preserveAspectRatio="none"
           style={{
             position: 'absolute',
             top: 0,
@@ -340,51 +392,40 @@ export default function ServicesSection() {
             zIndex: 1
           }}
         >
-          {/* Path: Starts at Top-Right Corner (1895, 30), loops cleanly through all 4 services, exits at Bottom-Left Pin (25, 1360) */}
           <path
             ref={pathRef}
-            d="
-              M 1895 30
-              C 1720 40, 1580 120, 1380 210
-              C 1180 300, 620 260, 380 410
-              C 220 510, 340 640, 680 680
-              C 1020 720, 620 820, 420 930
-              C 260 1020, 480 1120, 960 1160
-              C 1380 1195, 1180 1310, 640 1345
-              L 25 1360
-            "
+            d="M 1892 28 L 28 1372"
             stroke="var(--accent)"
-            strokeWidth="16"
-            vectorEffect="non-scaling-stroke"
+            strokeWidth="8"
             strokeLinecap="round"
             strokeLinejoin="round"
-            opacity="0.9"
+            opacity="0.88"
           />
 
-          {/* Start Pin at Top-Right Corner (1895, 30) */}
-          <g transform="translate(1895, 30)">
-            <circle r="16" fill="#FFFFFF" stroke="var(--accent)" strokeWidth="4" />
-            <circle r="7" fill="var(--accent)" />
+          {/* Start Pin at Top-Right Corner */}
+          <g ref={startPinRef} transform="translate(1892, 28)">
+            <circle r="14" fill="#FFFFFF" stroke="var(--accent)" strokeWidth="3.5" />
+            <circle r="6" fill="var(--accent)" />
           </g>
 
           {/* Active Glowing Tracer Dot (Rides drawing head dynamically) */}
           <circle
             ref={tracerRef}
-            cx="1895"
-            cy="30"
-            r="10"
+            cx="1892"
+            cy="28"
+            r="9"
             fill="var(--accent)"
             stroke="#ffffff"
-            strokeWidth="3.5"
+            strokeWidth="3"
             style={{
-              filter: 'drop-shadow(0 0 16px rgba(242, 140, 40, 0.95))'
+              filter: 'drop-shadow(0 0 14px rgba(242, 140, 40, 0.9))'
             }}
           />
 
-          {/* End Pin at Bottom-Left Corner (25, 1360) */}
-          <g transform="translate(25, 1360)">
-            <circle r="16" fill="#FFFFFF" stroke="var(--accent)" strokeWidth="4" />
-            <circle r="7" fill="var(--accent)" />
+          {/* End Pin at Bottom-Left Corner */}
+          <g ref={endPinRef} transform="translate(28, 1372)">
+            <circle r="14" fill="#FFFFFF" stroke="var(--accent)" strokeWidth="3.5" />
+            <circle r="6" fill="var(--accent)" />
           </g>
         </svg>
 
@@ -510,7 +551,7 @@ export default function ServicesSection() {
                     borderRadius: '999px',
                     background: 'var(--surface-white)',
                     border: `1.5px solid ${item.accent}`,
-                    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.28)',
+                    boxShadow: '0 8px 24px rgba(10, 11, 14, 0.08)',
                     maxWidth: '480px',
                     transformOrigin: 'left center',
                     position: 'relative',
