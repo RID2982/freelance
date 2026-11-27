@@ -4,72 +4,51 @@ import gsap from 'gsap';
 const testimonials = [
   {
     id: 1,
-    heading: 'Working with VHX has been one of the smoothest technical collaborations we have ever had',
-    name: 'Suresh Kumar',
+    heading: 'VHX delivered our Forge software platform on schedule with rock-solid engineering',
+    name: 'Dhanush',
     designation: 'Managing Director, Forge Industrial Technologies',
     avatar: (
       <svg viewBox="0 0 80 80" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="40" fill="#eff6ff" />
+        <circle cx="40" cy="40" r="40" fill="#FFF4E8" />
         <circle cx="40" cy="32" r="18" fill="#fed7aa" stroke="#0a0a0a" strokeWidth="2.5" />
         {/* Hair */}
         <path d="M22 28 C23 14, 35 12, 45 13 C55 14, 58 20, 58 28 C54 22, 44 20, 36 22 C28 24, 23 28, 22 28 Z" fill="#0a0a0a" />
         {/* Glasses */}
-        <rect x="28" y="28" width="10" height="8" rx="2" stroke="#2563eb" strokeWidth="2" fill="rgba(37,99,235,0.15)" />
-        <rect x="42" y="28" width="10" height="8" rx="2" stroke="#2563eb" strokeWidth="2" fill="rgba(37,99,235,0.15)" />
-        <line x1="38" y1="32" x2="42" y2="32" stroke="#2563eb" strokeWidth="2" />
+        <rect x="28" y="28" width="10" height="8" rx="2" stroke="#F28C28" strokeWidth="2" fill="rgba(242,140,40,0.15)" />
+        <rect x="42" y="28" width="10" height="8" rx="2" stroke="#F28C28" strokeWidth="2" fill="rgba(242,140,40,0.15)" />
+        <line x1="38" y1="32" x2="42" y2="32" stroke="#F28C28" strokeWidth="2" />
         {/* Smile */}
         <path d="M35 41 Q40 45 45 41" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" />
         {/* Suit & Tie */}
         <path d="M14 74 C14 56, 26 50, 40 50 C54 50, 66 56, 66 74" fill="#1e293b" stroke="#0a0a0a" strokeWidth="2.5" />
-        <polygon points="40,50 36,65 40,75 44,65" fill="#2563eb" />
+        <polygon points="40,50 36,65 40,75 44,65" fill="#F28C28" />
       </svg>
     ),
-    para: "They're exceptionally sharp, responsive, and built our entire industrial dashboard with surgical precision. Tight deadlines and complex database requirements were handled effortlessly. Highly recommend working with them!"
+    para: 'We trusted VHX with our end-to-end Forge software development, and they completed it seamlessly. From real-time telemetry to clean user workflows, every milestone was shipped on time with zero friction.'
   },
   {
     id: 2,
-    heading: 'VHX truly brought our community web platform to life with incredible speed and polish',
-    name: 'Dr. K. Vignesh',
-    designation: 'President, Rotaract Club Salem Midtown',
+    heading: 'Our Rotaract Club of Salem Midtown platform elevated how we connect and serve',
+    name: 'President',
+    designation: 'Rotaract Club of Salem Midtown (RID 2982)',
     avatar: (
       <svg viewBox="0 0 80 80" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="40" fill="#e0f2fe" />
-        <circle cx="40" cy="32" r="18" fill="#fde68a" stroke="#0a0a0a" strokeWidth="2.5" />
-        {/* Hair */}
-        <path d="M22 26 C24 13, 38 12, 48 14 C58 16, 58 24, 57 28 C52 23, 42 20, 32 23 C26 25, 23 26, 22 26 Z" fill="#1e293b" />
-        {/* Eyes & Smile */}
-        <circle cx="33" cy="32" r="2.2" fill="#0a0a0a" />
-        <circle cx="47" cy="32" r="2.2" fill="#0a0a0a" />
-        <path d="M36 41 Q40 46 44 41" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" />
-        {/* Blazer & Shirt */}
-        <path d="M15 74 C15 56, 27 50, 40 50 C53 50, 65 56, 65 74" fill="#0f172a" stroke="#0a0a0a" strokeWidth="2.5" />
-        <polygon points="34,50 40,64 46,50" fill="#00b4d8" />
-        <circle cx="30" cy="62" r="3" fill="#38bdf8" />
-      </svg>
-    ),
-    para: 'Both Vinodhan and Hari Dev are true professionals with unmatched creative technical talent. They took our concept, optimized every single mobile interaction, and delivered well beyond our expectations.'
-  },
-  {
-    id: 3,
-    heading: 'The n8n food ordering automation saves our operations 4+ hours every single day',
-    name: 'Pravin R.',
-    designation: 'Operations Lead, Cloud Kitchens',
-    avatar: (
-      <svg viewBox="0 0 80 80" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="40" fill="#ecfdf5" />
+        <circle cx="40" cy="40" r="40" fill="#FFF4E8" />
         <circle cx="40" cy="32" r="18" fill="#fed7aa" stroke="#0a0a0a" strokeWidth="2.5" />
-        {/* Modern styled hair */}
-        <path d="M22 24 C26 12, 44 10, 52 14 C59 17, 58 26, 56 30 C50 24, 40 22, 30 25 C25 27, 23 28, 22 24 Z" fill="#0a0a0a" />
-        {/* Eyes & Smile */}
+        {/* Hair */}
+        <path d="M22 29 C23 15, 34 11, 43 12 C53 13, 58 19, 58 29 C53 23, 45 20, 35 21 C28 22, 24 26, 22 29 Z" fill="#0a0a0a" />
+        {/* Eyes */}
         <circle cx="34" cy="32" r="2.2" fill="#0a0a0a" />
         <circle cx="46" cy="32" r="2.2" fill="#0a0a0a" />
-        <path d="M36 41 Q40 45 44 41" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" />
-        {/* Smart Casual Hoodie / Operations Jacket */}
-        <path d="M15 74 C15 56, 26 50, 40 50 C54 50, 65 56, 65 74" fill="#047857" stroke="#0a0a0a" strokeWidth="2.5" />
-        <path d="M33 50 L40 62 L47 50" stroke="#a7f3d0" strokeWidth="2.5" fill="none" />
+        {/* Smile */}
+        <path d="M34 40 Q40 45 46 40" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" />
+        {/* Blazer & Lapel Pin */}
+        <path d="M14 74 C14 56, 26 50, 40 50 C54 50, 66 56, 66 74" fill="#0A0B0E" stroke="#0a0a0a" strokeWidth="2.5" />
+        <path d="M33 51 L40 66 L47 51" fill="#FFFFFF" />
+        <circle cx="51" cy="61" r="3.2" fill="#F28C28" />
       </svg>
     ),
-    para: 'Instant Telegram bot notifications, automatic Google Sheets sync, zero order drops. Our staff and customers love it. Getting complex automations done with VHX is effortless.'
+    para: 'VHX built a fast, modern digital home for Rotaract Club of Salem Midtown that showcases our district hierarchy, impact initiatives, and member leadership with clarity and pride. Truly dependable partners.'
   }
 ];
 

@@ -33,7 +33,7 @@ const faqData = [
 ];
 
 export default function FAQ() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
   const itemsRef = useRef([]);
 
   const getOpenWidth = () => {
